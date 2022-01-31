@@ -4,6 +4,7 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import GeekForm from './components/Auth/GeekForm';
 import Home from './components/Home';
+import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route exact path="/signup">
               {user ? <Redirect to="/"/> : <SignUp />}
+            </Route>
+            <Route path="/hunter">
+              {HunterForm}
             </Route>
             <Route exact path="/signup/geek">
               {user ? <Redirect to="/"/> : <GeekForm />}
