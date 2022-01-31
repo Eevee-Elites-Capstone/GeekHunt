@@ -3,6 +3,8 @@ import './App.css';
 import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
+import LandingPage from './components/LandingPage';
+import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
@@ -20,7 +22,13 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              {/* {user ? <Home /> : <Redirect to="/signin"/>} */}
+            <LandingPage />
+            </Route>
+            <Route exact path="/landing">
+              <LandingPage />
+            </Route>
+            <Route exact path="/home">
+              {user ? <Home /> : <Redirect to="/signin" />}
             </Route>
             <Route path="/home" component={Home} />
             <Route path="/signin">
