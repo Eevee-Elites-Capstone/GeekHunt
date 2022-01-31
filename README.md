@@ -1,6 +1,7 @@
 # GEEK HUNT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+firebase@8.5
+react-router-dom@5.1
 
 ## Available Scripts
 
