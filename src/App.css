@@ -39,6 +39,7 @@
 .App {
   display: flex;
 }
-.container{
+.App .container{
   flex-grow: 1;
+  padding: 0 60px;
 }
