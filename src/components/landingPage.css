@@ -1,0 +1,102 @@
+
+/* dark blue  #2E4C6D*/
+/* regular blue #396EB0 */
+/* light purle #DADDFC */
+/* Oragne #FC997C */
+
+.landPage_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.landingPage_header {
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('https://previews.123rf.com/images/gstockstudio/gstockstudio1507/gstockstudio150700493/43008667-working-together-for-better-results-top-view-of-four-happy-young-people-working-together-while-sitti.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.landingPage_header-text {
+  display: flex;
+  width: 50%;
+  height: 80vh;
+  justify-content: center;
+  /* background-color: aqua; */
+}
+
+.landingPage_users {
+  text-align: center;
+  padding: 1.2rem;
+}
+.landingPage_user-titles {
+  font-size: 2.2rem;
+  letter-spacing: -0.1rem;
+}
+
+.landingPage_users-info {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 1rem;
+  padding: 1rem;
+  background-color: #DADDFC;
+}
+.landingPage_talent {
+  height: 80vh;
+  text-align: center;
+}
+
+.landingPage_talent-member {
+  display: flex;
+  padding: 2rem;
+  margin: 1.5rem;
+  background-color: #DADDFC;
+}
+
+.landingPage_talent-picture {
+  background-color: #FC997C;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+}
+
+@media (min-width: 600px) {
+  .landPage_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .landingPage_users {
+    display: flex;
+    text-align: left;
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+  .landingPage_users-info {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 1rem;
+  }
+.landingPage_talent {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+  text-align: center;
+}
+  .landingPage_talent-member {
+    display: flex;
+    padding: 2rem;
+    margin: 1.5rem;
+    background-color: #DADDFC;
+  }
+
+  .landingPage_talent-picture {
+    background-color: #FC997C;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+  }
+}
