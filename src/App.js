@@ -3,6 +3,7 @@ import './App.css';
 import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
+import HunterForm from './components/Hunter/HunterForm';
 import Navbar from './components/UI/Navbar';
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path="/signup">
               {user ? <Redirect to="/"/> : <SignUp />}
+            </Route>
+            <Route path="/hunter">
+              {HunterForm}
             </Route>
           </Switch>
         </BrowserRouter>
