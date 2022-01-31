@@ -21,6 +21,7 @@ export const useSignup = () => {
         online: true,
         displayName,
         email
+        
       })
       /**For testing
              console.log(res.user);
