@@ -4,6 +4,7 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
 import Navbar from './components/UI/Navbar';
+import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
@@ -11,13 +12,17 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+   git 
+      </div>
+      <div>
       {authIsReady && (
         <BrowserRouter>
-          <Navbar />
           <Switch>
             <Route exact path="/">
-              {user ? <Home /> : <Redirect to="/signin"/>}
+              {/* {user ? <Home /> : <Redirect to="/signin"/>} */}
             </Route>
+            <Route path="/home" component={Home} />
             <Route path="/signin">
               <SignIn />
             </Route>
@@ -27,6 +32,7 @@ function App() {
           </Switch>
         </BrowserRouter>
       )}
+      </div>
     </div>
   );
 }

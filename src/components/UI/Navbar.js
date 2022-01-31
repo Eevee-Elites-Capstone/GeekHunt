@@ -15,6 +15,7 @@ function Navbar() {
 
         {!user && (
           <>
+            <a href="/home" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Home</a>
             <a href="/signin" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Sign In</a>
             <a href="/signup" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Sign Up</a>
           </>
