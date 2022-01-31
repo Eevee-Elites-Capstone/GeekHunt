@@ -1,4 +1,5 @@
 import React from 'react';
+
 function HunterForm() {
   return (
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">

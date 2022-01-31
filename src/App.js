@@ -3,7 +3,7 @@ import './App.css';
 import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
-import HunterForm from './components/Hunter/HunterForm';
+import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import { useAuthContext } from './hooks/useAuthContext';
 
