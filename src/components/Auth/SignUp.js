@@ -84,13 +84,13 @@ function SignUp() {
           </div>
           <div className="flex items-center justify-between">
             {!isPending && <button
-              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              className=""
               type="submit"
             >
               Sign Up
             </button>}
             {isPending && <button
-              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              className=""
               disabled
             >Loading...</button>}
             {error && <p>{error}</p>}
