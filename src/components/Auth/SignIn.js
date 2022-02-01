@@ -63,8 +63,9 @@ function SignIn() {
             />
           </div>
           <div className="flex items-center justify-between">
-            {!isPending && <button className="" type="submit">Sign In</button>}
-            {isPending && <button className="" disabled>Loading...</button>}
+            {!isPending && <button type="submit">Sign In</button>}
+            {!isPending && <button type="submit">Sign In</button>}
+            {isPending && <button className="btn" disabled>Loading...</button>}
 
             <p
               className="inline-block align-baseline font-normal text-sm text-blue-500 hover:text-blue-800"

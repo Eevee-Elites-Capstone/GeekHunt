@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import { useSignup } from '../../hooks/useSignup';
+// import GeekForm from '/GeekForm';
+//import HunterForm from '/HunterForm';
+
 
 function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   //displayName is a default value from firebase
   const [displayName, setDisplayName] = useState('')
+  const [lastName, setLastName] = useState('')
   /* Need to upgrade to punch in FirstName and LastName fields */
+  const [formType, setFormType] = useState('')
+
 
   /**implement useSignup Custom Hook */
   const { signup, isPending, error } = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signup(email, password, displayName);
+    signup(email, password, displayName, lastName);
   }
   return (<div>
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
@@ -30,18 +36,37 @@ function SignUp() {
               className="block text-gray-700 text-sm font-normal mb-2"
               htmlFor="name"
             >
-              Name
+              First Name
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="name"
+              name="first Name"
               v-model="form.name"
-              type="name"
+              type="first name"
               required
               autoFocus
-              placeholder="Name"
+              placeholder="First Name"
               onChange={(e) => setDisplayName(e.target.value)}
               value={displayName}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-normal mb-2"
+              htmlFor="name"
+            >
+              Last Name
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="last Name"
+              v-model="form.name"
+              type="last name"
+              required
+              autoFocus
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
             />
           </div>
           <div className="mb-4">
@@ -83,14 +108,40 @@ function SignUp() {
             />
           </div>
           <div className="flex items-center justify-between">
+            <button
+              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              onClick={() => setFormType(
+                'geek'
+              )}
+            >
+              Are you a Geek?
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              onClick={() => setFormType(
+                'hunter'
+              )}
+            >
+              Are you a Hunter?
+            </button>
+          </div>
+          {/* {
+            formType === 'hunter' && <HunterForm/>
+            }
+            {
+            formType === 'geek' && <GeekForm/>
+          } */}
+             <div className="flex items-center justify-between">
             {!isPending && <button
-              className=""
+              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               type="submit"
             >
               Sign Up
             </button>}
             {isPending && <button
-              className=""
+              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               disabled
             >Loading...</button>}
             {error && <p>{error}</p>}
