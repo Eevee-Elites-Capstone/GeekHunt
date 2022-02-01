@@ -15,9 +15,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <div>
+      <div>
       <Navbar />
-      </div> */}
+      </div>
       <div>
       {authIsReady && (
         <BrowserRouter>
