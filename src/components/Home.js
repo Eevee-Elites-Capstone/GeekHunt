@@ -1,8 +1,13 @@
 import React from "react";
+import Navbar from "./UI/Navbar";
 
 function Home() {
   return (
-    <div>Homepage</div>
+    <div>
+    <Navbar/>
+    <p>Homepage</p>
+
+    </div>
    );
 }
 

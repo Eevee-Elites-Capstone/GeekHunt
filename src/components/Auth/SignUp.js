@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSignup } from '../../hooks/useSignup';
+import Navbar from '../UI/Navbar';
 // import GeekForm from '/GeekForm';
 //import HunterForm from '/HunterForm';
 
@@ -21,7 +22,8 @@ function SignUp() {
     e.preventDefault()
     signup(email, password, displayName, lastName);
   }
-  return (<div>
+  return (<>
+  <Navbar/>
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
       <div className="w-full max-w-md">
         <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
@@ -127,10 +129,10 @@ function SignUp() {
               Are you a Hunter?
             </button>
           </div>
-          {/* { 
+          {/* {
             formType === 'hunter' && <HunterForm/>
             }
-            { 
+            {
             formType === 'geek' && <GeekForm/>
           } */}
              <div className="flex items-center justify-between">
@@ -158,7 +160,7 @@ function SignUp() {
         </p>
       </div>
     </div>
-  </div>);
+  </>);
 }
 
 export default SignUp;

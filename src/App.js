@@ -14,10 +14,10 @@ function App() {
   const { authIsReady, user } = useAuthContext()
 
   return (
-    <div className="App">
-      <div>
+    <div className="min-h-min">
+      {/* <div>
       <Navbar />
-      </div>
+      </div> */}
       <div>
       {authIsReady && (
         <BrowserRouter>
