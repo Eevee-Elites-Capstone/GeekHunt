@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSignup } from '../../hooks/useSignup';
-// import GeekForm from '/GeekForm';
-//import HunterForm from '/HunterForm';
+import GeekForm from './GeekForm';
+import HunterForm from './HunterForm';
 
 
 function SignUp() {
@@ -15,16 +15,18 @@ function SignUp() {
 
 
   /**implement useSignup Custom Hook */
-  const { signup, isPending, error } = useSignup()
+  // const { signup, isPending, error } = useSignup()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    signup(email, password, displayName, lastName);
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   signup(email, password, displayName, lastName);
+  // }
+
   return (<div>
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
       <div className="w-full max-w-md">
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+          {/* onSubmit={ handleSubmit } */} 
           {/* <!-- @csrf --> */}
           <div
             className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4"
@@ -109,7 +111,7 @@ function SignUp() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               onClick={() => setFormType(
                 'geek'
               )}
@@ -119,7 +121,7 @@ function SignUp() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               onClick={() => setFormType(
                 'hunter'
               )}
@@ -127,13 +129,15 @@ function SignUp() {
               Are you a Hunter?
             </button>
           </div>
-          {/* { 
+          <div>
+          { 
             formType === 'hunter' && <HunterForm/>
             }
             { 
             formType === 'geek' && <GeekForm/>
-          } */}
-             <div className="flex items-center justify-between">
+          }
+          </div>
+             {/* <div className="flex items-center justify-between">
             {!isPending && <button
               // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               type="submit"
@@ -151,7 +155,7 @@ function SignUp() {
             >
               Sign Up with Google
             </p>
-          </div>
+          </div> */}
         </form>
         <p className="text-center text-gray-500 text-xs">
           &copy;2022 Geek Hunt. All rights reserved.

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useSignout } from '../../hooks/useSignout';
+import { MenuItems } from './MenuItem'
 
 function Navbar() {
   const { signout, isPending } = useSignout()
@@ -32,6 +33,15 @@ function Navbar() {
               </button>
             }
             {isPending && <button className="btn" disabled>Logging out...</button>}
+            <div>
+              <ul>
+                {MenuItems.map((item, index) => {
+                  return(
+                    <li> {item.title} </li>
+                  )
+                })}
+              </ul>
+            </div>
           </>
         )}
       </div>

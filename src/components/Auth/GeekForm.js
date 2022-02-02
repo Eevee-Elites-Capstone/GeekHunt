@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useGeekForm } from '../../hooks/useGeekForm'; //make hook later
+import { useGeekForm } from '../../hooks/useGeekForm';
+//import { useSignup } from '../../hooks/useSignup';
+ //make hook later
 
 function GeekForm () {
     const [description, setDescription] = useState('')
@@ -12,6 +14,7 @@ function GeekForm () {
     const handleSubmit = (e) => {
         e.preventDefault()
         //useGeekForm(description, skills, linkedInUrl, gitHubUrl);
+        //signup(email, password, displayName, lastName);
     }
     
     return (<div>
@@ -101,7 +104,7 @@ function GeekForm () {
             />
           </div>
           
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             {!isPending && <button
               className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               type="submit"
@@ -113,6 +116,25 @@ function GeekForm () {
               disabled
             >Loading...</button>}
             {error && <p>{error}</p>}
+          </div> */}
+          <div className="flex items-center justify-between">
+            {!isPending && <button
+              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              type="submit"
+            >
+              Sign Up
+            </button>}
+            {isPending && <button
+              className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              disabled
+            >Loading...</button>}
+            {error && <p>{error}</p>}
+            <p
+              className="inline-block align-baseline font-normal text-sm text-blue-500 hover:text-blue-800"
+              href="#"
+            >
+              Sign Up with Google
+            </p>
           </div>
           </form>
          </div>
