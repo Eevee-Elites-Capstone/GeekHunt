@@ -48,6 +48,10 @@ function App() {
                 {!user && <Redirect to="/login" />}
                 {user && <CreateProject />}
               </Route>
+              <Route path="/projects/:id">
+                {!user && <Redirect to="/login" />}
+                {/* {user && <AllProjects />} */}
+              </Route>
             </Switch>
 
           </BrowserRouter>

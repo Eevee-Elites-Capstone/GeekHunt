@@ -78,7 +78,7 @@ export default function CreateProject() {
       dueDate: timestamp.fromDate(new Date(dueDate)),
       comments: [],
       createdBy,
-      assignedUsersList
+      dueDate
     }
     // console.log(name, details, dueDate, category.value, assignedUsers)
     // console.log('project object', project);
