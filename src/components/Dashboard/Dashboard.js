@@ -1,14 +1,16 @@
-import React from 'react';
-import Card from './Card';
-import Sidebar from './Sidebar';
+import { useCollection } from '../../hooks/useCollection'
 
-function Dashboard() {
-  return (<div>
-    <Sidebar />
+// components
+import AllProjects from './AllProjects'
+
+export default function Dashboard() {
+  const { documents, error } = useCollection('projects')
+
+  return (
     <div>
-    <Card/>
+      <h2 className="page-title">Dashboard</h2>
+      {error && <p className="error">{error}</p>}
+      {documents && <AllProjects projects={documents} />}
     </div>
-  </div>);
+  )
 }
-
-export default Dashboard;

@@ -8,8 +8,11 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //displayName is a default value from firebase
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [picture, setPicture] = useState(null)
+  const [pictureError, setPictureError] = useState(null)
   const [displayName, setDisplayName] = useState("");
-  const [lastName, setLastName] = useState("");
   /* Need to upgrade to punch in FirstName and LastName fields */
   const [formType, setFormType] = useState("");
   const onFormTypeSelect = (type) => {

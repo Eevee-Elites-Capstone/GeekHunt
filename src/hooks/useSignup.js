@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { projectAuth, projectFirestore } from '../firebase/fbConfig'
+import { projectAuth, projectFirestore, projectStorage } from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
 export const useSignup = () => {
@@ -8,7 +8,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password, displayName, lastName) => {
+  const signup = async (email, password, displayName, lastName, picture) => {
     setError(null)
     setIsPending(true)
 
@@ -30,9 +30,22 @@ export const useSignup = () => {
         throw new Error('Could not complete signup')
       }
 
-      // add display name to user
-      await res.user.updateProfile({ displayName })
+      //upload user profile picture
+      const uploadPath = `pictures/${res.user.uid}/${picture.name}`
+      const img = await projectStorage.ref(uploadPath).put(picture)
+      const imgUrl = await img.ref.getDownloadURL()
 
+      // add display AND PHOTO_URL name to user
+      await res.user.updateProfile({ displayName, photoURL: imgUrl })
+
+      // create a user document
+      await projectFirestore.collection('users').doc(res.user.uid).set({
+        online: true,
+        displayName,
+        email,
+        photoURL: imgUrl
+
+      })
       // dispatch signin action
       dispatch({ type: 'SIGNIN', payload: res.user })
 
