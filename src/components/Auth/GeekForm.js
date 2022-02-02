@@ -8,14 +8,39 @@ function GeekForm({email, password, displayName, lastName}) {
   const [skills, setSkills] = useState([]);
   const [linkedInUrl, setLinkedInUrl] = useState("");
   const [gitHubUrl, setGitHubUrl] = useState("");
+  const [picture, setPicture] = useState(null)
+  const [pictureError, setPictureError] = useState(null)
 
   const { signup, isPending, error } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //useGeekForm(description, skills, linkedInUrl, gitHubUrl);
-    signup(email, password, displayName, lastName);
+    signup(email, password, displayName, lastName, picture);
   };
+
+  const handleFileChange = (e) => {
+    setPicture(null)
+    let selected = e.target.files[0]
+    console.log(selected)
+
+    if (!selected) {
+      setPictureError('Please select a file')
+      return
+    }
+    if (!selected.type.includes('image')) {
+      setPictureError('Selected file must be an image')
+      return
+    }
+    if (selected.size > 3000000) {
+      setPictureError('Image file size must be less than 3MB')
+      return
+    }
+
+    setPictureError(null)
+    setPicture(selected)
+    console.log('picture updated')
+  }
 
   return (
     <div>
@@ -27,6 +52,22 @@ function GeekForm({email, password, displayName, lastName}) {
           >
             <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
               Account Information
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-normal mb-2"
+                htmlFor="profile picture"
+              >
+                Choose your profile picture
+              </label>
+              <label>
+                <input
+                  required
+                  type="file"
+                  onChange={handleFileChange}
+                />
+                {pictureError && <div className="error">{pictureError}</div>}
+              </label>
             </div>
             <div className="mb-4">
               <label

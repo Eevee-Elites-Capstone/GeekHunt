@@ -8,10 +8,10 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //displayName is a default value from firebase
-  const [firstName, setFirstName] = useState('')
+  //const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [picture, setPicture] = useState(null)
-  const [pictureError, setPictureError] = useState(null)
+  // const [picture, setPicture] = useState(null)
+  // const [pictureError, setPictureError] = useState(null)
   const [displayName, setDisplayName] = useState("");
   /* Need to upgrade to punch in FirstName and LastName fields */
   const [formType, setFormType] = useState("");
@@ -24,7 +24,6 @@ function SignUp() {
 
   return (
     <div>
-
       <Navbar />
       <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
         <div className="w-full max-w-md">
@@ -107,7 +106,7 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-            </div>
+            </div> 
             <div className="flex items-center justify-between">
               <button
                 className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"

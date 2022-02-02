@@ -16,13 +16,6 @@ export const useSignup = () => {
       // signup
       const res = await projectAuth.createUserWithEmailAndPassword(email, password)
 
-      // create a user document
-      await projectFirestore.collection('users').doc(res.user.uid).set({
-        online: true,
-        displayName,
-        email,
-        lastName
-      })
       /**For testing
              console.log(res.user);
             */
@@ -31,21 +24,22 @@ export const useSignup = () => {
       }
 
       //upload user profile picture
-      const uploadPath = `pictures/${res.user.uid}/${picture.name}`
+      const uploadPath = `pictures/${res.user.uid}/${picture.displayName}`
       const img = await projectStorage.ref(uploadPath).put(picture)
       const imgUrl = await img.ref.getDownloadURL()
 
       // add display AND PHOTO_URL name to user
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
 
-      // create a user document
-      await projectFirestore.collection('users').doc(res.user.uid).set({
+       // create a user document
+       await projectFirestore.collection('users').doc(res.user.uid).set({
         online: true,
         displayName,
         email,
+        lastName,
         photoURL: imgUrl
-
       })
+
       // dispatch signin action
       dispatch({ type: 'SIGNIN', payload: res.user })
 
