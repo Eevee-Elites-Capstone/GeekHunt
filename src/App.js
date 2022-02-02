@@ -8,6 +8,7 @@ import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
+import EditProfile from './components/EditProfile';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/landing">
               <LandingPage />
+            </Route>
+            <Route exact path="/editprofile">
+              <EditProfile />
             </Route>
             <Route exact path="/home">
               {user ? <Home /> : <Redirect to="/signin" />}
