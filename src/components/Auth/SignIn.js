@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSignin } from '../../hooks/useSignin';
+import Navbar from '../UI/Navbar';
 
 function SignIn() {
   const [email, setEmail] = useState('')
@@ -13,6 +14,8 @@ function SignIn() {
   }
 
   return (
+    <>
+      <Navbar/>
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
       <div className="justify-center w-full max-w-md">
         <form
@@ -64,7 +67,6 @@ function SignIn() {
           </div>
           <div className="flex items-center justify-between">
             {!isPending && <button type="submit">Sign In</button>}
-            {!isPending && <button type="submit">Sign In</button>}
             {isPending && <button className="btn" disabled>Loading...</button>}
 
             <p
@@ -80,7 +82,8 @@ function SignIn() {
           &copy;2022 Geek Hunt. All rights reserved.
         </p>
       </div>
-    </div>);
+    </div>
+    </>);
 }
 
 export default SignIn;
