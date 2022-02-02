@@ -28,17 +28,6 @@ export default function CreateProject() {
   const [users, setUsers] = useState([])
   const { user } = useAuthContext()
 
-  /*map through the array of all users*/
-  useEffect(() => {
-    if(documents) {
-      const userOptions = documents.map(user => {
-        return { value: {...user, id: user.id}, label: user.displayName }
-      })
-      setUsers(userOptions)
-    }
-  }, [documents])
-    // console.log(users)
-
   // form field values
   const [name, setName] = useState('')
   const [details, setDetails] = useState('')
@@ -47,11 +36,23 @@ export default function CreateProject() {
   const [assignedUsers, setAssignedUsers] = useState([])
   const [formError, setFormError] = useState(null)
 
+
+  /*map through the array of all users*/
+  useEffect(() => {
+    if (documents) {
+      const userOptions = documents.map(user => {
+        return { value: { ...user, id: user.id }, label: user.displayName }
+      })
+      setUsers(userOptions)
+    }
+  }, [documents])
+  // console.log(users)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setFormError(null)
     /**Catching form error */
-    if(!category) {
+    if (!category) {
       setFormError('Please select a project category')
       return
     }
@@ -74,17 +75,17 @@ export default function CreateProject() {
     const project = {
       name,
       details,
+      assignedUsersList,
+      createdBy,
       category: category.value,
       dueDate: timestamp.fromDate(new Date(dueDate)),
-      comments: [],
-      createdBy,
-      dueDate
+      comments: []
     }
-    // console.log(name, details, dueDate, category.value, assignedUsers)
-    // console.log('project object', project);
+    console.log(name, details, dueDate, category.value, assignedUsers)
+    console.log('project object', project);
     /**Add document to firestore */
     await addDocument(project)
-    if(!response.error) {
+    if (!response.error) {
       history.push('/dashboard')
     }
   }
