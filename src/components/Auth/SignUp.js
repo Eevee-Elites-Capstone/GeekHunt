@@ -9,8 +9,10 @@ function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   //displayName is a default value from firebase
-  const [displayName, setDisplayName] = useState('')
+  const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [picture, setPicture] = useState(null)
+  const [pictureError, setPictureError] = useState(null)
   /* Need to upgrade to punch in FirstName and LastName fields */
   const [formType, setFormType] = useState('')
 
@@ -20,10 +22,33 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signup(email, password, displayName, lastName);
+    signup(email, password, firstName, lastName, picture);
+  }
+
+  const handleFileChange = (e) => {
+    setPicture(null)
+    let selected = e.target.files[0]
+    console.log(selected)
+
+    if (!selected) {
+      setPictureError('Please select a file')
+      return
+    }
+    if (!selected.type.includes('image')) {
+      setPictureError('Selected file must be an image')
+      return
+    }
+    if (selected.size > 3000000) {
+      setPictureError('Image file size must be less than 3MB')
+      return
+    }
+
+    setPictureError(null)
+    setPicture(selected)
+    console.log('picture updated')
   }
   return (<>
-  <Navbar/>
+    <Navbar />
     <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
       <div className="w-full max-w-md">
         <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
@@ -48,8 +73,8 @@ function SignUp() {
               required
               autoFocus
               placeholder="First Name"
-              onChange={(e) => setDisplayName(e.target.value)}
-              value={displayName}
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
             />
           </div>
           <div className="mb-4">
@@ -110,6 +135,22 @@ function SignUp() {
             />
           </div>
           <div className="flex items-center justify-between">
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-normal mb-2"
+                htmlFor="profile picture"
+              >
+                Choose your profile picture
+              </label>
+              <label>
+                <input
+                  required
+                  type="file"
+                  onChange={handleFileChange}
+                />
+                {pictureError && <div className="error">{pictureError}</div>}
+              </label>
+            </div>
             <button
               // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               onClick={() => setFormType(
@@ -135,7 +176,7 @@ function SignUp() {
             {
             formType === 'geek' && <GeekForm/>
           } */}
-             <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             {!isPending && <button
               // className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               type="submit"

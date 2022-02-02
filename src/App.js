@@ -14,7 +14,7 @@ function App() {
   const { authIsReady, user } = useAuthContext()
 
   return (
-    <div className="min-h-min">
+    <div className="min-h-max">
       {/* <div>
       <Navbar />
       </div> */}
