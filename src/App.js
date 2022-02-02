@@ -4,10 +4,10 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
 import LandingPage from './components/LandingPage';
-import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
+import EditProfile from './components/EditProfile';
 import Dashboard from './components/Dashboard/Dashboard';
 import OnlineUsers from './components/Users/OnlineUsers';
 import CreateProject from './components/Dashboard/CreateProject';
@@ -29,6 +29,9 @@ function App() {
               </Route>
               <Route exact path="/landing">
                 <LandingPage />
+              </Route>
+              <Route exact path="/editprofile">
+                <EditProfile />
               </Route>
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
@@ -53,7 +56,6 @@ function App() {
                 {/* {user && <AllProjects />} */}
               </Route>
             </Switch>
-
           </BrowserRouter>
         )}
       </div>
