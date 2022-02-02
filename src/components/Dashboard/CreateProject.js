@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Select from 'react-select'
+import { timestamp } from '../../firebase/fbConfig'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
+import { useFirestore } from '../../hooks/useFirestore'
+
 
 // styles
 import './Create.css'
@@ -13,20 +18,26 @@ const categories = [
 ]
 
 export default function CreateProject() {
+  /**history hooks from react-router-dom */
+  const history = useHistory()
+  /**Add project collection to firestore */
+  const { addDocument, response } = useFirestore('projects')
   /*Assign function*/
   const { documents } = useCollection('users')
   // console.log('All users', documents);
   const [users, setUsers] = useState([])
+  const { user } = useAuthContext()
 
   /*map through the array of all users*/
   useEffect(() => {
     if(documents) {
       const userOptions = documents.map(user => {
-        return { value: user, label: user.displayName}
+        return { value: {...user, id: user.id}, label: user.displayName }
       })
       setUsers(userOptions)
     }
   }, [documents])
+    // console.log(users)
 
   // form field values
   const [name, setName] = useState('')
@@ -38,9 +49,46 @@ export default function CreateProject() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    console.log(name, details, dueDate, category.value, assignedUsers)
+    setFormError(null)
+    /**Catching form error */
+    if(!category) {
+      setFormError('Please select a project category')
+      return
+    }
+    // if(assignedUsers.length < 1) {
+    //   setFormError('Please assign the project to at least 1 user')
+    //   return
+    // }
+    const assignedUsersList = assignedUsers.map(u => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id
+      }
+    })
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid
+    }
+    const project = {
+      name,
+      details,
+      category: category.value,
+      dueDate: timestamp.fromDate(new Date(dueDate)),
+      comments: [],
+      createdBy,
+      assignedUsersList
+    }
+    // console.log(name, details, dueDate, category.value, assignedUsers)
+    // console.log('project object', project);
+    /**Add document to firestore */
+    await addDocument(project)
+    if(!response.error) {
+      history.push('/dashboard')
+    }
   }
+
 
   return (
     <div className="create-form">
