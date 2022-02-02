@@ -7,6 +7,7 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
+import EditProfile from './components/EditProfile';
 import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/landing">
               <LandingPage />
+            </Route>
+            <Route exact path="/editprofile">
+              <EditProfile />
             </Route>
             <Route exact path="/home">
               {user ? <Home /> : <Redirect to="/signin" />}
