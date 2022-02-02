@@ -4,7 +4,6 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
 import LandingPage from './components/LandingPage';
-import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
