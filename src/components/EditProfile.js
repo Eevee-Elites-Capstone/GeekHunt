@@ -8,9 +8,13 @@ const EditProfile = () => {
 
         <div className="w-full md:w-2/5 h-80">
           <div className="flex flex-col justify-center items-center w-2/6 h-full bg-purple-400 rounded-lg">
-            <div className="w-1/3 h-32 bg-white rounded-full">
-                <p>image</p>
-            </div>
+
+            <img
+  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+  class="rounded-full w-32 shadow-lg"
+  alt="Avatar"
+/>
+
             <p>Username</p>
             <p>Job Title</p>
             <button>Edit</button>
