@@ -4,19 +4,19 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Home from './components/Home';
 import LandingPage from './components/LandingPage';
-import HunterForm from './components/Auth/HunterForm';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
 
   return (
-    <div className="App">
-      <div>
+    <div className="min-h-min">
+      {/* <div>
       <Navbar />
-      </div>
+      </div> */}
       <div>
       {authIsReady && (
         <BrowserRouter>
@@ -36,6 +36,9 @@ function App() {
             </Route>
             <Route path="/signup">
               {user ? <Redirect to="/"/> : <SignUp />}
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard/>
             </Route>
           </Switch>
         </BrowserRouter>
