@@ -9,6 +9,7 @@ import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
 import Dashboard from './components/Dashboard/Dashboard';
+import OnlineUsers from './components/Users/OnlineUsers';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -40,8 +41,10 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard/>
+              {user && <OnlineUsers/>}
             </Route>
           </Switch>
+
         </BrowserRouter>
       )}
       </div>
