@@ -8,11 +8,8 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //displayName is a default value from firebase
-  //const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  // const [picture, setPicture] = useState(null)
-  // const [pictureError, setPictureError] = useState(null)
   const [displayName, setDisplayName] = useState("");
+  const [lastName, setLastName] = useState("");
   /* Need to upgrade to punch in FirstName and LastName fields */
   const [formType, setFormType] = useState("");
   const onFormTypeSelect = (type) => {
@@ -27,7 +24,7 @@ function SignUp() {
       <Navbar />
       <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
         <div className="w-full max-w-md">
-          <form className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+          <form className="bg-white shadow-lg rounded px-12 pt-20 pb-4 mb-4">
             <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
               Sign Up
             </div>
@@ -39,7 +36,9 @@ function SignUp() {
                 First Name
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded
+                w-full py-2 px-3 text-gray-700 leading-tight 
+                focus:outline-none focus:shadow-outline"
                 name="first Name"
                 v-model="form.name"
                 type="first name"
@@ -58,7 +57,9 @@ function SignUp() {
                 Last Name
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full 
+                py-2 px-3 text-gray-700 leading-tight 
+                focus:outline-none focus:shadow-outline"
                 name="last Name"
                 v-model="form.name"
                 type="last name"
@@ -77,7 +78,9 @@ function SignUp() {
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded 
+                w-full py-2 px-3 text-gray-700 leading-tight 
+                focus:outline-none focus:shadow-outline"
                 name="email"
                 v-model="form.email"
                 type="email"
@@ -96,7 +99,9 @@ function SignUp() {
                 Password
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded 
+                w-full py-2 px-3 text-gray-700 mb-3 leading-tight 
+                focus:outline-none focus:shadow-outline"
                 v-model="form.password"
                 type="password"
                 placeholder="Password"
@@ -106,10 +111,11 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-            </div> 
+            </div>
             <div className="flex items-center justify-between">
               <button
-                className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                className="px-4 py-2 rounded text-white inline-block
+                 shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                 onClick={onFormTypeSelect("geek")}
               >
                 Are you a Geek?
@@ -117,7 +123,8 @@ function SignUp() {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                className="px-4 py-2 rounded text-white inline-block 
+                shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                 onClick={onFormTypeSelect("hunter")}
               >
                 Are you a Hunter?
