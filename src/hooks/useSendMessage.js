@@ -1,21 +1,20 @@
-import  {firebase} from '../firebase/fbConfig';
+import  {firebase, projectFirestore, projectAuth} from '../firebase/fbConfig';
 import { useState, useEffect } from 'react'
-import { projectAuth, projectFirestore } from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
+// const auth = firebase.auth();
+// const firestore = firebase.firestore();
 
-export const sendMessage = async (message, recipientUserId) => {
+export const useSendMessage = async (message) => {
         try {
-            const messagesRef = firestore.collection('messages');
-            const { uid } = auth.currentUser;
+            const messagesRef = projectFirestore.collection('messages');
+            const { uid } = projectAuth.currentUser;
             console.log('THE USER ID: ', uid)
             
             await messagesRef.add({
                 text: message,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                recepientId: recipientUserId,
+                //recepientId: recipientUserId,
                 senderId: uid
             })
             

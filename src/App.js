@@ -60,7 +60,6 @@ function App() {
               </Route>
               <Route path="/messages">
                 <MessagingPage />
-                {user}
               </Route>
             </Switch>
           </BrowserRouter>
