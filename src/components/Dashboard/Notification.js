@@ -21,10 +21,9 @@ function Notification() {
       {user.uid && documents && documents.map(noti => (
         <li className="bg-yellow-400" key={noti.id}>
         <span>{noti.user}</span>
-        <span>{noti.details}</span>
+        <span>{noti.content}</span>
         <div className="moment-from-now">
         {moment(noti.time.toDate()).fromNow()}
-
         </div>
         </li>
       ))}
