@@ -15,6 +15,7 @@ export default function SingleProject() {
     return <div className="loading">Loading...</div>
   }
 
+
   return (
     <div className="project-details">
       <ProjectSummary project={document} />
