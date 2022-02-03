@@ -1,46 +1,73 @@
 import React, { useState } from "react";
 //import { useGeekForm } from "../../hooks/useGeekForm";
-import { useGeekSignup } from '../../hooks/useGeekSignup';
+import { useGeekSignup } from "../../hooks/useGeekSignup";
 //make hook later
 
-function GeekForm({email, password, displayName, lastName}) {
+function GeekForm({ email, password, displayName, lastName }) {
   const [description, setDescription] = useState("");
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState(['']);
   const [linkedInUrl, setLinkedInUrl] = useState("");
   const [gitHubUrl, setGitHubUrl] = useState("");
-  const [picture, setPicture] = useState(null)
-  const [pictureError, setPictureError] = useState(null)
+  const [picture, setPicture] = useState(null);
+  const [pictureError, setPictureError] = useState(null);
   const [jobTitle, setJobTitle] = useState("");
 
   const { signup, isPending, error } = useGeekSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password, displayName, lastName, picture, jobTitle, description, skills, linkedInUrl, gitHubUrl);
+    signup(
+      email,
+      password,
+      displayName,
+      lastName,
+      picture,
+      jobTitle,
+      description,
+      skills,
+      linkedInUrl,
+      gitHubUrl
+    );
+  };
+
+  const handleChange = (i, e) => {
+    let newFormValues = [...skills];
+    newFormValues[i]= e.target.value;
+    setSkills(newFormValues);
+  };
+
+  const addFormFields = () => {
+    setSkills([...skills, { skills }]);
+  };
+
+  const removeFormFields = (i) => {
+    let newFormValues = [...skills];
+    newFormValues.splice(i, 1);
+    setSkills(newFormValues);
   };
 
   const handleFileChange = (e) => {
-    setPicture(null)
-    let selected = e.target.files[0]
-    console.log(selected)
+    setPicture(null);
+    let selected = e.target.files[0];
+    console.log(selected);
 
     if (!selected) {
-      setPictureError('Please select a file')
-      return
+      setPictureError("Please select a file");
+      return;
     }
-    if (!selected.type.includes('image')) {
-      setPictureError('Selected file must be an image')
-      return
+    if (!selected.type.includes("image")) {
+      setPictureError("Selected file must be an image");
+      return;
     }
     if (selected.size > 3000000) {
-      setPictureError('Image file size must be less than 3MB')
-      return
+      setPictureError("Image file size must be less than 3MB");
+      return;
     }
 
-    setPictureError(null)
-    setPicture(selected)
-    console.log('picture updated')
-  }
+    setPictureError(null);
+    setPicture(selected);
+    console.log("picture updated");
+  };
 
   return (
     <div>
@@ -61,11 +88,7 @@ function GeekForm({email, password, displayName, lastName}) {
                 Choose your profile picture
               </label>
               <label>
-                <input
-                  required
-                  type="file"
-                  onChange={handleFileChange}
-                />
+                <input required type="file" onChange={handleFileChange} />
                 {pictureError && <div className="error">{pictureError}</div>}
               </label>
             </div>
@@ -107,7 +130,8 @@ function GeekForm({email, password, displayName, lastName}) {
                 value={description}
               />
             </div>
-            <div className="mb-4">
+            {skills.map((skill, index) => (
+            <div className= "mb-4 form-inline" key={index} >
               <label
                 className="block text-gray-700 text-sm font-normal mb-2"
                 htmlFor="skills"
@@ -116,16 +140,34 @@ function GeekForm({email, password, displayName, lastName}) {
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="skills"
+                name="skill"
                 v-model="form.skills"
-                type="skills"
+                type="skill"
                 required
                 autoFocus
                 placeholder="Skills"
-                onChange={(e) => setSkills(e.target.value)}
-                value={skills}
+                //onChange={(e) => setSkills(e.target.value)}
+                value={ JSON.stringify(skill) }
+                onChange={e => handleChange(index, e)}
               />
+                {
+                index ? 
+                  <button 
+                  type="button"  
+                  className="px-2 py-1 rounded text-white inline-block 
+                  shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                  onClick={() => removeFormFields(index)}> Remove 
+                  </button> 
+                : null
+              }
             </div>
+            ))}
+              <div className="button-section">
+              <button className="px-2 py-1 rounded text-white inline-block 
+              shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+              type="button" 
+              onClick={() => addFormFields()}>Add</button>
+              </div>
 
             <div className="mb-4">
               <label
