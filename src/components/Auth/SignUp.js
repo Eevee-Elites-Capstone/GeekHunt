@@ -114,7 +114,7 @@ function SignUp() {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="px-4 py-2 rounded text-white inline-block
+                className="px-4 py-2 rounded text-white inline-block 
                  shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                 onClick={onFormTypeSelect("geek")}
               >
