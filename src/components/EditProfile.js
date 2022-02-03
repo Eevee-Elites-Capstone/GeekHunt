@@ -12,7 +12,6 @@ const EditProfile = () => {
               class="rounded-full w-32 shadow-lg"
               alt="Avatar"
             />
-
             <p>Username</p>
             <p>Job Title</p>
             <button>Edit</button>
