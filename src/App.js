@@ -11,6 +11,7 @@ import EditProfile from './components/EditProfile';
 import Dashboard from './components/Dashboard/Dashboard';
 import OnlineUsers from './components/Users/OnlineUsers';
 import CreateProject from './components/Dashboard/CreateProject';
+import MessagingPage from './components/Messaging/MessagingPage'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -54,6 +55,10 @@ function App() {
               <Route path="/projects/:id">
                 {!user && <Redirect to="/login" />}
                 {/* {user && <AllProjects />} */}
+              </Route>
+              <Route path="/messages">
+                <MessagingPage />
+                {user}
               </Route>
             </Switch>
           </BrowserRouter>
