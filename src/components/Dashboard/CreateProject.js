@@ -46,7 +46,7 @@ export default function CreateProject() {
       setUsers(userOptions)
     }
   }, [documents])
-  // console.log(users)
+  // console.log('users', users)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
