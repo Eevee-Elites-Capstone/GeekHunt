@@ -7,12 +7,13 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
-import EditProfile from './components/EditProfile';
+import Profile from './components/Profile';
 import Dashboard from './components/Dashboard/Dashboard';
 import OnlineUsers from './components/Users/OnlineUsers';
 import CreateProject from './components/Dashboard/CreateProject';
 import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
+import EditProfile from './components/EditProfile';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -32,9 +33,7 @@ function App() {
               <Route exact path="/landing">
                 <LandingPage />
               </Route>
-              <Route exact path="/editprofile">
-                <EditProfile />
-              </Route>
+
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
               </Route>
@@ -44,6 +43,12 @@ function App() {
               </Route>
               <Route path="/signup">
                 {user ? <Redirect to="/" /> : <SignUp />}
+              </Route>
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+              <Route exact path="/editprofile">
+                <EditProfile />
               </Route>
               <Route path="/dashboard">
                 <Dashboard />
