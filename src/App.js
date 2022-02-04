@@ -7,12 +7,14 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
-import EditProfile from './components/EditProfile';
+import Profile from './components/Profile';
 import Dashboard from './components/Dashboard/Dashboard';
 import OnlineUsers from './components/Users/OnlineUsers';
 import CreateProject from './components/Dashboard/CreateProject';
 import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
+import EditProfile from './components/EditProfile';
+import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
 
@@ -34,9 +36,7 @@ function App() {
               <Route exact path="/landing">
                 <LandingPage />
               </Route>
-              <Route exact path="/editprofile">
-                <EditProfile />
-              </Route>
+
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
               </Route>
@@ -47,24 +47,35 @@ function App() {
               <Route path="/signup">
                 {user ? <Redirect to="/" /> : <SignUp />}
               </Route>
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+              <Route exact path="/editprofile">
+                <EditProfile />
+              </Route>
               <Route path="/dashboard">
                 <Dashboard />
                 {user && <OnlineUsers />}
               </Route>
               <Route path="/createproject">
-                {!user && <Redirect to="/login" />}
+                {!user && <Redirect to="/signin" />}
                 {user && <CreateProject />}
               </Route>
               <Route path="/projects/:id">
-                {!user && <Redirect to="/login" />}
+                {!user && <Redirect to="/signin" />}
                 {user && <SingleProject />}
               </Route>
+<<<<<<< HEAD
               <Route path="/messages">
                 <MessagingPage />
               </Route>
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}
                 {user && <SingleConversation />}
+=======
+              <Route path="/fetchProfiles">
+                <FetchProfiles />
+>>>>>>> b3bd33224650b721e9b5f5f2775a8c0d39c4cf39
               </Route>
             </Switch>
           </BrowserRouter>
