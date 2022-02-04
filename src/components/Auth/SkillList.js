@@ -41,11 +41,13 @@ function SkillList({ onChange }) {
   const removeFormFields = (i) => {
       let newFormValues = [...skills];
       newFormValues.splice(i, 1);
+      console.log('remove value',newFormValues)
       setSkills(newFormValues);
-    //   onChange(skills)
+      onChange(skills)
     };
 
-  const Skill = ({ query }) => <li>{query}</li>
+  const Skill = ({ query, onClick }) => 
+  <li onClick={onClick}><button>x - {query}</button></li>
 
   return (
     <div className= "mb-4 form-inline">
@@ -72,10 +74,10 @@ function SkillList({ onChange }) {
         <ul className="bg-white rounded-lg border border-gray-200 w-full text-gray-900">
         {skills.map((query, index) => (
           <Skill
+            onClick={() => removeFormFields(index)}
             query={query}
             // Prevent duplicate keys by appending index:
             key={query + index}
-            //onClick={() => removeFormFields(index)}
           />
         ))}
       </ul>

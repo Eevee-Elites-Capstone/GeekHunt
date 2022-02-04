@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SkillList from "./SkillList";
 import { useGeekSignup } from "../../hooks/useGeekSignup";
+import FormInput from "../UI/FormInput";
 //make hook later
 
 function GeekForm({ email, password, displayName, lastName }) {
@@ -11,7 +12,6 @@ function GeekForm({ email, password, displayName, lastName }) {
   const [picture, setPicture] = useState(null);
   const [pictureError, setPictureError] = useState(null);
   const [jobTitle, setJobTitle] = useState("");
-  //const [query, setQuery] = useState("");
 
   const { signup, isPending, error } = useGeekSignup();
 
@@ -84,16 +84,10 @@ function GeekForm({ email, password, displayName, lastName }) {
               >
                 Job Title
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full 
-                py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="jobTitle"
-                v-model="form.jobTitle"
-                type="jobTitle"
+              <FormInput
                 required
-                autoFocus
                 placeholder="JobTitle"
-                onChange={(e) => setJobTitle(e.target.value)}
+                onChange={e => setJobTitle(e.target.value)}
                 value={jobTitle}
               />
             </div>
@@ -116,7 +110,7 @@ function GeekForm({ email, password, displayName, lastName }) {
                 value={description}
               />
             </div>
-            <SkillList onChange={(skills) => setSkills(skills)} />
+              <SkillList onChange={(skills) => setSkills(skills)} />
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-normal mb-2"
@@ -124,13 +118,8 @@ function GeekForm({ email, password, displayName, lastName }) {
               >
                 LinkedIn Url
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="linkedInUrl"
-                v-model="form.linkedInUrl"
-                type="linkedInUrl"
+              <FormInput
                 required
-                autoFocus
                 placeholder="LinkedInUrl"
                 onChange={(e) => setLinkedInUrl(e.target.value)}
                 value={linkedInUrl}
@@ -144,15 +133,8 @@ function GeekForm({ email, password, displayName, lastName }) {
               >
                 GitHub Url
               </label>
-              <input
-                className="shadow appearance-none border rounded
-                w-full py-2 px-3 text-gray-700 leading-tight 
-                focus:outline-none focus:shadow-outline"
-                name="gitHubUrl"
-                v-model="form.gitHubUrl"
-                type="gitHubUrl"
+              <FormInput
                 required
-                autoFocus
                 placeholder="GitHubUrl"
                 onChange={(e) => setGitHubUrl(e.target.value)}
                 value={gitHubUrl}
