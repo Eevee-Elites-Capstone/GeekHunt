@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { projectAuth } from '../firebase/fbConfig'
+import { projectAuth, projectFirestore, } from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
 export const useSignout = () => {

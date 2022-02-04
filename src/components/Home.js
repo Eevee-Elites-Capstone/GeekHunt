@@ -4,7 +4,7 @@ import Navbar from "./UI/Navbar";
 function Home() {
   return (
     <div>
-    <Navbar/>
+    {/* <Navbar/> */}
     <p>Homepage</p>
 
     </div>
