@@ -65,17 +65,15 @@ function App() {
                 {!user && <Redirect to="/signin" />}
                 {user && <SingleProject />}
               </Route>
-<<<<<<< HEAD
+              <Route path="/fetchProfiles">
+                <FetchProfiles />
+              </Route>
               <Route path="/messages">
                 <MessagingPage />
               </Route>
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}
                 {user && <SingleConversation />}
-=======
-              <Route path="/fetchProfiles">
-                <FetchProfiles />
->>>>>>> b3bd33224650b721e9b5f5f2775a8c0d39c4cf39
               </Route>
             </Switch>
           </BrowserRouter>
