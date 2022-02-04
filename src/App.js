@@ -14,6 +14,7 @@ import CreateProject from './components/Dashboard/CreateProject';
 import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
 import MessagingPage from './components/Messaging/MessagingPage'
+import SingleConversation from './components/Messaging/SingleConversation'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -60,6 +61,10 @@ function App() {
               </Route>
               <Route path="/messages">
                 <MessagingPage />
+              </Route>
+              <Route path="/conversations/:id">
+                {!user && <Redirect to="/login" />}
+                {user && <SingleConversation />}
               </Route>
             </Switch>
           </BrowserRouter>
