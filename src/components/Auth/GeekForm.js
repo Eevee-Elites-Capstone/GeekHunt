@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-//import { useGeekForm } from "../../hooks/useGeekForm";
+import SkillList from "./SkillList";
 import { useGeekSignup } from "../../hooks/useGeekSignup";
 //make hook later
 
 function GeekForm({ email, password, displayName, lastName }) {
   const [description, setDescription] = useState("");
-  const [skills, setSkills] = useState(['']);
+  const [skills, setSkills] = useState([]);
   const [linkedInUrl, setLinkedInUrl] = useState("");
   const [gitHubUrl, setGitHubUrl] = useState("");
   const [picture, setPicture] = useState(null);
   const [pictureError, setPictureError] = useState(null);
   const [jobTitle, setJobTitle] = useState("");
+  //const [query, setQuery] = useState("");
 
   const { signup, isPending, error } = useGeekSignup();
 
@@ -28,22 +29,6 @@ function GeekForm({ email, password, displayName, lastName }) {
       linkedInUrl,
       gitHubUrl
     );
-  };
-
-  const handleChange = (i, e) => {
-    let newFormValues = [...skills];
-    newFormValues[i]= e.target.value;
-    setSkills(newFormValues);
-  };
-
-  const addFormFields = () => {
-    setSkills([...skills, { skills }]);
-  };
-
-  const removeFormFields = (i) => {
-    let newFormValues = [...skills];
-    newFormValues.splice(i, 1);
-    setSkills(newFormValues);
   };
 
   const handleFileChange = (e) => {
@@ -100,7 +85,8 @@ function GeekForm({ email, password, displayName, lastName }) {
                 Job Title
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full 
+                py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="jobTitle"
                 v-model="form.jobTitle"
                 type="jobTitle"
@@ -130,45 +116,7 @@ function GeekForm({ email, password, displayName, lastName }) {
                 value={description}
               />
             </div>
-            {skills.map((skill, index) => (
-            <div className= "mb-4 form-inline" key={index} >
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="skills"
-              >
-                Skills
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="skill"
-                v-model="form.skills"
-                type="skill"
-                required
-                autoFocus
-                placeholder="Skills"
-                //onChange={(e) => setSkills(e.target.value)}
-                value={ JSON.stringify(skill) }
-                onChange={e => handleChange(index, e)}
-              />
-                {
-                index ? 
-                  <button 
-                  type="button"  
-                  className="px-2 py-1 rounded text-white inline-block 
-                  shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
-                  onClick={() => removeFormFields(index)}> Remove 
-                  </button> 
-                : null
-              }
-            </div>
-            ))}
-              <div className="button-section">
-              <button className="px-2 py-1 rounded text-white inline-block 
-              shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
-              type="button" 
-              onClick={() => addFormFields()}>Add</button>
-              </div>
-
+            <SkillList onChange={(skills) => setSkills(skills)} />
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-normal mb-2"
@@ -197,7 +145,9 @@ function GeekForm({ email, password, displayName, lastName }) {
                 GitHub Url
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded
+                w-full py-2 px-3 text-gray-700 leading-tight 
+                focus:outline-none focus:shadow-outline"
                 name="gitHubUrl"
                 v-model="form.gitHubUrl"
                 type="gitHubUrl"
@@ -211,7 +161,8 @@ function GeekForm({ email, password, displayName, lastName }) {
             <div className="flex items-center justify-between">
               {!isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                  className="px-4 py-2 rounded text-white inline-block 
+                  shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   type="submit"
                 >
                   Sign Up
@@ -219,19 +170,21 @@ function GeekForm({ email, password, displayName, lastName }) {
               )}
               {isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                  className="px-4 py-2 rounded text-white inline-block shadow-lg 
+                  bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   disabled
                 >
                   Loading...
                 </button>
               )}
               {error && <p>{error}</p>}
-              <p
-                className="inline-block align-baseline font-normal text-sm text-blue-500 hover:text-blue-800"
+              {/* <p
+                className="inline-block align-baseline font-normal 
+                text-sm text-blue-500 hover:text-blue-800"
                 href="#"
               >
                 Sign Up with Google
-              </p>
+              </p> */}
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs">
