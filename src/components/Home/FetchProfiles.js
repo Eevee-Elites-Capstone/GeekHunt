@@ -13,8 +13,6 @@ export default function FetchProfiles() {
       <Navbar/>
       <h1 className="flex justify-center mx-auto pt-36 text-3xl underline font-mono">Profiles</h1>
       <div className="flex justify-center mx-auto p-4 w-full">
-    {/* <div className="lg:flex items-center justify-center w-full"> */}
-      {/* <h2>All Users</h2> */}
       {isPending && <div>Loading users...</div>}
       {error && <div>{error}</div>}
       <div className="flex flex-wrap block rounded-lg shadow-lg bg-white max-w-sm text-center">
