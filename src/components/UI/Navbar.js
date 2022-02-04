@@ -16,8 +16,10 @@ function Navbar() {
 
         {!user && (
           <>
-            <a href="/home" className="text-lg no-underline 
+            <a href="/landing" className="text-lg no-underline 
             text-grey-darkest hover:text-blue-dark ml-2">Home</a>
+            <a href="/fetchProfiles" className="text-lg no-underline 
+            text-grey-darkest hover:text-blue-dark ml-2">Profiles</a>
             <a href="/signin" className="text-lg no-underline 
             text-grey-darkest hover:text-blue-dark ml-2">Sign In</a>
             <a href="/signup" className="text-lg no-underline 
@@ -27,6 +29,10 @@ function Navbar() {
         {user && (
           <>
             {user.displayName ? <p>Hello!, {user.displayName}!</p> : <p>Hello!</p>}
+            <a href="/landing" className="text-lg no-underline 
+            text-grey-darkest hover:text-blue-dark ml-2">Home</a>
+            <a href="/fetchProfiles" className="text-lg no-underline 
+            text-grey-darkest hover:text-blue-dark ml-2">Profiles</a>
             {!isPending &&
               <button
                 className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
