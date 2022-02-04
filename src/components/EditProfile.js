@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useFirestore } from "../hooks/useFirestore";
 import { useDocument } from "../hooks/useDocument";
@@ -7,26 +7,36 @@ const EditProfile = () => {
 
   const { user } = useAuthContext();
   const { document, error } = useDocument('users', user.uid);
+  const [userInfo, setUserInfo ] = useState({
+    name: "",
+    jobTitle: "",
+    email: "",
+    description: "",
+    skills: ""
+  })
 
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(e)
+    setUserInfo({
+      name: "",
+    jobTitle: "",
+    email: "",
+    description: "",
+    skills: ""
+    })
+  }
 if(!document) {
   return (<div>"loader bar here "</div>)
+} else {
+  console.log("****done")
 }
-
-console.log(document)
-// const [userInfo, setUserInfo ] = useState({
-//   name: document.displayName,
-//   jobTitle: document.jobTitle,
-//   email: document.email,
-//   description: document.description,
-//   skills: document.skills
-// })
   return (
     <div className="bg-blue-900 py-32 px-10 min-h-screen">
       <div className="bg-gray-200 rounded-lg p-10 md:w-3/4 lg:w-1/2 mx-auto">
         <div className="w-full  sm:text-right">
           <Link to="/profile">
-            <button className="h-10 w-full sm:w-1/3 rounded-lg px-3 my-2  bg-green-300">
+            <button className="h-10 w-full sm:w-1/3 rounded-lg px-2 my-2  bg-green-300">
               Back to Profile
             </button>
           </Link>
@@ -41,7 +51,7 @@ console.log(document)
           class="rounded-full w-32 shadow-lg"
           alt="Avatar"
         />
-        <form action="">
+        <form action="submit" onSubmit={handleSubmit}>
           <div class="flex items-center mb-5">
             <label
               for="photo"

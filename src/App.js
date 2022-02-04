@@ -14,6 +14,7 @@ import CreateProject from './components/Dashboard/CreateProject';
 import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
 import EditProfile from './components/EditProfile';
+import FetchProfiles from './components/Home/FetchProfiles';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -55,12 +56,15 @@ function App() {
                 {user && <OnlineUsers />}
               </Route>
               <Route path="/createproject">
-                {!user && <Redirect to="/login" />}
+                {!user && <Redirect to="/signin" />}
                 {user && <CreateProject />}
               </Route>
               <Route path="/projects/:id">
-                {!user && <Redirect to="/login" />}
+                {!user && <Redirect to="/signin" />}
                 {user && <SingleProject />}
+              </Route>
+              <Route path="/fetchProfiles">
+                <FetchProfiles />
               </Route>
             </Switch>
           </BrowserRouter>

@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import { projectAuth, projectFirestore, projectStorage } from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
-export const useSignup = () => {
+export const useGeekSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password, displayName, lastName, picture) => {
+  const signup = async (email, password, displayName, lastName, picture, jobTitle, description, skills, linkedInUrl, gitHubUrl) => {
     setError(null)
     setIsPending(true)
 
@@ -16,13 +16,6 @@ export const useSignup = () => {
       // signup
       const res = await projectAuth.createUserWithEmailAndPassword(email, password)
 
-      // create a user document
-      await projectFirestore.collection('users').doc(res.user.uid).set({
-        online: true,
-        displayName,
-        email,
-        lastName
-      })
       /**For testing
              console.log(res.user);
             */
@@ -31,21 +24,28 @@ export const useSignup = () => {
       }
 
       //upload user profile picture
-      const uploadPath = `pictures/${res.user.uid}/${picture.name}`
+      const uploadPath = `pictures/${res.user.uid}/${picture.displayName}`
       const img = await projectStorage.ref(uploadPath).put(picture)
       const imgUrl = await img.ref.getDownloadURL()
 
       // add display AND PHOTO_URL name to user
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
 
-      // create a user document
-      await projectFirestore.collection('users').doc(res.user.uid).set({
+       // create a user document
+       await projectFirestore.collection('users').doc(res.user.uid).set({
         online: true,
+        isAGeek: true,
         displayName,
         email,
-        photoURL: imgUrl
-
+        lastName,
+        photoURL: imgUrl,
+        jobTitle,
+        description, 
+        skills, 
+        linkedInUrl, 
+        gitHubUrl
       })
+
       // dispatch signin action
       dispatch({ type: 'SIGNIN', payload: res.user })
 
