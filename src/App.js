@@ -15,6 +15,8 @@ import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
 import EditProfile from './components/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
+import MessagingPage from './components/Messaging/MessagingPage'
+import SingleConversation from './components/Messaging/SingleConversation'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -65,6 +67,13 @@ function App() {
               </Route>
               <Route path="/fetchProfiles">
                 <FetchProfiles />
+              </Route>
+              <Route path="/messages">
+                <MessagingPage />
+              </Route>
+              <Route path="/conversations/:id">
+                {!user && <Redirect to="/login" />}
+                {user && <SingleConversation />}
               </Route>
             </Switch>
           </BrowserRouter>
