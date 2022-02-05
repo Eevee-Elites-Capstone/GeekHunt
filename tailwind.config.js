@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    //extend: {},
     // colors: {
     //   transparent: 'transparent',
     //   current: 'currentColor',
@@ -16,7 +16,7 @@ module.exports = {
     //   'gh-navy': '#2E4C6D',
     //   'gh-blue': '#396EB0',
     //   'gh-light': '#DADDFC',
-    //   'gh-orange': '#FC997C'
+    //   'gh-orange': '#FC997C',
     // },
     // screens: {
     //   '2xl': {'max': '1535px'},

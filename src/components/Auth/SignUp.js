@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import GeekForm from "./GeekForm";
 import HunterForm from "./HunterForm";
 import Navbar from "../UI/Navbar";
+import FormInput from "../UI/FormInput";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -10,8 +11,9 @@ function SignUp() {
   //displayName is a default value from firebase
   const [displayName, setDisplayName] = useState("");
   const [lastName, setLastName] = useState("");
-  /* Need to upgrade to punch in FirstName and LastName fields */
+  //manage the Form for Geek or Hunter
   const [formType, setFormType] = useState("");
+  //set type, is a Geek or a Hunter?
   const onFormTypeSelect = (type) => {
     return (e) => {
       e.preventDefault();
@@ -22,78 +24,36 @@ function SignUp() {
   return (
     <div>
       <Navbar />
-      <div className="h-screen bg-grey flex flex-col space-y-10 justify-center items-center">
+      <div className="bg-grey flex flex-col space-y-10 justify-center items-center">
         <div className="w-full max-w-md">
           <form className="bg-white shadow-lg rounded px-12 pt-20 pb-4 mb-4">
             <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
               Sign Up
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="name"
-              >
-                First Name
-              </label>
-              <input
-                className="shadow appearance-none border rounded
-                w-full py-2 px-3 text-gray-700 leading-tight 
-                focus:outline-none focus:shadow-outline"
-                name="first Name"
-                v-model="form.name"
-                type="first name"
+            <FormInput
+                label="First Name"
                 required
-                autoFocus
                 placeholder="First Name"
-                onChange={(e) => setDisplayName(e.target.value)}
+                onChange={e => setDisplayName(e.target.value)}
                 value={displayName}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="name"
-              >
-                Last Name
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full 
-                py-2 px-3 text-gray-700 leading-tight 
-                focus:outline-none focus:shadow-outline"
-                name="last Name"
-                v-model="form.name"
-                type="last name"
+            />
+            <FormInput
+                label="Last Name"
                 required
-                autoFocus
                 placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className="shadow appearance-none border rounded 
-                w-full py-2 px-3 text-gray-700 leading-tight 
-                focus:outline-none focus:shadow-outline"
-                name="email"
-                v-model="form.email"
-                type="email"
+            />
+            <FormInput 
+                label="Email"
                 required
-                autoFocus
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-              />
-            </div>
+            />
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-normal mb-2"
+                className="block text-gray-700 text-base font-normal mb-2"
                 htmlFor="password"
               >
                 Password
@@ -120,8 +80,6 @@ function SignUp() {
               >
                 Are you a Geek?
               </button>
-            </div>
-            <div className="flex items-center justify-between">
               <button
                 className="px-4 py-2 rounded text-white inline-block 
                 shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
@@ -130,26 +88,26 @@ function SignUp() {
                 Are you a Hunter?
               </button>
             </div>
+            <div>
+              {formType === "hunter" && (
+                <HunterForm
+                  email={email}
+                  password={password}
+                  displayName={displayName}
+                  lastName={lastName}
+                />
+              )}
+              {formType === "geek" && (
+                <GeekForm
+                  email={email}
+                  password={password}
+                  displayName={displayName}
+                  lastName={lastName}
+                />
+              )}
+            </div>
           </form>
         </div>
-      </div>
-      <div>
-        {formType === "hunter" && (
-          <HunterForm
-            email={email}
-            password={password}
-            displayName={displayName}
-            lastName={lastName}
-          />
-        )}
-        {formType === "geek" && (
-          <GeekForm
-            email={email}
-            password={password}
-            displayName={displayName}
-            lastName={lastName}
-          />
-        )}
       </div>
     </div>
   );
