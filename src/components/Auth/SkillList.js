@@ -5,7 +5,7 @@ const Skill = ({ query, onClick }) => (
     <span 
       className=" text-sm text-white font-medium py-1 px-2 bg-blue-900 rounded align-middle font-bold uppercase"
     >
-      {query}
+      x - {query}
     </span>
   </li>
 );

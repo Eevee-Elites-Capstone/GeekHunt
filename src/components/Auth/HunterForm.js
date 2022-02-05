@@ -23,6 +23,7 @@ function HunterForm({ email, password, displayName, lastName }) {
         onSubmit={handleSubmit}
         className="bg-white rounded pt-6 pb-8 mb-4"
       >
+
         <button
           className="px-4 py-2 rounded text-white inline-block 
         shadow-lg bg-purple-500 hover:bg-blue-600 focus:bg-blue-700"

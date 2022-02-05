@@ -82,7 +82,7 @@ function GeekForm({ email, password, displayName, lastName }) {
               />
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-base font-normal mb-2"
+                className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="description"
               >
                 Description

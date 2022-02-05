@@ -53,7 +53,7 @@ function SignUp() {
             />
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-base font-normal mb-2"
+                className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="password"
               >
                 Password
