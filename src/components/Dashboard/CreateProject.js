@@ -6,10 +6,6 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useFirestore } from '../../hooks/useFirestore'
 
-
-// styles
-import './Create.css'
-
 const categories = [
   { value: 'development', label: 'Development' },
   { value: 'design', label: 'Design' },
@@ -92,10 +88,10 @@ export default function CreateProject() {
 
 
   return (
-    <div className="create-form">
-      <h2 className="page-title">Create a new Project</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className="create-form flex flex-col items-center m-36 px-6">
+      <h2 className="page-title text-center text-6xl text-slate-600 font-mono font-extrabold uppercase">Create a new Project</h2>
+      <form className="bg-green-200 w-1/2" onSubmit={handleSubmit}>
+        <label className="flex flex-col">
           <span>Project name:</span>
           <input
             required

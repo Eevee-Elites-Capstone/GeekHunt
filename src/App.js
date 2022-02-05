@@ -54,8 +54,9 @@ function App() {
                 <EditProfile />
               </Route>
               <Route path="/dashboard">
-                <Dashboard />
-                {user && <OnlineUsers />}
+              {user &&  <Dashboard />}
+              {!user && <Redirect to="/"/>}
+                {/* {user && <OnlineUsers />} */}
               </Route>
               <Route path="/createproject">
                 {!user && <Redirect to="/signin" />}
