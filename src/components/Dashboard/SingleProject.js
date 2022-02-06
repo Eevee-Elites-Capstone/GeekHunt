@@ -16,10 +16,12 @@ export default function SingleProject() {
   }
 
 
-  return (
-    <div className="project-details">
+  return (<>
+    <div className="project-details flex flex-col items-center m-36 px-6 border rounded-xl shadow-lg h-full bg-slate-50">
       <ProjectSummary project={document} />
       <ProjectComments project={document} />
     </div>
+
+  </>
   )
 }

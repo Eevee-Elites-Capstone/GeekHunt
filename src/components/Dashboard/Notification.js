@@ -14,20 +14,22 @@ function Notification() {
   console.log('documents', documents);
   console.log('user', user);
   return (<>
-    <div className="w-64 flex flex-col rounded-md shadow-lg bg-neutral-300">
+    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white">
       <div className="font-bold p-2">Notifications</div>
-      {/* <ul className="notifications"> */}
+      <div className="notifications bg-white-200 overflow overflow-auto h-96 w-64">
       {user.uid && !documents && <p className="justify-center items-center">No notifications to show</p>}
       {user.uid && documents && documents.map(noti => (
-        <div className="flex flex-col p-1 w-auto bg-green-200" key={noti.id}>
-          <p className="text-xs font-bold">{noti.user}</p>
-          <p className="text-xs">{noti.content}</p>
-          <p className="text-xs ml-48">
+        <div className="flex flex-col p-2" key={noti.id}>
+        <div className="rounded-lg shadow-lg p-2">
+          <p className="text-sm font-bold">{noti.user}</p>
+          <p className="text-sm">{noti.content}</p>
+          <p className="text-xs ml-36">
             {moment(noti.time.toDate()).fromNow()}
           </p>
+          </div>
         </div>
       ))}
-      {/* </ul> */}
+      </div>
     </div>
   </>);
 }

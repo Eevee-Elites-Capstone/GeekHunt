@@ -17,6 +17,7 @@ import EditProfile from './components/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
+import Calendar from './components/Dashboard/Calendar';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -61,6 +62,10 @@ function App() {
               <Route path="/createproject">
                 {!user && <Redirect to="/signin" />}
                 {user && <CreateProject />}
+              </Route>
+              <Route path="/calendar">
+                {!user && <Redirect to="/signin" />}
+                {user && <Calendar />}
               </Route>
               <Route path="/projects/:id">
                 {!user && <Redirect to="/signin" />}

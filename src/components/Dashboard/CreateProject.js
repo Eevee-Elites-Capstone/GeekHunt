@@ -88,52 +88,62 @@ export default function CreateProject() {
 
 
   return (
-    <div className="create-form flex flex-col items-center m-36 px-6">
-      <h2 className="page-title text-center text-6xl text-slate-600 font-mono font-extrabold uppercase">Create a new Project</h2>
-      <form className="bg-green-200 w-1/2" onSubmit={handleSubmit}>
-        <label className="flex flex-col">
-          <span>Project name:</span>
+    <div className="create-form flex flex-col items-center m-36 px-6 border rounded-xl shadow-lg h-full bg-slate-50">
+      <h2 className="page-title text-center text-6xl text-slate-600 font-mono font-extrabold uppercase mt-36">Create a new Project</h2>
+      <form className="w-3/4 mb-36" onSubmit={handleSubmit}>
+        <div className="mt-8 p-6 flex flex-col w-full">
+          <h1 className="font-mono font-semibold">Project Name:</h1>
           <input
             required
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
+            className="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 font-mono font-light text-gray-600 dark:text-gray-400 mb-6"
+            placeholder="What do you call this project?"
           />
-        </label>
-        <label>
-          <span>Project Details:</span>
+          <h1 className="font-mono font-semibold">Project Description:</h1>
           <textarea
             required
             onChange={(e) => setDetails(e.target.value)}
             value={details}
-          ></textarea>
-        </label>
-        <label>
-          <span>Set due date:</span>
-          <input
-            required
-            type="date"
-            onChange={(e) => setDueDate(e.target.value)}
-            value={dueDate}
+            rows="5"
+            placeholder="Tell the world more about what you're building"
+            className="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 font-mono font-light text-gray-600 dark:text-gray-400 mb-6"
           />
-        </label>
-        <label>
-          <span>Project category:</span>
-          <Select
-            onChange={(option) => setCategory(option)}
-            options={categories}
-          />
-        </label>
-        <label>
-          <span>Assign to:</span>
-          <Select
-            onChange={(userOption) => setAssignedUsers(userOption)}
-            options={users}
-            isMulti
-          />
-        </label>
+          <label>
+            <h1 className="font-mono font-semibold">Set due date:</h1>
+            <input
+              required
+              type="date"
+              onChange={(e) => setDueDate(e.target.value)}
+              value={dueDate}
+              className="w-full mb-6 rounded-sm"
+            />
+          </label>
+          <label>
+            <h1 className="font-mono font-semibold">Project Category:</h1>
+            <Select
+              onChange={(option) => setCategory(option)}
+              options={categories}
+              placeholder="Project Category"
+              className="w-1/2 mb-6 font-mono font-light"
+            />
+          </label>
+          <label>
+            <h1 className="font-mono font-semibold">Assign To:</h1>
+            <Select
+              onChange={(userOption) => setAssignedUsers(userOption)}
+              options={users}
+              isMulti
+              placeholder="Who will be in your team?"
+              className="w-1/2 mb-6 font-mono font-light"
+            />
+          </label>
+          <button className="w-64 bg-white tracking-wide text-gray-800 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+            <span className="mx-auto font-mono font-semibold">Add Project</span>
+          </button>
+        </div>
 
-        <button className="btn">Add Project</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>

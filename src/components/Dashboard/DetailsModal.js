@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-function DetailsModal() {
+function DetailsModal({ projects }) {
   const [modal, setModal] = useState(false)
+  console.log('project modal', projects);
   return (<>
+
+  {projects.map(project => (<>
     <button className="text-gray-900 bg-orange-300 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-b-lg text-sm px-5 py-2.5 justify-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700" type="button"
     onClick={() => setModal(true)}
-    >Details</button>
+    >Quick View</button>
     {modal && <> <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
@@ -15,7 +18,7 @@ function DetailsModal() {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    Modal Title
+                    {project.name}
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -59,6 +62,11 @@ function DetailsModal() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>}
     {!modal && null}
+    </>
+  )
+
+    )}
+
   </>);
 }
 
