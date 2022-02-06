@@ -8,7 +8,7 @@ export default function AllProjects({ projects }) {
   console.log('projects', projects)
   const [modal, setModal] = useState(false)
   return (
-    <div className="flex justify-center items-center flex-wrap p-1">
+    <div className="flex justify-center flex-wrap p-1">
       {projects.length === 0 && <p>No projects yet!</p>}
       {projects.map(project => (
         <div className="flex flex-col m-2" key={project.id}>

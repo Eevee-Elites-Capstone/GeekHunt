@@ -4,8 +4,8 @@ import './Avatar.css'
 function Avatar({ src }) {
   return (
     <div className="avatar">
-    {src && <img src={src} alt="" />}
-    {!src && <img src='./default.png' alt="default"/>}
+    {src && <img className="w-12 h-12" src={src} alt="" />}
+    {!src && <img className="w-12 h-12" src='./default.png' alt="default"/>}
     </div>
   );
 }

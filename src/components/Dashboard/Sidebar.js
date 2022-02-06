@@ -10,13 +10,13 @@ export default function Sidebar() {
 
 
   return (<>
-    <div className="top-0 left-0 w-64 bg-grey-100 h-full border-r">
-      <div className="flex items-center justify-center h-36 border-b space-x-3 flex-col">
+    <div className="top-0 left-0 w-64 resize-x bg-grey-100 h-full border-r overflow overflow-auto">
+      <div className="flex flex-shrink-0 items-center justify-center h-36 border-b space-x-3 flex-col ">
       <Avatar src={user.photoURL} />
         <div>
           {user && (
             <>
-              {user.displayName ? <p className="text-2xl font-semibold">Hello, {user.displayName}!</p> : <p className="text-2xl font-semibold">Hello!</p>}
+              {user.displayName ? <p className="text-2xl font-semibold text-center">Hello, {user.displayName}!</p> : <p className="text-2xl font-semibold">Hello!</p>}
             </>
           )}
         </div>

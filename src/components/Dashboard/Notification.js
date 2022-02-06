@@ -14,7 +14,7 @@ function Notification() {
   console.log('documents', documents);
   console.log('user', user);
   return (<>
-    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white">
+    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white mt-24">
       <div className="font-bold p-2">Notifications</div>
       <div className="notifications bg-white-200 overflow overflow-auto h-96 w-64">
       {user.uid && !documents && <p className="justify-center items-center">No notifications to show</p>}

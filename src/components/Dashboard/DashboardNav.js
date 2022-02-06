@@ -1,7 +1,7 @@
 import React from 'react';
 function DashboardNav() {
-  return (<div className="flex justify-between bg-blue-500 flex-wrap">
-    <h1 className="font-extrabold text-6xl text-grey-300 items-center m-3">Main Working Space</h1>
+  return (<div className="flex justify-between bg-slate-100 flex-wrap">
+    <h1 className="font-extrabold text-6xl text-slate-400 items-center m-3">Main Working Space</h1>
     <div className="search-bar flex items-center justify-center">
       <div className="flex border-2 rounded-full mr-4">
         <input type="text" className="px-4 py-2 w-80 rounded-full" placeholder="Search..." />

@@ -14,22 +14,22 @@ export default function Dashboard() {
   return (
     <div className="flex flex-row h-screen">
       <Sidebar />
-      <div className="flex-auto flex-col bg-yellow-500 rounded-md h-full">
+      <div className="flex-auto flex-col bg-slate-100 rounded-md h-full">
         <DashboardNav />
-        <div className="flex flex-row">
-          <div className="bg-blue-200 w-1/2 p-8 flex-wrap overflow overflow-auto h/1/2">
+        <div className="flex flex-row p-4 space-x-6 h-4/5">
+          <div className="bg-green-200 border-slate-200 w-1/2 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md resize">
             {error && <p className="error">{error}</p>}
             {documents && <AllProjects projects={documents} />}
           </div>
-          <div className="bg-green-200 w-1/2 h-96">
+          <div className="bg-green-200 border-slate-200 w-1/2 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md">
             Report
           </div>
 
         </div>
       </div>
 
-      <div className="submenu w-64 h-full bg-slate-400 flex flex-col items-center space-y-4">
-        <div className="bg-yellow-200 h-72 w-64 rounded-md shadow-md mt-2 p-2">Todo List</div>
+      <div className="submenu w-64 h-full bg-slate-100 flex flex-col space-y-12 resize">
+        {/* <div className="bg-yellow-200 h-72 w-64 rounded-md shadow-md mt-2 p-2">Todo List</div> */}
         <Notification notification={doc} />
         <OnlineUsers/>
       </div>

@@ -8,7 +8,7 @@ export default function OnlineUsers() {
   const { isPending, error, documents } = useCollection('users')
 
   return (
-    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white">
+    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white h-96">
       <h2 className="font-bold p-2">Online Users</h2>
       <div className="notifications bg-black-200 overflow overflow-auto h-96 w-64">
       {isPending && <div className="justify-center items-center">Loading users...</div>}
