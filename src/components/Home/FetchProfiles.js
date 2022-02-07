@@ -1,6 +1,5 @@
 import React from "react";
 import { useCollection } from "../../hooks/useCollection";
-import Avatar from "../UI/Avatar";
 import Navbar from "../UI/Navbar";
 
 export default function FetchProfiles() {
@@ -28,10 +27,10 @@ export default function FetchProfiles() {
               <div className="text-2xl text-gray-700">
                 {user.displayName} {user.lastName}
               </div>
-              <div className="text-sm text-gray-400 ">{user.jobTitle}</div>
+              <div className="text-xl text-gray-400 ">{user.jobTitle}</div>
               <div>
                 <p className="text-[#FC997C] text-lg font-bold">Skills</p>
-                <ul className="container mx-auto grid grid-cols-2 gap-1 mb-6 text-sm">
+                <ul className="container mx-auto grid grid-cols-2 gap-1 mb-6 text-lg">
                   {user.skills &&
                     user.skills.map &&
                     user.skills.map((skill) => <li key={skill}>{skill}</li>)}
