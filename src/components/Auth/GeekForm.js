@@ -134,13 +134,13 @@ function GeekForm({ email, password, displayName, lastName }) {
                 </button>
               )}
               {error && <p>{error}</p>}
-              {/* <p
+              <p
                 className="inline-block align-baseline font-normal 
                 text-sm text-blue-500 hover:text-blue-800"
                 href="#"
               >
                 Sign Up with Google
-              </p> */}
+              </p>
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs">

@@ -12,14 +12,14 @@ export default function FetchProfiles() {
       <h1 className="flex justify-center mx-auto pt-36 text-5xl font-bold">
         Geeks
       </h1>
-      <div className="grid grid-cols-3 gap-1 justify-evenly">
+      <div className="grid grid-cols-3 mx-4 justify-evenly">
         {isPending && <div>Loading users...</div>}
         {error && <div>{error}</div>}
         {documents &&
           documents.map((user) => (
             <div
               key={user.id}
-              className="bg-white font-semibold text-center 
+              className="bg-white font-semibold text-center ml-16 mb-12 
                 rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
             >
               <div className="container mx-auto inline-block object-cover w-36 h-36">
@@ -38,7 +38,7 @@ export default function FetchProfiles() {
                 </ul>
               </div>
               <a
-                className="bg-[#2E4C6D] px-8 py-2 mt-5 rounded-3xl text-gray-100 
+                className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100 
                   font-semibold tracking-wide text-sm"
                 href="/profile"
               >
