@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from "react"
 
+const Skill = ({ query, onClick }) => (
+  <li className="inline-block mx-1" onClick={onClick}>
+    <span 
+      className=" text-sm text-white font-medium py-1 px-2 bg-blue-900 rounded align-middle font-bold uppercase"
+    >
+      x - {query}
+    </span>
+  </li>
+);
+
 function SkillList({ onChange }) {
   // React Hooks declarations
   const [skills, setSkills] = useState([]);
@@ -46,9 +56,6 @@ function SkillList({ onChange }) {
       onChange(skills)
     };
 
-  const Skill = ({ query, onClick }) => 
-  <li onClick={onClick}><button>x - {query}</button></li>
-
   return (
     <div className= "mb-4 form-inline">
         <div>
@@ -63,7 +70,7 @@ function SkillList({ onChange }) {
             onSubmit={submitHandler}
           />
           <button
-            className="px-4 py-2 rounded text-white inline-block shadow-lg 
+            className="px-4 py-2 my-2 rounded text-white inline-block shadow-lg 
             bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
             type="button"
             onClick={handleClick}
@@ -71,7 +78,7 @@ function SkillList({ onChange }) {
             Add Skill
           </button>
         </div>
-        <ul className="bg-white rounded-lg border border-gray-200 w-full text-gray-900">
+        <ul className="bg-white rounded-lg w-full text-gray-900">
         {skills.map((query, index) => (
           <Skill
             onClick={() => removeFormFields(index)}

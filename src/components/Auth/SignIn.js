@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSignin } from "../../hooks/useSignin";
 import Navbar from "../UI/Navbar";
+import FormInput from "../UI/FormInput";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -27,30 +28,16 @@ function SignIn() {
             <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
               Sign In
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full 
-              py-2 px-3 text-gray-700 leading-tight focus:outline-none
-              focus:shadow-outline"
-                name="email"
-                v-model="form.email"
-                type="email"
-                required
-                autoFocus
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-            </div>
+            <FormInput
+              label="Email"
+              required
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-normal mb-2"
+                className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="password"
               >
                 Password
@@ -62,7 +49,6 @@ function SignIn() {
                 v-model="form.password"
                 type="password"
                 placeholder="Password"
-                name="password"
                 required
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -70,7 +56,15 @@ function SignIn() {
               />
             </div>
             <div className="flex items-center justify-between">
-              {!isPending && <button type="submit">Sign In</button>}
+              {!isPending && (
+                <button
+                  className="px-4 py-2 rounded text-white inline-block 
+                  shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              )}
               {isPending && (
                 <button className="btn" disabled>
                   Loading...
