@@ -17,7 +17,8 @@ import EditProfile from './components/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
-import Calendar from './components/Dashboard/Calendar';
+import Calendar from './components/Calendar/Calendar';
+import GoogleCalendar from './components/Calendar/Calendar';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -65,7 +66,7 @@ function App() {
               </Route>
               <Route path="/calendar">
                 {!user && <Redirect to="/signin" />}
-                {user && <Calendar />}
+                {user && <GoogleCalendar />}
               </Route>
               <Route path="/projects/:id">
                 {!user && <Redirect to="/signin" />}
