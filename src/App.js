@@ -7,16 +7,17 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/UI/Navbar';
 import Footer from './components/UI/Footer';
 import { useAuthContext } from './hooks/useAuthContext';
-import Profile from './components/Profile';
+import Profile from './components/Users/Profile';
 import Dashboard from './components/Dashboard/Dashboard';
 import OnlineUsers from './components/Users/OnlineUsers';
 import CreateProject from './components/Dashboard/CreateProject';
 import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
-import EditProfile from './components/EditProfile';
+import EditProfile from './components/Users/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
+import AdminPanel from './components/admin/adminPanel';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -47,10 +48,12 @@ function App() {
               <Route path="/signup">
                 {user ? <Redirect to="/" /> : <SignUp />}
               </Route>
-              <Route exact path="/profile">
+              <Route exact path="/profile/:id">
+              {!user && <Redirect to="/signin" />}
                 <Profile />
               </Route>
-              <Route exact path="/editprofile">
+              <Route exact path="/editprofile/:id">
+              {!user && <Redirect to="/signin" />}
                 <EditProfile />
               </Route>
               <Route path="/dashboard">
@@ -74,6 +77,9 @@ function App() {
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}
                 {user && <SingleConversation />}
+              </Route>
+              <Route exact path="/admin">
+                <AdminPanel />
               </Route>
             </Switch>
           </BrowserRouter>
