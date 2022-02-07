@@ -1,4 +1,3 @@
-import { comment } from "postcss"
 import { useState } from "react"
 import { timestamp } from "../../firebase/fbConfig"
 import { useAuthContext } from "../../hooks/useAuthContext"
@@ -7,8 +6,6 @@ import Avatar from "../UI/Avatar"
 
 export default function AllMessages ({ conversation }) {
     const { user } = useAuthContext()
-    console.log('USER FROM useAuthContext: ', user)
-    console.log('THE CONVERSATION: ', conversation)
     const { updateDocument, response } = useFirestore('conversations') //not sure what this does
     const [newMessage, setNewMessage] = useState('')
     
