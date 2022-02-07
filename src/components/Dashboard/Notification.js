@@ -6,30 +6,32 @@ import moment from 'moment';
 
 function Notification() {
   // console.log('notifications', notifications);
-   /**Add project collection to firestore */
+  /**Add project collection to firestore */
   const { addDocument, response } = useFirestore('notifications')
   /*Assign function*/
   const { documents, error } = useCollection('notifications')
   const { user } = useAuthContext()
   console.log('documents', documents);
   console.log('user', user);
-  return ( <>
-    <div className="notification-container">
-      <h1>Notifications</h1>
-      <ul className="notifications">
-      {user.uid && !documents && <li>No notifications to show</li>}
+  return (<>
+    <div className="w-64 flex flex-col rounded-md shadow-lg bg-white mt-24">
+      <div className="font-bold p-2">Notifications</div>
+      <div className="notifications bg-white-200 overflow overflow-auto h-96 w-64">
+      {user.uid && !documents && <p className="justify-center items-center">No notifications to show</p>}
       {user.uid && documents && documents.map(noti => (
-        <li className="bg-yellow-400" key={noti.id}>
-        <span>{noti.user}</span>
-        <span>{noti.content}</span>
-        <div className="moment-from-now">
-        {moment(noti.time.toDate()).fromNow()}
+        <div className="flex flex-col p-2" key={noti.id}>
+        <div className="rounded-lg shadow-lg p-2">
+          <p className="text-sm font-bold">{noti.user}</p>
+          <p className="text-sm">{noti.content}</p>
+          <p className="text-xs ml-36">
+            {moment(noti.time.toDate()).fromNow()}
+          </p>
+          </div>
         </div>
-        </li>
       ))}
-      </ul>
+      </div>
     </div>
-  </> );
+  </>);
 }
 
 export default Notification;

@@ -1,22 +1,24 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import "./App.css";
-import SignIn from "./components/Auth/SignIn";
-import SignUp from "./components/Auth/SignUp";
-import Home from "./components/Home";
-import LandingPage from "./components/LandingPage";
-import Navbar from "./components/UI/Navbar";
-import Footer from "./components/UI/Footer";
-import { useAuthContext } from "./hooks/useAuthContext";
-import Profile from "./components/Profile";
-import Dashboard from "./components/Dashboard/Dashboard";
-import OnlineUsers from "./components/Users/OnlineUsers";
-import CreateProject from "./components/Dashboard/CreateProject";
-import AllProjects from "./components/Dashboard/AllProjects";
-import SingleProject from "./components/Dashboard/SingleProject";
-import EditProfile from "./components/EditProfile";
-import FetchProfiles from "./components/Home/FetchProfiles";
-import MessagingPage from "./components/Messaging/MessagingPage";
-import SingleConversation from "./components/Messaging/SingleConversation";
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import './App.css';
+import SignIn from './components/Auth/SignIn';
+import SignUp from './components/Auth/SignUp';
+import Home from './components/Home';
+import LandingPage from './components/LandingPage';
+import Navbar from './components/UI/Navbar';
+import Footer from './components/UI/Footer';
+import { useAuthContext } from './hooks/useAuthContext';
+import Profile from './components/Profile';
+import Dashboard from './components/Dashboard/Dashboard';
+import OnlineUsers from './components/Users/OnlineUsers';
+import CreateProject from './components/Dashboard/CreateProject';
+import AllProjects from './components/Dashboard/AllProjects';
+import SingleProject from './components/Dashboard/SingleProject';
+import EditProfile from './components/EditProfile';
+import FetchProfiles from './components/Home/FetchProfiles';
+import MessagingPage from './components/Messaging/MessagingPage'
+import SingleConversation from './components/Messaging/SingleConversation'
+import Calendar from './components/Calendar/Calendar';
+import GoogleCalendar from './components/Calendar/GoogleCalendar';
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -69,6 +71,10 @@ function App() {
                 </Route>
                 <Route path="/fetchProfiles">
                   <FetchProfiles />
+                </Route>
+                <Route path="/calendar">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <GoogleCalendar />}
                 </Route>
                 <Route path="/messages">
                   <MessagingPage />

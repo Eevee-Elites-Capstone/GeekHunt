@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SkillList from "./SkillList";
 import { useGeekSignup } from "../../hooks/useGeekSignup";
 import FormInput from "../UI/FormInput";
+import { signInWithGoogle } from "../../firebase/fbConfig";
+//make hook later
 
 function GeekForm({ email, password, displayName, lastName }) {
   const [description, setDescription] = useState("");
@@ -117,7 +119,7 @@ function GeekForm({ email, password, displayName, lastName }) {
             <div className="flex items-center justify-between">
               {!isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block 
+                  className="px-4 py-2 rounded text-white inline-block
                   shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   type="submit"
                 >
@@ -126,7 +128,7 @@ function GeekForm({ email, password, displayName, lastName }) {
               )}
               {isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block shadow-lg 
+                  className="px-4 py-2 rounded text-white inline-block shadow-lg
                   bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   disabled
                 >
@@ -135,11 +137,12 @@ function GeekForm({ email, password, displayName, lastName }) {
               )}
               {error && <p>{error}</p>}
               <p
-                className="inline-block align-baseline font-normal 
+                className="inline-block align-baseline font-normal
                 text-sm text-blue-500 hover:text-blue-800"
-                href="#"
+                // href="#"
+                onClick={signInWithGoogle}
               >
-                Sign Up with Google
+                Sign In with Google
               </p>
             </div>
           </form>

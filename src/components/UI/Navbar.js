@@ -8,12 +8,12 @@ function Navbar() {
   const { user } = useAuthContext();
 
   return (
-    <nav className="font-sans flex fixed text-center sm:flex-row sm:text-left 
-    sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+    <nav className="font-sans flex fixed text-center sm:flex-row sm:text-left
+    sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full items-center h-27">
       <div className="mb-2 sm:mb-0">
         <a
           href="/"
-          className="text-2xl no-underline text-grey-darkest hover:text-blue-dark"
+          className="text-6xl no-underline font-bold text-grey-darkest hover:text-blue-dark"
         >
           GeekHunt
         </a>
@@ -23,28 +23,28 @@ function Navbar() {
           <>
             <a
               href="/landing"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/fetchProfiles"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             <a
               href="/signin"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Sign In
             </a>
             <a
               href="/signup"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Sign Up
@@ -60,14 +60,21 @@ function Navbar() {
             )}
             <a
               href="/landing"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
+              href="/dashboard"
+              className="text-lg no-underline
+            text-grey-darkest hover:text-blue-dark ml-2"
+            >
+              Dashboard
+            </a>
+            <a
               href="/fetchProfiles"
-              className="text-lg no-underline 
+              className="text-lg no-underline
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Profiles

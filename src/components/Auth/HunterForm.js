@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHunterSignup } from "../../hooks/useHunterSignup";
+import { signInWithGoogle } from "../../firebase/fbConfig";
 
 function HunterForm({ email, password, displayName, lastName }) {
   const { signup, isPending, error } = useHunterSignup();
@@ -25,7 +26,7 @@ function HunterForm({ email, password, displayName, lastName }) {
       >
 
         <button
-          className="px-4 py-2 rounded text-white inline-block 
+          className="px-4 py-2 rounded text-white inline-block
         shadow-lg bg-purple-500 hover:bg-blue-600 focus:bg-blue-700"
           onClick={onFormTypeSelect("Personal")}
         >
@@ -33,22 +34,22 @@ function HunterForm({ email, password, displayName, lastName }) {
         </button>
         <h1>Or</h1>
         <button
-          className="px-4 py-2 rounded text-white inline-block 
+          className="px-4 py-2 rounded text-white inline-block
         shadow-lg bg-green-500 hover:bg-blue-600 focus:bg-blue-700"
           onClick={onFormTypeSelect("Company")}
         >
           Company
         </button>
         <input
-          className="shadow appearance-none border rounded w-full 
-          py-2 px-3 text-gray-700 leading-tight focus:outline-none 
+          className="shadow appearance-none border rounded w-full
+          py-2 px-3 text-gray-700 leading-tight focus:outline-none
           focus:shadow-outline"
           type="name"
           placeholder="Company Name"
         />
         <input
           className="shadow appearance-none border rounded w-full
-           py-2 px-3 text-gray-700 leading-tight focus:outline-none 
+           py-2 px-3 text-gray-700 leading-tight focus:outline-none
            focus:shadow-outline"
           type="name"
           placeholder="Location"
@@ -65,7 +66,7 @@ function HunterForm({ email, password, displayName, lastName }) {
           )}
           {isPending && (
             <button
-              className="px-4 py-2 rounded text-white inline-block 
+              className="px-4 py-2 rounded text-white inline-block
               shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
               disabled
             >
@@ -74,11 +75,12 @@ function HunterForm({ email, password, displayName, lastName }) {
           )}
           {error && <p>{error}</p>}
           <p
-            className="inline-block align-baseline font-normal 
+            className="inline-block align-baseline font-normal
             text-sm text-blue-500 hover:text-blue-800"
-            href="#"
+            // href="#"
+            onClick={signInWithGoogle}
           >
-            Sign Up with Google
+            Sign In with Google
           </p>
         </div>
       </form>
