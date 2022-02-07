@@ -166,7 +166,7 @@ export default function CreateProject() {
             </button>
           </div>
 
-
+<div></div>
           {formError && <p className="error">{formError}</p>}
         </form>
       </div>
