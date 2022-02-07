@@ -56,7 +56,7 @@ if(!document) {
         </div>
         <img
           src={document.photoURL}
-          class="rounded-full w-32 shadow-lg"
+          className="rounded-full w-32 shadow-lg"
           alt="Avatar"
         />
         <form action="submit" onSubmit={handleSubmit} onChange={handleChange}>
@@ -73,7 +73,7 @@ if(!document) {
               id="URL"
               name="photoURL"
               placeholder="photo"
-              class="flex-1 py-2  border-gray-400 focus:border-green-400
+              className="flex-1 py-2  border-gray-400 focus:border-green-400
                 text-gray-600 placeholder-gray-400
                 outline-none"
             />
@@ -122,7 +122,7 @@ if(!document) {
           <div className="flex items-center mb-5">
             <label
               htmlFor="email"
-              class="inline-block w-20 mr-6 text-right
+              className="inline-block w-20 mr-6 text-right
                            font-bold text-gray-600"
             >
               email
@@ -142,7 +142,7 @@ if(!document) {
           <div className="flex items-center mb-5">
             <label
               htmlFor="password"
-              class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+              className="inline-block w-20 mr-6 text-right font-bold text-gray-600"
             >
               Password
             </label>
@@ -152,7 +152,7 @@ if(!document) {
               name="password"
               // defaultValue={document}
               placeholder="password"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
             />
           </div>
 
@@ -169,7 +169,7 @@ if(!document) {
               name="jobTitle"
               defaultValue={document.jobTitle}
               placeholder="Job Title"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
             />
           </div>
 
@@ -193,7 +193,7 @@ if(!document) {
           <div className="flex items-center mb-5">
             <label
               htmlFor="skills"
-              class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+              className="inline-block w-20 mr-6 text-right font-bold text-gray-600"
             >
               Skills
             </label>

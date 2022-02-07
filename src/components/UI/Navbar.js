@@ -13,7 +13,7 @@ function Navbar() {
       <div className="mb-2 sm:mb-0">
         <a
           href="/"
-          className="text-2xl no-underline text-grey-darkest hover:text-blue-dark"
+          className="text-6xl no-underline font-bold text-grey-darkest hover:text-blue-dark"
         >
           GeekHunt
         </a>
@@ -64,6 +64,13 @@ function Navbar() {
             text-grey-darkest hover:text-blue-dark ml-2"
             >
               Home
+            </a>
+            <a
+              href="/dashboard"
+              className="text-lg no-underline
+            text-grey-darkest hover:text-blue-dark ml-2"
+            >
+              Dashboard
             </a>
             <a
               href="/fetchProfiles"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SkillList from "./SkillList";
 import { useGeekSignup } from "../../hooks/useGeekSignup";
 import FormInput from "../UI/FormInput";
+import { signInWithGoogle } from "../../firebase/fbConfig";
 //make hook later
 
 function GeekForm({ email, password, displayName, lastName }) {
@@ -60,11 +61,8 @@ function GeekForm({ email, password, displayName, lastName }) {
         <div className="w-full max-w-md">
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4"
+            className="bg-white rounded  pt-6 pb-8 mb-4"
           >
-            <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
-              Account Information
-            </div>
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-normal mb-2"
@@ -77,23 +75,16 @@ function GeekForm({ email, password, displayName, lastName }) {
                 {pictureError && <div className="error">{pictureError}</div>}
               </label>
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="description"
-              >
-                Job Title
-              </label>
               <FormInput
+                label="Job Title"
                 required
                 placeholder="JobTitle"
                 onChange={e => setJobTitle(e.target.value)}
                 value={jobTitle}
               />
-            </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-normal mb-2"
+                className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="description"
               >
                 Description
@@ -110,40 +101,25 @@ function GeekForm({ email, password, displayName, lastName }) {
                 value={description}
               />
             </div>
-              <SkillList onChange={(skills) => setSkills(skills)} />
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="linkedInUrl"
-              >
-                LinkedIn Url
-              </label>
+              <SkillList onChange={(skills) => setSkills(skills)}/>
               <FormInput
+                label="LinkedIn Url"
                 required
                 placeholder="LinkedInUrl"
                 onChange={(e) => setLinkedInUrl(e.target.value)}
                 value={linkedInUrl}
               />
-            </div>
-
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="gitHubUrl"
-              >
-                GitHub Url
-              </label>
               <FormInput
+                label="GitHub Url"
                 required
                 placeholder="GitHubUrl"
                 onChange={(e) => setGitHubUrl(e.target.value)}
                 value={gitHubUrl}
               />
-            </div>
             <div className="flex items-center justify-between">
               {!isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block 
+                  className="px-4 py-2 rounded text-white inline-block
                   shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   type="submit"
                 >
@@ -152,7 +128,7 @@ function GeekForm({ email, password, displayName, lastName }) {
               )}
               {isPending && (
                 <button
-                  className="px-4 py-2 rounded text-white inline-block shadow-lg 
+                  className="px-4 py-2 rounded text-white inline-block shadow-lg
                   bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   disabled
                 >
@@ -160,13 +136,14 @@ function GeekForm({ email, password, displayName, lastName }) {
                 </button>
               )}
               {error && <p>{error}</p>}
-              {/* <p
-                className="inline-block align-baseline font-normal 
+              <p
+                className="inline-block align-baseline font-normal
                 text-sm text-blue-500 hover:text-blue-800"
-                href="#"
+                // href="#"
+                onClick={signInWithGoogle}
               >
-                Sign Up with Google
-              </p> */}
+                Sign In with Google
+              </p>
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs">

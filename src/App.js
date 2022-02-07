@@ -18,25 +18,28 @@ import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
+import Calendar from './components/Calendar/Calendar';
+import GoogleCalendar from './components/Calendar/GoogleCalendar';
 
 function App() {
-  const { authIsReady, user } = useAuthContext()
+  const { authIsReady, user } = useAuthContext();
 
   return (
-    <div className="min-h-max">
-      {/* <div>
+    <>
+      <div className="min-h-max">
+        {/* <div>
       <Navbar />
       </div> */}
-      <div>
-        {authIsReady && (
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/">
-                <LandingPage />
-              </Route>
-              <Route exact path="/landing">
-                <LandingPage />
-              </Route>
+        <div>
+          {authIsReady && (
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/landing">
+                  <LandingPage />
+                </Route>
 
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
@@ -71,6 +74,10 @@ function App() {
               <Route path="/fetchProfiles">
                 <FetchProfiles />
               </Route>
+              <Route path="/calendar">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <GoogleCalendar />}
+                </Route>
               <Route path="/messages">
                 <MessagingPage />
               </Route>
@@ -85,7 +92,9 @@ function App() {
           </BrowserRouter>
         )}
       </div>
-    </div>
+      <Footer />
+      </div>
+    </>
   );
 }
 
