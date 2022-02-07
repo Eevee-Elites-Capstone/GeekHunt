@@ -17,74 +17,83 @@ import EditProfile from './components/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
+import Calendar from './components/Calendar/Calendar';
+import GoogleCalendar from './components/Calendar/GoogleCalendar';
 import AllConversations from './components/Messaging/AllConversations'
 
 function App() {
-  const { authIsReady, user } = useAuthContext()
+  const { authIsReady, user } = useAuthContext();
 
   return (
-    <div className="min-h-max">
-      {/* <div>
+    <>
+      <div className="min-h-max">
+        {/* <div>
       <Navbar />
       </div> */}
-      <div>
-        {authIsReady && (
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/">
-                <LandingPage />
-              </Route>
-              <Route exact path="/landing">
-                <LandingPage />
-              </Route>
-
-              <Route exact path="/home">
-                {user ? <Home /> : <Redirect to="/signin" />}
-              </Route>
-              <Route path="/home" component={Home} />
-              <Route path="/signin">
-                <SignIn />
-              </Route>
-              <Route path="/signup">
-                {user ? <Redirect to="/" /> : <SignUp />}
-              </Route>
-              <Route exact path="/profile">
-                <Profile />
-              </Route>
-              <Route exact path="/editprofile">
-                <EditProfile />
-              </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-                {user && <OnlineUsers />}
-              </Route>
-              <Route path="/createproject">
-                {!user && <Redirect to="/signin" />}
-                {user && <CreateProject />}
-              </Route>
-              <Route path="/projects/:id">
-                {!user && <Redirect to="/signin" />}
-                {user && <SingleProject />}
-              </Route>
-              <Route path="/fetchProfiles">
-                <FetchProfiles />
-              </Route>
-              <Route path="/messages">
-                <MessagingPage />
-              </Route>
-              <Route path="/conversations/:id">
-                {!user && <Redirect to="/login" />}
-                {user && <SingleConversation />}
-              </Route>
-              <Route path="/allconversations">
-                {!user && <Redirect to="/login" />}
-                {user && <AllConversations />}
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        )}
+        <div>
+          {authIsReady && (
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/landing">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/home">
+                  {user ? <Home /> : <Redirect to="/signin" />}
+                </Route>
+                <Route path="/home" component={Home} />
+                <Route path="/signin">
+                  <SignIn />
+                </Route>
+                <Route path="/signup">
+                  {user ? <Redirect to="/" /> : <SignUp />}
+                </Route>
+                <Route exact path="/profile">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <Profile />}
+                </Route>
+                <Route exact path="/editprofile">
+                  <EditProfile />
+                </Route>
+                <Route path="/dashboard">
+                  <Dashboard />
+                  {user && <OnlineUsers />}
+                </Route>
+                <Route path="/createproject">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <CreateProject />}
+                </Route>
+                <Route path="/projects/:id">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <SingleProject />}
+                </Route>
+                <Route path="/fetchProfiles">
+                  <FetchProfiles />
+                </Route>
+                <Route path="/calendar">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <GoogleCalendar />}
+                </Route>
+                <Route path="/messages">
+                  <MessagingPage />
+                </Route>
+                <Route path="/conversations/:id">
+                  {!user && <Redirect to="/login" />}
+                  {user && <SingleConversation />}
+                </Route>
+                <Route path="/allconversations">
+                  {!user && <Redirect to="/login" />}
+                  {user && <AllConversations />}
+                </Route>
+              </Switch>
+            </BrowserRouter>
+          )}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

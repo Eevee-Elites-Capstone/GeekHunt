@@ -48,14 +48,14 @@ if(!document) {
         </div>
         <img
           src={document.photoURL}
-          class="rounded-full w-32 shadow-lg"
+          className="rounded-full w-32 shadow-lg"
           alt="Avatar"
         />
         <form action="submit" onSubmit={handleSubmit}>
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               for="photo"
-              class="inline-block w-20 mr-6 text-right
+              className="inline-block w-20 mr-6 text-right
                            font-bold text-gray-600"
             >
               Photo
@@ -65,16 +65,16 @@ if(!document) {
               id="photo"
               name="photo"
               placeholder="photo"
-              class="flex-1 py-2  border-gray-400 focus:border-green-400
+              className="flex-1 py-2  border-gray-400 focus:border-green-400
                 text-gray-600 placeholder-gray-400
                 outline-none"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="name"
-              class="inline-block w-20 mr-6 text-right
+              className="inline-block w-20 mr-6 text-right
                            font-bold text-gray-600"
             >
               Name
@@ -84,16 +84,16 @@ if(!document) {
               id="name"
               name="name"
               placeholder="Name"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
                 text-gray-600 placeholder-gray-400
                 outline-none px-2"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="lastName"
-              class="inline-block w-20 mr-6 text-right
+              className="inline-block w-20 mr-6 text-right
                            font-bold text-gray-600"
             >
               Last Name
@@ -103,16 +103,16 @@ if(!document) {
               id="lastName"
               name="lastName"
               placeholder="Last Name"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
                 text-gray-600 placeholder-gray-400
                 outline-none px-2"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="email"
-              class="inline-block w-20 mr-6 text-right
+              className="inline-block w-20 mr-6 text-right
                            font-bold text-gray-600"
             >
               email
@@ -122,16 +122,16 @@ if(!document) {
               id="email"
               name="email"
               placeholder="email"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
                 text-gray-600 placeholder-gray-400
                 outline-none px-2"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="password"
-              class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+              className="inline-block w-20 mr-6 text-right font-bold text-gray-600"
             >
               Password
             </label>
@@ -140,14 +140,14 @@ if(!document) {
               id="password"
               name="password"
               placeholder="password"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="password"
-              class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+              className="inline-block w-20 mr-6 text-right font-bold text-gray-600"
             >
               Job Title
             </label>
@@ -156,14 +156,14 @@ if(!document) {
               id="jobTitle"
               name="jobTitle"
               placeholder="Job Title"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
             />
           </div>
 
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <label
               htmlFor="skills"
-              class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+              className="inline-block w-20 mr-6 text-right font-bold text-gray-600"
             >
               Skill
             </label>
@@ -172,12 +172,12 @@ if(!document) {
               id="skills"
               name="skills"
               placeholder="skills"
-              class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
+              className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none px-2"
             />
           </div>
 
-          <div class="text-right">
-            <button class="py-3 px-8 bg-blue-700 text-white ">
+          <div className="text-right">
+            <button className="py-3 px-8 bg-blue-700 text-white ">
               Update
             </button>
           </div>

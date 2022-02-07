@@ -3,6 +3,17 @@
 firebase@8.5
 react-router-dom@5.1
 
+## Deploy with Firebase
+
+`npm run build
+
+firebase login
+
+firebase init --- Realtime database
+               |- Hosting
+               |- point to build folder
+firebase deploy`
+
 ## Available Scripts
 
 In the project directory, you can run:

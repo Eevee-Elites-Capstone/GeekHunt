@@ -22,7 +22,7 @@ if(!document) {
           <div className="bg-purple-400 flex flex-col justify-center items-center w-full sm:w-1/3  h-full rounded-lg">
             <img
               src={document.photoURL}
-              class="rounded-full w-32 shadow-lg"
+              className="rounded-full w-32 shadow-lg"
               alt="Avatar"
             />
             <p>{document.displayName}</p>
