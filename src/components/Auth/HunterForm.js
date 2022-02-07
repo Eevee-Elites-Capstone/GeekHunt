@@ -22,11 +22,9 @@ function HunterForm({ email, password, displayName, lastName }) {
     <div className="bg-grey flex flex-col space-y-10 justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4"
+        className="bg-white rounded pt-6 pb-8 mb-4"
       >
-        <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
-          Account Information
-        </div>
+
         <button
           className="px-4 py-2 rounded text-white inline-block
         shadow-lg bg-purple-500 hover:bg-blue-600 focus:bg-blue-700"

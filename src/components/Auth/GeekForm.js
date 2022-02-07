@@ -61,11 +61,8 @@ function GeekForm({ email, password, displayName, lastName }) {
         <div className="w-full max-w-md">
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4"
+            className="bg-white rounded  pt-6 pb-8 mb-4"
           >
-            <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
-              Account Information
-            </div>
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-normal mb-2"
@@ -78,23 +75,16 @@ function GeekForm({ email, password, displayName, lastName }) {
                 {pictureError && <div className="error">{pictureError}</div>}
               </label>
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="description"
-              >
-                Job Title
-              </label>
               <FormInput
+                label="Job Title"
                 required
                 placeholder="JobTitle"
                 onChange={e => setJobTitle(e.target.value)}
                 value={jobTitle}
               />
-            </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-normal mb-2"
+                className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="description"
               >
                 Description
@@ -111,36 +101,21 @@ function GeekForm({ email, password, displayName, lastName }) {
                 value={description}
               />
             </div>
-              <SkillList onChange={(skills) => setSkills(skills)} />
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="linkedInUrl"
-              >
-                LinkedIn Url
-              </label>
+              <SkillList onChange={(skills) => setSkills(skills)}/>
               <FormInput
+                label="LinkedIn Url"
                 required
                 placeholder="LinkedInUrl"
                 onChange={(e) => setLinkedInUrl(e.target.value)}
                 value={linkedInUrl}
               />
-            </div>
-
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-normal mb-2"
-                htmlFor="gitHubUrl"
-              >
-                GitHub Url
-              </label>
               <FormInput
+                label="GitHub Url"
                 required
                 placeholder="GitHubUrl"
                 onChange={(e) => setGitHubUrl(e.target.value)}
                 value={gitHubUrl}
               />
-            </div>
             <div className="flex items-center justify-between">
               {!isPending && (
                 <button
