@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { useDocument } from "../hooks/useDocument";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link } from "react-router-dom";
 
 const EditProfile = () => {
@@ -28,10 +28,9 @@ if(!document) {
             <p>{document.displayName}</p>
             <p>{document.jobTitle}</p>
             <p>{document.email}</p>
-            <button className="sm:w-3/4  rounded-lg px-3 py-1 my-2 md:ml-5 sm:ml-5 bg-purple-300">
-              <Link to="/editprofile">Edit Profile
+
+              <Link className="sm:w-3/4  rounded-lg px-3 py-1 my-2 md:ml-5 sm:ml-5 bg-purple-300 md:pl-20" to={`/editprofile/${user.uid}`}>Edit Profile
               </Link>
-            </button>
           </div>
           <Link to="/dashboard" className="h-10 w-full sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-pink-500">
             <button className="h-10 w-full text-white">
