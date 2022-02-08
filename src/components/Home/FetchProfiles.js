@@ -13,7 +13,7 @@ export default function FetchProfiles() {
         Geeks
       </h1>
       <SearchProfiles />
-      <div className="grid grid-cols-4 mx-4 justify-evenly">
+      <div className="grid grid-cols-4 mx-4 flex grow justify-evenly">
         {isPending && <div>Loading users...</div>}
         {error && <div>{error}</div>}
         {documents &&
@@ -24,8 +24,20 @@ export default function FetchProfiles() {
                 rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
             >
               <div className="container mx-auto inline-block object-cover w-36 h-36">
-                {user.photoURL &&<img className="object-contain hover:object-scale-down rounded-full" src={user.photoURL} alt="" />}
-                {!user.photoURL && <img className="object-contain hover:object-scale-down rounded-full" src='./default.png' alt="default"/>}
+                {user.photoURL && (
+                  <img
+                    className="object-contain hover:object-scale-down rounded-full"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                )}
+                {!user.photoURL && (
+                  <img
+                    className="object-contain hover:object-scale-down rounded-full"
+                    src="./default.png"
+                    alt="default"
+                  />
+                )}
               </div>
               <div className="text-2xl text-gray-700">
                 {user.displayName} {user.lastName}

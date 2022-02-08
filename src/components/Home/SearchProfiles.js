@@ -11,7 +11,7 @@ export default function SearchProfiles(){
         {error && <div>{error}</div>}
         {documents &&
           documents.map((user) => (
-            <button></button>
+            <button key={user.id}></button>
           ))}
             </div>
         </>
