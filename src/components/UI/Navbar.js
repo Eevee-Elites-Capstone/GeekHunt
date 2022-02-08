@@ -13,7 +13,7 @@ function Navbar() {
       <div className="mb-2 sm:mb-0">
         <a
           href="/"
-          className="text-6xl no-underline font-bold text-white hover:text-blue-dark"
+          className="text-4xl no-underline font-bold text-grey-darkest hover:text-blue-dark ml-10"
         >
           GeekHunt
         </a>
@@ -52,10 +52,10 @@ function Navbar() {
           </>
         )}
         {user && (
-          <>
+          <div className="">
             {user.displayName ? (
               <p className="text-md no-underline
-              text-white"> Hello!, {user.displayName}!</p>
+              text-white">Hello, {user.displayName}!</p>
             ) : (
               <p className="text-md no-underline
               text-white" > Hello!</p>
@@ -103,7 +103,7 @@ function Navbar() {
                 Logging out...
               </button>
             )}
-          </>
+          </div>
         )}
       </div>
     </nav>

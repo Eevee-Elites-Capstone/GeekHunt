@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Navbar from "../UI/Navbar";
 
 const EditProfile = () => {
 
@@ -15,11 +16,13 @@ if(!document) {
 
 
   return (
-    <div className="flex bg-gray-100 h-full justify-center w-screen pt-20">
+    <div>
+      <Navbar />
+      <div className="flex bg-gray-100 h-full justify-center w-screen pt-20">
       <div className="flex flex-col sm:flex-col w-5/6 h-screen justify-center">
         <div className=" flex flex-col sm:flex-row w-full h-80">
 
-          <div className="bg-purple-400 flex flex-col justify-center items-center w-full sm:w-1/3  h-full rounded-lg">
+          <div className="flex flex-col justify-center items-center w-full sm:w-1/3 border-1  h-full rounded-lg">
             <img
               src={document.photoURL}
               className="rounded-full w-32 shadow-lg"
@@ -29,11 +32,12 @@ if(!document) {
             <p>{document.jobTitle}</p>
             <p>{document.email}</p>
 
-              <Link className="sm:w-3/4  rounded-lg px-3 py-1 my-2 md:ml-5 sm:ml-5 bg-purple-300 md:pl-20" to={`/editprofile/${user.uid}`}>Edit Profile
+              <Link className="sm:w-3/4  rounded-lg px-1 py-1 my-2  bg-purple-300 md:pl-20" to={`/editprofile/${user.uid}`}>Edit Profile
               </Link>
           </div>
-          <Link to="/dashboard" className="h-10 w-full sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-pink-500">
-            <button className="h-10 w-full text-white">
+
+          <Link to="/dashboard" className="h-10 w-full sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-[#2E4C6D]">
+            <button className="h-10 w-full text-white hover:color-red">
               Dashboard
             </button>
           </Link>
@@ -43,7 +47,6 @@ if(!document) {
 
           <h2>Description</h2>
           <p
-            type="text"
             className="
               rounded-lg m-2
               h-full
@@ -61,7 +64,6 @@ if(!document) {
 
           <h2>Skills</h2>
           <p
-            type="text"
             className="rounded-lg m-2
               w-full
               h-full
@@ -73,6 +75,7 @@ if(!document) {
             {document.skills}
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

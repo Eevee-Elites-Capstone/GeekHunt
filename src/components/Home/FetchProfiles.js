@@ -22,7 +22,7 @@ export default function FetchProfiles() {
             { user.isAGeek && ( 
             <div
               key={user.id}
-              className="bg-white font-semibold text-center ml-16 mb-12 
+              className="bg-white font-semibold text-center ml-16 mb-12
                 rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
             >
               <div className="container mx-auto inline-block object-cover w-36 h-36">
@@ -54,7 +54,7 @@ export default function FetchProfiles() {
                 </ul>
               </div>
               <a
-                className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100 
+                className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100
                   font-semibold tracking-wide text-sm"
                 href={`/publicprofile/${user.id}`}
               >
