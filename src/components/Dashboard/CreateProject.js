@@ -85,8 +85,8 @@ export default function CreateProject() {
       dueDate: timestamp.fromDate(new Date(dueDate)),
       comments: []
     }
-    console.log(name, details, dueDate, category.value, assignedUsers)
-    console.log('project object', project);
+    // console.log(name, details, dueDate, category.value, assignedUsers)
+    // console.log('project object', project);
     /**Add document to firestore */
     await addDocument(project)
     if (!response.error) {

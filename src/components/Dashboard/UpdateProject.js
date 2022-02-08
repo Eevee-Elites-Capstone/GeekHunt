@@ -35,12 +35,12 @@ const UpdateProject = ({ setEditing, currentItem, updateItem }) => {
   */
   useEffect(() => {
     setItem(currentItem);
-    console.log("useEffect passes the currentItem: ", currentItem);
+    // console.log("useEffect passes the currentItem: ", currentItem);
   }, [currentItem]);
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("onSubmit passes the id and items", project);
+    // console.log("onSubmit passes the id and items", project);
     updateItem({ currentItem }, project);
   };
 

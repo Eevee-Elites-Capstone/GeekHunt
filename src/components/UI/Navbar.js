@@ -54,7 +54,7 @@ function Navbar() {
         {user && (
           <>
             {user.displayName ? (
-              <p>Hello!, {user.displayName}!</p>
+              <p>Hello, {user.displayName}!</p>
             ) : (
               <p>Hello!</p>
             )}

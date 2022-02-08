@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 function DetailsModal({ projects }) {
   const [modal, setModal] = useState(false)
-  console.log('project modal', projects);
+  // console.log('project modal', projects);
   return (<>
 
   {projects.map(project => (<>

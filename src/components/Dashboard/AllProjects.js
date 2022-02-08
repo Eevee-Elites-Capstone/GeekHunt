@@ -5,7 +5,7 @@ import Avatar from '../UI/Avatar'
 import DetailsModal from './DetailsModal'
 
 export default function AllProjects({ projects }) {
-  console.log('projects', projects)
+  // console.log('projects', projects)
   const [modal, setModal] = useState(false)
   return (
     <div className="flex justify-center flex-wrap p-1">
