@@ -78,11 +78,11 @@ export default function ProjectSummary({ project }) {
   };
 
   const updateItem = ({ currentItem }, updatedItem) => {
-    console.log(
-      "It send the item to the updated item function:",
-      updatedItem,
-      currentItem.id
-    );
+    // console.log(
+    //   "It send the item to the updated item function:",
+    //   updatedItem,
+    //   currentItem.id
+    // );
     setEditing(false);
     /* WITHOUT useFirestore({updateDocument})
       projectFirestore
@@ -116,17 +116,15 @@ export default function ProjectSummary({ project }) {
       <div className="mt-12 mb-12 flex flex-col w-1/2 space-y-3">
         {/* a button to open edit mode */}
 
-
-
+        {user.uid === project.createdBy.id && <button className="p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300" onClick={() => editItem(project)}>Edit</button>}
         {/*
       We add a ternary operator to make the UpdateProject Form appear
       Only the person who created the project is able to edit the project.
       Same for Delete Button
        */}
         {user.uid === project.createdBy.id && editing && <>
-        <button className="p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300" onClick={() => editItem(project)}>Edit</button>
-        <UpdateProject setEditing={setEditing} currentItem={currentItem}
-        updateItem={updateItem} /> </>}
+          <UpdateProject setEditing={setEditing} currentItem={currentItem}
+            updateItem={updateItem} /> </>}
 
         {user.uid === project.createdBy.id && (
           <button className="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300" onClick={handleClick}>Delete Project</button>
