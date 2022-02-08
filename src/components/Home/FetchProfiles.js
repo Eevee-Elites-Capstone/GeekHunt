@@ -1,5 +1,6 @@
 import React from "react";
 import { useCollection } from "../../hooks/useCollection";
+import SearchProfiles from "./SearchProfiles";
 import Navbar from "../UI/Navbar";
 
 export default function FetchProfiles() {
@@ -11,18 +12,34 @@ export default function FetchProfiles() {
       <h1 className="flex justify-center mx-auto pt-36 text-5xl font-bold">
         Geeks
       </h1>
-      <div className="grid grid-cols-3 mx-4 justify-evenly">
+      <SearchProfiles />
+      <div className="grid grid-cols-4 mx-4 flex grow justify-evenly">
         {isPending && <div>Loading users...</div>}
         {error && <div>{error}</div>}
         {documents &&
           documents.map((user) => (
+            <>
+            { user.isAGeek && ( 
             <div
               key={user.id}
               className="bg-white font-semibold text-center ml-16 mb-12
                 rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
             >
               <div className="container mx-auto inline-block object-cover w-36 h-36">
-                <img className="object-contain hover:object-scale-down rounded-full" src={user.photoURL} alt="" />
+                {user.photoURL && (
+                  <img
+                    className="object-contain hover:object-scale-down rounded-full"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                )}
+                {!user.photoURL && (
+                  <img
+                    className="object-contain hover:object-scale-down rounded-full"
+                    src="./default.png"
+                    alt="default"
+                  />
+                )}
               </div>
               <div className="text-2xl text-gray-700">
                 {user.displayName} {user.lastName}
@@ -44,6 +61,8 @@ export default function FetchProfiles() {
                 See My Profile
               </a>
             </div>
+            )}
+            </>
           ))}
       </div>
     </>

@@ -24,28 +24,28 @@ function Navbar() {
             <a
               href="/landing"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/fetchProfiles"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             <a
               href="/signin"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Sign In
             </a>
             <a
               href="/signup"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Sign Up
             </a>
@@ -54,41 +54,45 @@ function Navbar() {
         {user && (
           <div className="">
             {user.displayName ? (
-              <p>Hello, {user.displayName}!</p>
+              <p className="text-md no-underline
+              text-white">Hello, {user.displayName}!</p>
             ) : (
-              <p>Hello!</p>
+              <p className="text-md no-underline
+              text-white" > Hello!</p>
             )}
             <a
               href="/landing"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/dashboard"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Dashboard
             </a>
             <a
               href="/fetchProfiles"
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
+            { !user.isAGeek && (
             <a
               href={`/profile/${user.uid}`}
               className="text-lg no-underline
-            text-grey-darkest hover:text-blue-dark ml-2"
+            text-white hover:text-blue-dark ml-2"
             >
               My Profile
             </a>
+            )}
             {!isPending && (
               <button
-                className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+                className="text-lg no-underline text-white hover:text-blue-dark ml-2"
                 onClick={signout}
               >
                 Sign Out

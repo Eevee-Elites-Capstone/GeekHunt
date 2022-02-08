@@ -8,9 +8,21 @@ export const useGeekSignup = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
+
+
   const signup = async (email, password, displayName, lastName, picture, jobTitle, description, skills, linkedInUrl, gitHubUrl) => {
     setError(null)
     setIsPending(true)
+
+    const getImageUrl = async (uid, picture) => {
+      if (!picture) {
+        return Promise.resolve('/default.png')
+      }
+
+      const uploadPath = `pictures/${uid}/${picture}`
+      const img = await projectStorage.ref(uploadPath).put(picture)
+      return await img.ref.getDownloadURL()
+    };
 
     try {
       // signup
@@ -24,9 +36,8 @@ export const useGeekSignup = () => {
       }
 
       //upload user profile picture
-      const uploadPath = `pictures/${res.user.uid}/${picture.displayName}`
-      const img = await projectStorage.ref(uploadPath).put(picture)
-      const imgUrl = await img.ref.getDownloadURL()
+      const userPic = picture ? picture.displayName : null
+      const imgUrl = await getImageUrl(res.user.uid, userPic) 
 
       // add display AND PHOTO_URL name to user
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
