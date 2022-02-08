@@ -20,6 +20,7 @@ import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
 import Calendar from './components/Calendar/Calendar';
 import GoogleCalendar from './components/Calendar/GoogleCalendar';
+import AllConversations from './components/Messaging/AllConversations'
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -77,13 +78,14 @@ function App() {
               <Route path="/calendar">
                   {!user && <Redirect to="/signin" />}
                   {user && <GoogleCalendar />}
-                </Route>
-              <Route path="/messages">
-                <MessagingPage />
               </Route>
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}
                 {user && <SingleConversation />}
+              </Route>
+              <Route path="/allconversations">
+                  {!user && <Redirect to="/login" />}
+                  {user && <AllConversations />}
               </Route>
               <Route exact path="/admin">
                 <AdminPanel />
