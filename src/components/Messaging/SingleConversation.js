@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useDocument } from '../../hooks/useDocument'
-
+import Sidebar from "../Dashboard/Sidebar"
 import AllMessages from "./AllMessages"
 
 export default function SingleConversation() {
@@ -16,8 +16,11 @@ export default function SingleConversation() {
 
 
   return (
-    <div className="singleConversation">
-      <AllMessages conversation={document} />
+    <div className="h-screen flex flex-row">
+    <Sidebar/>
+      <div className="flex flex-auto bg-slate-200 justify-center items-center">
+        <AllMessages conversation={document} />
+      </div>
     </div>
   )
 }

@@ -4,8 +4,9 @@ import Navbar from "./UI/Navbar";
 
 const LandingPage = () => {
   return (
-    <div className="landingPage_container">
 
+    <div className="landingPage_container">
+     <Navbar />
       <div className="landingPage_header">
 
         <div className="landingPage_header-text">
