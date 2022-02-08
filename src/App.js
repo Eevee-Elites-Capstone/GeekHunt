@@ -78,9 +78,6 @@ function App() {
               <Route path="/calendar">
                   {!user && <Redirect to="/signin" />}
                   {user && <GoogleCalendar />}
-                </Route>
-              <Route path="/messages">
-                <MessagingPage />
               </Route>
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}

@@ -12,14 +12,14 @@ const firestore = firebase.firestore();
 
 
 function SingleChatMessage (props) {
-    const { text, recepientId, senderId } = props.message
+    const { message, recepientId, senderId } = props.message
     console.log(props)
     
     return (
     <div>
         <div>
             <h5>From: {senderId} To: {recepientId} </h5>
-            <p>{ text } </p>
+            <p>{ message } </p>
         </div>
     </div>
     )
