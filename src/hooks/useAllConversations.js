@@ -11,8 +11,6 @@ export const useAllConversations = (id) => {
     const conversationsRef = projectFirestore.collection('conversations')
     let userConversations = conversationsRef.where('users', 'array-contains', id)
     
-    console.log('conversationsRef: ', conversationsRef.data)
-    console.log('userConversations: ', userConversations)
     const unsubscribe = userConversations.onSnapshot(snapshot => {
       // need to make sure the doc exists & has data
       let results = [];
@@ -32,17 +30,6 @@ export const useAllConversations = (id) => {
     })
     
     return () => unsubscribe()
-    // const conversationsRef = projectFirestore.collection('conversations')
-    // console.log('conversationsRef: ', conversationsRef.data)
-    // let userConversations = conversationsRef.where('users', 'array-contains', id)
-    // console.log('userConversations: ', userConversations)
-    // if(userConversations) {
-    //     setDocument([...userConversations])
-    //     setError(null)
-    // }
-    // else {
-    //     setError('No such document exists')
-    // }
     
   }, [id])
 

@@ -32,7 +32,6 @@ export default function AllMessages ({ conversation }) {
         <div className='MessagingPage'>
             <h4> Conversation Messages </h4>
             {conversation.messages.length > 0 && conversation.messages.map(msg => (
-                console.log(msg),
                 <div key={msg.id} className='singleMessage'>
                 
                     <div className='message-sender-name'>

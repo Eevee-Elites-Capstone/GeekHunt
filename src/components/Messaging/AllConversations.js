@@ -8,15 +8,11 @@ import { Link } from "react-router-dom";
 
 export default function AllConversations () {
   const { user } = useAuthContext()
-  console.log('THE USER!!!: ', user)
   const [newMessage, setNewMessage] = useState('')
   const [newUser, setNewUser] = useState('')
   const [newTitle, setNewTitle] = useState('')
   const conversationsRef = projectFirestore.collection('conversations');
-  //const { id } = useParams()
-//   const { document, error } = useCollection('conversations', `"users", "array-contains", ${id}`)
   const { document, error } = useAllConversations(user.uid)
-  console.log('THE DOCUMENT: ', document)
   
   if (error) {
     return <div className="error">{error}</div>
@@ -25,10 +21,8 @@ export default function AllConversations () {
     return <div className="loading">Loading...</div>
   }
   else {
-  console.log('THE DOCUMENT LENGTH: ', document.length)
   
-  //{conv.users.forEach(element => {if (element !== user.uid){return element}})}
-  
+  // Using the hook
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   await useNewConversation(newUser, newTitle, newMessage)
