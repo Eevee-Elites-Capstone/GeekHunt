@@ -18,6 +18,8 @@ export default function FetchProfiles() {
         {error && <div>{error}</div>}
         {documents &&
           documents.map((user) => (
+            <>
+            { user.isAGeek && ( 
             <div
               key={user.id}
               className="bg-white font-semibold text-center ml-16 mb-12 
@@ -54,11 +56,13 @@ export default function FetchProfiles() {
               <a
                 className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100 
                   font-semibold tracking-wide text-sm"
-                href={`/profile/${user.id}`}
+                href={`/publicprofile/${user.id}`}
               >
                 See My Profile
               </a>
             </div>
+            )}
+            </>
           ))}
       </div>
     </>

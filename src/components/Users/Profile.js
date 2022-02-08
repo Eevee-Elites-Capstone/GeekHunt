@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const EditProfile = () => {
 

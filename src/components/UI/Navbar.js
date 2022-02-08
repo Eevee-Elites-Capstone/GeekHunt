@@ -54,9 +54,11 @@ function Navbar() {
         {user && (
           <>
             {user.displayName ? (
-              <p>Hello!, {user.displayName}!</p>
+              <p className="text-md no-underline
+              text-white"> Hello!, {user.displayName}!</p>
             ) : (
-              <p>Hello!</p>
+              <p className="text-md no-underline
+              text-white" > Hello!</p>
             )}
             <a
               href="/landing"
@@ -79,6 +81,7 @@ function Navbar() {
             >
               Profiles
             </a>
+            { !user.isAGeek && (
             <a
               href={`/profile/${user.uid}`}
               className="text-lg no-underline
@@ -86,6 +89,7 @@ function Navbar() {
             >
               My Profile
             </a>
+            )}
             {!isPending && (
               <button
                 className="text-lg no-underline text-white hover:text-blue-dark ml-2"
