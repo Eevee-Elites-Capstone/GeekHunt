@@ -18,8 +18,8 @@ import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
-import Calendar from './components/Calendar/Calendar';
 import GoogleCalendar from './components/Calendar/GoogleCalendar';
+import Calendar from './components/Calendar/Calendar';
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -61,7 +61,7 @@ function App() {
               </Route>
               <Route path="/dashboard">
                 <Dashboard />
-                {user && <OnlineUsers />}
+                {/* {user && <OnlineUsers />} */}
               </Route>
               <Route path="/createproject">
                 {!user && <Redirect to="/signin" />}
@@ -77,6 +77,10 @@ function App() {
               <Route path="/calendar">
                   {!user && <Redirect to="/signin" />}
                   {user && <GoogleCalendar />}
+                </Route>
+              <Route path="/mycalendar">
+                 {/* <MyCalendar/> */}
+                 <Calendar/>
                 </Route>
               <Route path="/messages">
                 <MessagingPage />

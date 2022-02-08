@@ -12,7 +12,7 @@ export default function Sidebar() {
   return (<>
     <div className="top-0 left-0 w-64 resize-x bg-grey-100 h-full border-r overflow overflow-auto">
       <div className="flex flex-shrink-0 items-center justify-center h-36 border-b space-x-3 flex-col ">
-      <Avatar src={user.photoURL} />
+        <Avatar src={user.photoURL} />
         <div>
           {user && (
             <>
@@ -53,37 +53,24 @@ export default function Sidebar() {
               <span className="ml-2 text-sm tracking-wide truncate">Messages</span>
             </p>
           </Link>
-          {/* <Link>
-            <p href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-              <span className="inline-flex justify-center items-center ml-4">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-              </span>
-              <span className="ml-2 text-sm tracking-wide truncate">Notifications</span>
-              <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span>
-            </p>
-          </Link> */}
-          {/* <Link>
-            <div className="px-5 flex flex-row items-center h-8">
-              <div className="text-sm font-light tracking-wide text-gray-500">Tasks</div>
-            </div>
-          </Link> */}
           <Link to="/calendar">
             <p href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
               <span className="inline-flex justify-center items-center ml-4">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
               </span>
-              <span className="ml-2 text-sm tracking-wide truncate">Calendar</span>
+              <span className="ml-2 text-sm tracking-wide truncate">Google Calendar</span>
             </p>
           </Link>
-          {/* <Link>
+          <Link to="/mycalendar">
             <p href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-              <span className="inline-flex justify-center items-center ml-4">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <span className="inline-flex justify-center items-center ml-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+              </svg>
               </span>
-              <span className="ml-2 text-sm tracking-wide truncate">Clients</span>
-              <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full">15</span>
+              <span className="ml-2 text-sm tracking-wide truncate">My Calendar</span>
             </p>
-          </Link> */}
+          </Link>
           <div className="px-5">
             <div className="flex flex-row items-center h-8">
               <div className="text-sm font-light tracking-wide text-gray-500">Navigation</div>
