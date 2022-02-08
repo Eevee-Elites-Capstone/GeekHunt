@@ -20,6 +20,8 @@ import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
 import Calendar from './components/Calendar/Calendar';
 import GoogleCalendar from './components/Calendar/GoogleCalendar';
+import PublicProfile from "./components/Users/PublicProfile"
+
 import AllConversations from './components/Messaging/AllConversations'
 
 function App() {
@@ -41,7 +43,6 @@ function App() {
                 <Route exact path="/landing">
                   <LandingPage />
                 </Route>
-
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
               </Route>
@@ -51,6 +52,9 @@ function App() {
               </Route>
               <Route path="/signup">
                 {user ? <Redirect to="/" /> : <SignUp />}
+              </Route>
+              <Route exact path="/publicprofile/:id">
+                <PublicProfile />
               </Route>
               <Route exact path="/profile/:id">
               {!user && <Redirect to="/signin" />}
