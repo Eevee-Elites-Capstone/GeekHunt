@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <nav className="font-sans flex fixed text-center sm:flex-row sm:text-left
-    sm:justify-between py-4 px-6 bg-[#2E4C6D] shadow sm:items-baseline w-full">
+    sm:justify-between pt-1 px-6 bg-white shadow sm:items-baseline w-full bg-[#2E4C6D] text-gray-200 tracking-tight">
       <div className="mb-2 sm:mb-0">
         <a
           href="/"
@@ -18,7 +18,7 @@ function Navbar() {
           GeekHunt
         </a>
       </div>
-      <div>
+      <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {!user && (
           <>
             <a
