@@ -12,9 +12,9 @@ export default function AllProjects({ projects }) {
       {projects.length === 0 && <p>No projects yet!</p>}
       {projects.map(project => (
         <div className="flex flex-col m-2" key={project.id}>
-          <div className="block rounded-t-lg shadow-lg bg-white max-w-sm text-center">
+          <div className="block rounded-lg shadow-lg bg-white max-w-sm text-center">
             <div className="py-3 px-6 border-b border-gray-300">
-              <h1 className="font-semibold text-xl">Urgent</h1>
+              <h1 className="font-semibold text-xl">{project.name}</h1>
             </div>
             <Link to={`/projects/${project.id}`} key={project.id}>
               <div className="p-6" key={project.id}>
@@ -41,9 +41,9 @@ export default function AllProjects({ projects }) {
               <p>Due by {project.dueDate.toDate().toDateString()}</p>
             </div>
           </div>
-          <button className="text-gray-900 bg-orange-300 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-b-lg text-sm px-5 py-2.5 justify-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700" type="button"
+          {/* <button className="text-gray-900 bg-orange-300 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-b-lg text-sm px-5 py-2.5 justify-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700" type="button"
             onClick={() => setModal(true)}
-          >Quick View</button>
+          >Quick View</button> */}
         </div>
       ))}
     </div>

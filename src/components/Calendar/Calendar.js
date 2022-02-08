@@ -16,7 +16,22 @@ class StaticCalendar extends Component {
       {
         start: moment().toDate(),
         end: moment().add(1, "days").toDate(),
-        title: "New Event",
+        title: "Web Dev Project",
+      },
+      {
+        start: moment().add(7, "days").toDate(),
+        end: moment().add(10, "days").toDate(),
+        title: "Learning Algorithm",
+      },
+      {
+        start: moment().add(14, "days").toDate(),
+        end: moment().add(20, "days").toDate(),
+        title: "Job Hunting",
+      },
+      {
+        start: moment().add(8, "days").toDate(),
+        end: moment().add(10, "days").toDate(),
+        title: "Meet Tech Recruiter",
       },
     ],
   };
