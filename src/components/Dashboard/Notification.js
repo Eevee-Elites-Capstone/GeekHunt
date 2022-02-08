@@ -24,7 +24,7 @@ function Notification() {
           <p className="text-sm font-bold">{noti.user}</p>
           <p className="text-sm">{noti.content}</p>
           <p className="text-xs ml-36">
-            {moment(noti.time.toDate()).fromNow()}
+            {noti.time && moment(noti.time.toDate()).fromNow()}
           </p>
           </div>
         </div>
