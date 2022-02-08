@@ -87,6 +87,7 @@ if(!document) {
             >
               Name
             </label>
+
             <input
               type="text"
               id="displayName"

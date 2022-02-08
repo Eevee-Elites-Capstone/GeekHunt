@@ -32,6 +32,7 @@ if(!document) {
               <Link className="sm:w-3/4  rounded-lg px-3 py-1 my-2 md:ml-5 sm:ml-5 bg-purple-300 md:pl-20" to={`/editprofile/${user.uid}`}>Edit Profile
               </Link>
           </div>
+
           <Link to="/dashboard" className="h-10 w-full sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-pink-500">
             <button className="h-10 w-full text-white">
               Dashboard

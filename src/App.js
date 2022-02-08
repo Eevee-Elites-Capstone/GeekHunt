@@ -42,7 +42,6 @@ function App() {
                 <Route exact path="/landing">
                   <LandingPage />
                 </Route>
-
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
               </Route>
