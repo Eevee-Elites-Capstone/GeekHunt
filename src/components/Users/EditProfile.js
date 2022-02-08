@@ -3,6 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore"
 import { useDocument } from "../../hooks/useDocument";
 import { Link } from "react-router-dom";
+import Navbar from "../UI/Navbar";
 
 
 const EditProfile = () => {
@@ -41,6 +42,7 @@ if(!document) {
 
   return (
     <div className="bg-blue-900 py-32 px-10 min-h-screen">
+      <Navbar />
       <div className="bg-gray-200 rounded-lg p-10 md:w-3/4 lg:w-1/2 mx-auto">
         <div className="w-full  sm:text-right">
           <Link to={`/profile/${user.uid}`}>
@@ -87,6 +89,7 @@ if(!document) {
             >
               Name
             </label>
+
             <input
               type="text"
               id="displayName"

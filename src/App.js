@@ -23,6 +23,9 @@ import Calendar from './components/Calendar/Calendar';
 import MyCalendar from './components/Calendar/MyCalendar';
 import Transactions from './components/Transactions/Transactions';
 import StaticCalendar from './components/Calendar/Calendar';
+import PublicProfile from "./components/Users/PublicProfile"
+
+import AllConversations from './components/Messaging/AllConversations'
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -43,7 +46,6 @@ function App() {
                 <Route exact path="/landing">
                   <LandingPage />
                 </Route>
-
               <Route exact path="/home">
                 {user ? <Home /> : <Redirect to="/signin" />}
               </Route>
@@ -53,6 +55,9 @@ function App() {
               </Route>
               <Route path="/signup">
                 {user ? <Redirect to="/" /> : <SignUp />}
+              </Route>
+              <Route exact path="/publicprofile/:id">
+                <PublicProfile />
               </Route>
               <Route exact path="/profile/:id">
               {!user && <Redirect to="/signin" />}
@@ -94,6 +99,10 @@ function App() {
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}
                 {user && <SingleConversation />}
+              </Route>
+              <Route path="/allconversations">
+                  {!user && <Redirect to="/login" />}
+                  {user && <AllConversations />}
               </Route>
               <Route exact path="/admin">
                 <AdminPanel />

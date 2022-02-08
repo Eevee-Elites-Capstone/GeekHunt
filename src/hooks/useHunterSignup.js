@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { projectAuth, projectFirestore, projectStorage } from '../firebase/fbConfig'
+import { projectAuth, projectFirestore} from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
 export const useHunterSignup = () => {
@@ -11,6 +11,7 @@ export const useHunterSignup = () => {
   const signup = async (email, password, displayName, lastName, PersonalOrCompany) => {
     setError(null)
     setIsPending(true)
+    console.log('hunterhook.....',(email, password, displayName, lastName, PersonalOrCompany))
 
     try {
       // signup
@@ -30,7 +31,7 @@ export const useHunterSignup = () => {
         lastName,
         PersonalOrCompany
       })
-
+      console.log('hunter State:', res.user);
       // dispatch signin action
       dispatch({ type: 'SIGNIN', payload: res.user })
 

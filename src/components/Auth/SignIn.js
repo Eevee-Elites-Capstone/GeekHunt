@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { useSignin } from "../../hooks/useSignin";
 import Navbar from "../UI/Navbar";
 import FormInput from "../UI/FormInput";
+import { useHistory } from "react-router-dom";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signin, error, isPending } = useSignin();
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e){
     e.preventDefault();
     signin(email, password);
+    history.push("/");
   };
 
   return (
