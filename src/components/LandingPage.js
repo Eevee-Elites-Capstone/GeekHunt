@@ -8,10 +8,6 @@ const LandingPage = () => {
     <div className="landingPage_container">
      <Navbar />
       <div className="landingPage_header">
-
-        <div className="landingPage_header-text">
-          <h1>Hire and work with exceptional Talent</h1>
-        </div>
       </div>
 
       <div className="landingPage_users">

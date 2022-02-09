@@ -26,7 +26,7 @@ function SignUp() {
       <Navbar />
       <div className="bg-grey flex flex-col space-y-10 justify-center items-center">
         <div className="w-full max-w-lg">
-          <div className="bg-white shadow-lg rounded px-12 pt-28 pb-4 mb-4">
+          <div className="bg-white shadow-lg rounded px-12 pt-16 pb-4 mb-4">
             <div className="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
               Sign Up
             </div>

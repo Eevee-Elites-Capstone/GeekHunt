@@ -9,7 +9,7 @@ export default function FetchProfiles() {
   return (
     <>
       <Navbar />
-      <h1 className="flex justify-center mx-auto pt-36 text-5xl font-bold">
+      <h1 className="flex justify-center mx-auto pt-16 text-5xl font-bold">
         Geeks
       </h1>
       <SearchProfiles />
