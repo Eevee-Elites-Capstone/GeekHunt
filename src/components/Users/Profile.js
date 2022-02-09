@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ if(!document) {
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="flex bg-gray-100 h-full justify-center w-screen pt-20">
       <div className="flex flex-col sm:flex-col w-5/6 h-screen justify-center">
         <div className=" flex flex-col sm:flex-row w-full h-80">
