@@ -36,7 +36,7 @@ export default function AllMessages({ conversation }) {
                     {conversation.messages.length > 0 && conversation.messages.map(msg => (
                         <div key={msg.id} className='singleMessage'>
 
-                            <div className='message-sender-name'>
+                            <div className='bg-red-300'>
                                 <p> From: {msg.senderName} </p>
                             </div>
                             <div className='message-content'>
