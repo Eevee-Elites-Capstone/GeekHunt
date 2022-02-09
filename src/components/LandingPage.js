@@ -6,9 +6,36 @@ const LandingPage = () => {
   return (
     <div className="landingPage_container">
       <Navbar />
-      <div className="landingPage_header"></div>
-      <div className="sm:flex flex-wrap justify-center items-center text-center gap-8">
-        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6  shadow-lg rounded-lg">
+      {/* <div className="landingPage_header"></div> */}
+      <div className="sm:flex flex-wrap justify-center text-center gap-8">
+        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
+          <div className="flex-shrink-0">
+            <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
+              <img src="./geek.png" alt="" />
+            </div>
+          </div>
+          <h3 className="text-3xl sm:text-2xl text-[#FC997C] font-bold py-4">
+            For Geeks
+          </h3>
+          <p className="text-md  text-gray-500 py-4">
+          Hey, Geeks! This is a great place for you to land your dream jobs. We can help you connect to the best recruiter in the industry. You can also keep track on your projects with our specialize dashboard 🤟
+          </p>
+        </div>
+        {/* <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 sm:mt-16 md:mt-20 lg:mt-24 bg-white shadow-lg rounded-lg"> */}
+        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
+          <div className="flex-shrink-0">
+            <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
+              <img src="./hunter.png" alt="" />
+            </div>
+          </div>
+          <h3 className="text-3xl sm:text-2xl text-[#FC997C] font-bold py-4">
+            For Hunters
+          </h3>
+          <p className="text-md  text-gray-500 py-4">
+          Hey, Hunters! Are you looking for a smart geek in your team? Let's sign up and explore!
+          </p>
+        </div>
+        {/* <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
           <div className="flex-shrink-0">
             <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
               <img src="./geek.png" alt="" />
@@ -18,31 +45,11 @@ const LandingPage = () => {
             For Geeks
           </h3>
           <p className="text-md  text-gray-500 py-4">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. printer took a galley
-            of type and scrambled it to make a type specimen book.
+          Hey, Geeks! This is a great place for you to land your dream jobs. We can help you connect to the best recruiter in the industry. You can also keep track on your projects with our specialize dashboard 🤟
           </p>
-        </div>
-        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 sm:mt-16 md:mt-20 lg:mt-24 bg-white shadow-lg rounded-lg">
-          <div className="flex-shrink-0">
-            <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
-              <img src="./hunter.png" alt="" />
-            </div>
-          </div>
-          <h3 className="text-3xl sm:text-2xl text-[#396EB0] font-semibold py-4">
-            For Hunters
-          </h3>
-          <p className="text-md  text-gray-500 py-4">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. printer took a galley
-            of type and scrambled it to make a type specimen book.
-          </p>
-        </div>
+        </div> */}
       </div>
+
 
       <div className="p-8 bg-white rounded-lg shadow">
         <p className="text-center text-5xl font-bold text-[#396EB0] pb-8">
@@ -60,10 +67,10 @@ const LandingPage = () => {
               </a>
             </div>
             <div className="text-center">
-              <p className="text-2xl text-[#2E4C6D]">Patrick Sebastien</p>
-              <p className="text-xl text-[#FC997C] font-light">Developpeur</p>
+              <p className="text-2xl text-[#2E4C6D]">Trang Nguyen</p>
+              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-                Patrick Sébastien, born November 14, 1953 in Brive-la-Gaillarde,
+              Trang Nguyen, born November 14, 1990 in Brive-la-Gaillarde,
                 is an imitator.
               </p>
             </div>
@@ -141,11 +148,11 @@ const LandingPage = () => {
               </a>
             </div>
             <div className="text-center">
-              <p className="text-2xl text-[#2E4C6D]">Jean Castux</p>
-              <p className="text-xl text-[#FC997C] font-light">Founder</p>
+              <p className="text-2xl text-[#2E4C6D]">Melissa Molina</p>
+              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-                Jean Castux is an imitator, humorist, actor, born November 14,
-                1953 in Pontivy.
+              Melissa Molina is an imitator, humorist, actor, born November 14,
+                1990 in Pontivy.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">
@@ -222,10 +229,10 @@ const LandingPage = () => {
               </a>
             </div>
             <div className="text-center">
-              <p className="text-2xl text-[#2E4C6D]">Thierry Halliday</p>
-              <p className="text-xl text-[#FC997C] font-light">CTO</p>
+              <p className="text-2xl text-[#2E4C6D]">Jack Wasilewski</p>
+              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-                Thierry Halliday, born November 4, 1993 in Saint hilaire de
+              Jack Wasilewski, born November 4, 1993 in Saint hilaire de
                 riez, is css specialist.
               </p>
             </div>
@@ -303,11 +310,11 @@ const LandingPage = () => {
               </a>
             </div>
             <div className="text-center">
-              <p className="text-2xl text-[#2E4C6D]">Jean Castux</p>
-              <p className="text-xl text-[#FC997C] font-light">Founder</p>
+              <p className="text-2xl text-[#2E4C6D]">Anderson Bautista</p>
+              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-                Jean Castux is an imitator, humorist, actor, born November 14,
-                1953 in Pontivy.
+              Anderson Bautista is an imitator, humorist, actor, born November 14,
+                1990 in Pontivy.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">

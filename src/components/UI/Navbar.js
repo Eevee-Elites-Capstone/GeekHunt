@@ -167,28 +167,28 @@ function Navbar() {
           <>
             <a
               href="/landing"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/fetchProfiles"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             <a
               href="/signin"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Sign In
             </a>
             <a
               href="/signup"
-              className="text-lg no-underline px-3
+              className="text-xl no-underline px-3
             text-white hover:text-blue-dark ml-2"
             >
               Sign Up
@@ -199,14 +199,14 @@ function Navbar() {
           <div className="">
             {user.displayName ? (
               <p
-                className="text-md no-underline
+                className="text-lg no-underline
               text-white"
               >
                 Hello, {user.displayName}!
               </p>
             ) : (
               <p
-                className="text-md no-underline
+                className="text-lg no-underline
               text-white"
               >
                 {" "}
@@ -215,21 +215,21 @@ function Navbar() {
             )}
             <a
               href="/landing"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/dashboard"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Dashboard
             </a>
             <a
               href="/fetchProfiles"
-              className="text-lg px-2 no-underline
+              className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Profiles
@@ -237,7 +237,7 @@ function Navbar() {
             {!user.isAGeek && (
               <a
                 href={`/profile/${user.uid}`}
-                className="text-lg px-2 no-underline
+                className="text-xl px-2 no-underline
             text-white hover:text-blue-dark ml-2"
               >
                 My Profile
@@ -245,7 +245,7 @@ function Navbar() {
             )}
             {!isPending && (
               <button
-                className="text-lg pr-6 no-underline text-white hover:text-blue-dark ml-2"
+                className="text-xl pr-6 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}
               >
                 Sign Out

@@ -13,7 +13,10 @@ export default function FetchProfiles() {
         Geeks
       </h1>
       <SearchProfiles />
-      <div className="grid grid-cols-4 mx-4 flex grow justify-evenly">
+      <div
+        className="sm:flex flex-wrap flex-col md:flex-row justify-center 
+      justify-evenly text-center gap-1"
+      >
         {isPending && <div>Loading users...</div>}
         {error && <div>{error}</div>}
         {documents &&
@@ -22,26 +25,22 @@ export default function FetchProfiles() {
               {user.isAGeek && (
                 <div
                   key={user.id}
-                  className="bg-white font-semibold text-center ml-16 mb-12
-                rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
+                  className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white
+                   mt-6 h-84 shadow-lg rounded-lg border-4 border-[#DADDFC]"
                 >
-                  <div className="container mx-auto inline-block object-cover w-36 h-36">
-                    {user.photoURL && (
-                      <img
-                        className="object-contain hover:object-scale-down rounded-full"
-                        src={user.photoURL}
-                        alt=""
-                      />
-                    )}
-                    {!user.photoURL && (
-                      <img
-                        className="object-contain hover:object-scale-down rounded-full"
-                        src="./default.png"
-                        alt="default"
-                      />
-                    )}
+                  <div className="flex-shrink-1">
+                    <div className="text-center mb-4 opacity-90">
+                      {user.photoURL && (
+                        <img
+                          className="mx-auto object-cover rounded-full h-32 w-32"
+                          src={user.photoURL}
+                          alt=""
+                        />
+                      )}
+                      {!user.photoURL && <img src="./default.png" alt="" />}
+                    </div>
                   </div>
-                  <div className="text-2xl text-gray-700">
+                  <div className="text-3xl sm:text-2xl text-[#2E4C6D] font-bold py-2">
                     {user.displayName} {user.lastName}
                   </div>
                   <div className="text-xl text-gray-400 ">{user.jobTitle}</div>
