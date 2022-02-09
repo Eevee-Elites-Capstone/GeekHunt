@@ -19,11 +19,13 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
       <div className="mb-2 px-3 sm:mb-0">
-        <img
-          className="sm:object-fill w-52 self-center"
-          src="./Geek Hunt-logos_white.png"
-          alt=""
-        />
+        <a href="/">
+          <img
+            className="sm:object-fill w-52 self-center"
+            src="./Geek Hunt-logos_white.png"
+            alt=""
+          />
+        </a>
       </div>
       <div className="absolute inset-y-0 right-0 px-3 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {!user && (
