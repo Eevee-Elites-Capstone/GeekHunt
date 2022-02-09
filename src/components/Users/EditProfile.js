@@ -11,18 +11,22 @@ const EditProfile = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument('users', user.uid);
   const [userInfo, setUserInfo ] = useState(document)
- console.log("DOCUMENT ", document)
   const { deleteDocument, updateDocument } = useFirestore('users')
 
+   const [updateMessage, setUpdateMessage] = useState("")
 
     useEffect(() => {
       setUserInfo(document)
     }, [document])
 
+    const updated = () => {
+      setUpdateMessage("Your Profile has been updated")
+    }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(updateDocument)
     updateDocument(user.uid, userInfo)
+    updated()
   }
   const handleChange = (e) => {
     setUserInfo({...document, [e.target.name]: e.target.value})
@@ -31,7 +35,6 @@ const EditProfile = () => {
   const deleteAccount = () => {
     deleteDocument(user.uid);
   }
-console.log("userInfo", userInfo)
 
 if(!document) {
   return (<div>"loader bar here "</div>)
@@ -41,17 +44,18 @@ if(!document) {
 
 
   return (
-    <div className="bg-blue-900 py-32 px-10 min-h-screen">
+    <div className="bg-[#DADDFC] min-h-screen">
       <Navbar />
+      <div className="py-32">
       <div className="bg-gray-200 rounded-lg p-10 md:w-3/4 lg:w-1/2 mx-auto">
         <div className="w-full  sm:text-right">
-          <Link to={`/profile/${user.uid}`}>
+          <Link to={`/publicprofile/${user.uid}`}>
             <button className="h-10 w-full sm:w-1/3 rounded-lg px-2 my-2  bg-green-300">
-              Back to Profile
+              see public Profile
             </button>
           </Link>
           <Link to={`/dashboard/${user.uid}`}>
-            <button className="h-10 w-full sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-pink-500">
+            <button className="h-10 w-full sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 text-white bg-[#396EB0]">
               Dashboard
             </button>
           </Link>
@@ -211,15 +215,16 @@ if(!document) {
           </div>
 
           <div className="text-right">
-
-            <button className="py-3 px-8 bg-blue-700 text-white w-full">
+          <div className="h-10 w-full px-2 my-2 text-center justify-center ">{updateMessage}</div>
+            <button className="py-3 px-8 bg-[#2E4C6D] text-white w-full hover:bg-[#396EB0]">
               Update
             </button>
           </div>
         </form>
-        <button onClick={() => deleteAccount()} class="py-3 px-8 bg-red-600 text-white w-full mt-7">
+        <button onClick={() => deleteAccount()} class="py-3 px-8 bg-red-700 text-white w-full mt-7 hover:bg-red-500">
               Delete Account
             </button>
+      </div>
       </div>
     </div>
   );
