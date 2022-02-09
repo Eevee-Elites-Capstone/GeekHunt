@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ if(!document) {
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="flex bg-gray-100 h-full justify-center w-screen pt-20">
       <div className="flex flex-col sm:flex-col w-5/6 h-screen justify-center">
         <div className=" flex flex-col sm:flex-row w-full h-80">
@@ -32,18 +32,25 @@ if(!document) {
             <p>{document.jobTitle}</p>
             <p>{document.email}</p>
 
-              <Link className="sm:w-3/4  rounded-lg px-1 py-1 my-2  bg-purple-300 md:pl-20" to={`/editprofile/${user.uid}`}>Edit Profile
+              <Link to={`/editprofile/${user.uid}`}>
+              <button className="h-10 w-full rounded-lg px-2 my-2  bg-[#DADDFC]">Edit Profile
+              </button>
               </Link>
+              <Link to={`/publicprofile/${user.uid}`}>
+            <button className="h-10 w-full rounded-lg px-2 my-2  bg-[#DADDFC]">
+              Preview public Profile
+            </button>
+          </Link>
           </div>
 
-          <Link to="/dashboard" className="h-10 w-full sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-[#2E4C6D]">
+          <Link to="/dashboard" className="h-10 w-1/2 sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-[#2E4C6D]">
             <button className="h-10 w-full text-white hover:color-red">
-              Dashboard
+              My Dashboard
             </button>
           </Link>
 
         </div>
-        <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 bg-green-200 mt-2 p-4">
+        <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 bg-[#DADDFC] mt-2 p-4">
 
           <h2>Description</h2>
           <p
@@ -60,7 +67,7 @@ if(!document) {
           </p>
         </div>
 
-        <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 bg-yellow-200 mt-2 p-4">
+        <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 bg-[#DADDFC] mt-2 p-4">
 
           <h2>Skills</h2>
           <p

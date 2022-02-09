@@ -3,32 +3,32 @@
 /* light purle #DADDFC */
 /* Oragne #FC997C */
 
-.landPage_container {
+/* .landPage_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-}
+} */
 
 .landingPage_header {
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 70vh;
   background-image: url('https://previews.123rf.com/images/gstockstudio/gstockstudio1507/gstockstudio150700493/43008667-working-together-for-better-results-top-view-of-four-happy-young-people-working-together-while-sitti.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.landingPage_header-text {
+/* .landingPage_header-text {
   display: flex;
   width: 50%;
   height: 80vh;
-  justify-content: center;
-  /* background-color: aqua; */
-}
+  justify-content: center; */
+  /* background-color: aqua;
+} 
 
-.landingPage_users {
+/* .landingPage_users {
   text-align: center;
   padding: 1.2rem;
 }
@@ -98,4 +98,4 @@
     height: 90px;
     border-radius: 45px;
   }
-}
+} */

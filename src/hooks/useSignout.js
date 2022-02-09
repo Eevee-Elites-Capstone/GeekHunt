@@ -14,10 +14,11 @@ export const useSignout = () => {
 
     try {
       const user = projectAuth.currentUser.uid
+
+      // sign the user out
       await projectFirestore.collection('users').doc(user).update({
         online: false,
       })
-      // sign the user out
       await projectAuth.signOut()
       // dispatch signout action
       dispatch({ type: 'SIGNOUT' })

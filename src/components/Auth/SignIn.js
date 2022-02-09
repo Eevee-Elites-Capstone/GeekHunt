@@ -60,13 +60,12 @@ function SignIn() {
             </div>
             <div className="flex items-center justify-between">
               {!isPending && (
-                <button
-                  className="px-4 py-2 rounded text-white inline-block 
+                <input
+                  className="px-4 py-2 rounded text-white inline-block
                   shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   type="submit"
-                >
-                  Sign In
-                </button>
+                  value="Sign in"
+                />
               )}
               {isPending && (
                 <button className="btn" disabled>
