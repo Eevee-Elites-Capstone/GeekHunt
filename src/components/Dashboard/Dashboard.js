@@ -16,11 +16,11 @@ export default function Dashboard() {
       <Sidebar />
       <div className="flex-auto flex-col bg-slate-100 rounded-md h-full">
         <DashboardNav />
-        <div className="flex flex-row p-4 space-x-6 h-4/5">
-          <div className="bg-blue-100 border-slate-200 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md resize">
+        <div className="flex flex-row p-4 space-x-6 h-4/5 justify-center items-center ">
+
             {error && <p className="error">{error}</p>}
-            {documents && <AllProjects projects={documents} />}
-          </div>
+            {documents && <div className="bg-blue-100 border-slate-200 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md resize"><AllProjects projects={documents} /></div>}
+            {!documents && <p>No project to show</p>}
           {/* <div className="bg-green-200 border-slate-200 w-1/2 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md">
             Report
           </div> */}
