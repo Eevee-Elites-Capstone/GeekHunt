@@ -4,7 +4,7 @@ import Navbar from "./UI/Navbar";
 
 const LandingPage = () => {
   return (
-    <div className="h-screen">
+    <>
       <Navbar />
       {/* <div className="landingPage_header"></div> */}
       <div className="sm:flex flex-wrap justify-center text-center gap-8">
@@ -382,7 +382,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
