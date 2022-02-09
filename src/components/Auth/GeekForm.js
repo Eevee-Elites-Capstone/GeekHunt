@@ -56,11 +56,10 @@ function GeekForm({ email, password, displayName, lastName }) {
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="bg-grey flex flex-col space-y-10 justify-center items-center">
         <div className="w-full max-w-md">
-          <form
-            onSubmit={handleSubmit}
+          <div
             className="bg-white rounded  pt-6 pb-8 mb-4"
           >
             <div className="mb-6">
@@ -118,13 +117,12 @@ function GeekForm({ email, password, displayName, lastName }) {
               />
             <div className="flex items-center justify-between">
               {!isPending && (
-                <button
+                <input
                   className="px-4 py-2 rounded text-white inline-block
                   shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
                   type="submit"
-                >
-                  Sign Up
-                </button>
+                  value="Sign Up"
+                />
               )}
               {isPending && (
                 <button
@@ -145,13 +143,13 @@ function GeekForm({ email, password, displayName, lastName }) {
                 Sign In with Google
               </p>
             </div>
-          </form>
+          </div>
           <p className="text-center text-gray-500 text-xs">
             &copy;2022 Geek Hunt. All rights reserved.
           </p>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

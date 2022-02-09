@@ -18,8 +18,11 @@ import FetchProfiles from './components/Home/FetchProfiles';
 import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
-import Calendar from './components/Calendar/Calendar';
 import GoogleCalendar from './components/Calendar/GoogleCalendar';
+import Calendar from './components/Calendar/Calendar';
+import MyCalendar from './components/Calendar/MyCalendar';
+import Transactions from './components/Transactions/Transactions';
+import StaticCalendar from './components/Calendar/Calendar';
 import PublicProfile from "./components/Users/PublicProfile"
 
 import AllConversations from './components/Messaging/AllConversations'
@@ -66,7 +69,7 @@ function App() {
               </Route>
               <Route path="/dashboard">
                 <Dashboard />
-                {user && <OnlineUsers />}
+                {/* {user && <OnlineUsers />} */}
               </Route>
               <Route path="/createproject">
                 {!user && <Redirect to="/signin" />}
@@ -82,6 +85,16 @@ function App() {
               <Route path="/calendar">
                   {!user && <Redirect to="/signin" />}
                   {user && <GoogleCalendar />}
+                </Route>
+              <Route path="/mycalendar">
+                 {/* <MyCalendar/> */}
+                 <StaticCalendar/>
+                </Route>
+              <Route path="/transaction">
+                 <Transactions/>
+                </Route>
+              <Route path="/messages">
+                <MessagingPage />
               </Route>
               <Route path="/conversations/:id">
                 {!user && <Redirect to="/login" />}

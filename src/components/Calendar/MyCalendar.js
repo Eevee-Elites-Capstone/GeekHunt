@@ -1,40 +1,15 @@
-// import moment from 'moment';
-// import React, { Component }from 'react';
-// import { Calendar, momentLocalizer } from 'react-big-calendar';
-// import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-// import { minTime, maxTime, calendarInitialState } from '../../firebase/fbConfig';
-
-// const localizer = momentLocalizer(moment); // or globalizeLocalizer
-// const DragAndDropCalendar = withDragAndDrop(Calendar, { backend: false })
-
-// function MyCalendar() {
-//   return (<>
-//     This is my calendar
-//     <DragAndDropCalendar
-
-//       // events={events}
-//       // onEventDrop={moveEvent}
-//       resizable
-//       // onEventResize={resizeEvent}
-//       defaultView="week"
-//       defaultDate={new Date()}
-//       localizer={localizer}
-//       // onSelectEvent={this.selectEvent}
-//       min={minTime}
-//       max={maxTime}
-//     />
-//   </>);
-// }
-
-// export default MyCalendar;
-import React, { Component } from "react";
+import React, { useEffect, useState } from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider, useDrag, useDrop, useDragDropManager } from 'react-dnd'
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { projectAuth, projectFirestore } from "../../firebase/fbConfig";
-import { uuid } from "uuidv4";
+import { useFirestore } from '../../hooks/useFirestore';
+import { useCollection } from '../../hooks/useCollection';
+
 
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
@@ -44,8 +19,14 @@ minTime.setHours(7, 0, 0);
 const maxTime = new Date();
 maxTime.setHours(20, 0, 0);
 const calendarInitialState = {
-  events: [],
-  equipments: [],
+  events: [
+    // {
+    //   start: moment().toDate(),
+    //   end: moment().add(1, "days").toDate(),
+    //   title: "Some title",
+    // },
+  ],
+  tags: [],
   people: [],
   modal: {
     id: null,
@@ -55,176 +36,66 @@ const calendarInitialState = {
     end: new Date(2018, 4, 4, 8, 0, 0),
   },
   modalOpen: false,
-  equipmentsOpen: false,
+  tagOpen: false,
   peopleOpen: false,
 
 }
-function GetEvents(uid) {
-  return projectFirestore.collection('events').where('ownerId', '==', uid).get();
-}
-
-export function UpdateEvents(id) {
-  return projectFirestore.collection('events').doc(id)
-}
-class MyCalendar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = calendarInitialState
-    this.moveEvent = this.moveEvent.bind(this)
-  }
-  componentDidMount() {
-    const newEvents = []
-  //   const newEquipments = []
-  //   const newPeople = []
-
-    GetEvents(this.props.uid).then(snapshot => {
-      snapshot.forEach(doc => {
-        newEvents.push(doc.data())
-        this.setState({
-          events: newEvents,
-        })
-      });
-    })
-  // GetEquipments(this.props.uid).then(querySnapshot => {
-  //   querySnapshot.forEach(doc => {
-  //     newEquipments.push(doc.data())
-  //     this.setState({
-  //       equipments: newEquipments,
-  //     })
-  //   });
-  // })
-  // GetPeople(this.props.uid).then(querySnapshot => {
-  //   querySnapshot.forEach(doc => {
-  //     newPeople.push(doc.data())
-  //     this.setState({
-  //       people: newPeople,
-  //     })
-  //   });
-  // })
-  }
-
-  moveEvent({ event, start, end }) {
-    const { events } = this.state
-    const idx = events.indexOf(event)
-    let updatedEvent = { ...event, start, end }
-    const nextEvents = [...events]
-    if (idx > -1) {
-      nextEvents.splice(idx, 1, updatedEvent)
-      UpdateEvents(event.id).update({ start, end }).then(
-        this.setState({
-          events: nextEvents,
-        })
-      ).catch(error => {
-        console.error('Update error', error);
-      });
+export default function MyCalendar() {
+  // The manager provides access to all of React DnD's internals
+  const dragDropManager = useDragDropManager()
+  /**Add events collection to firestore */
+  const { addDocument, response } = useFirestore('events')
+  /*Assign function*/
+  const { documents } = useCollection('users')
+  const [events, setEvents] = useState([])
+  const [users, setUsers] = useState([])
+  const [resize, setResize] = useState({})
+  /*map through the array of all users*/
+  useEffect(() => {
+    if (documents) {
+      const userOptions = documents.map(user => {
+        return { value: { ...user, id: user.id }, label: user.displayName }
+      })
+      setUsers(userOptions)
     }
-    else {
-      const newEventId = uuid()
-      updatedEvent = { ...updatedEvent, id: newEventId, ownerId: this.props.uid }
-      console.log(updatedEvent)
-      nextEvents.push(updatedEvent)
-      UpdateEvents(newEventId).set(updatedEvent).then(
-        this.setState({
-          events: nextEvents,
-        })
-      ).catch(error => {
-        console.error('Create New Event error', error);
-      });
-    }
-  }
-  selectEvent = (event) => {
-    this.handleOpen(event)
-  }
-  resizeEvent = (resizeType, { event, start, end }) => {
-    const { events } = this.state
+  }, [documents])
+  // console.log('users', users)
+  // useEffect((data) => {
+  //   const { start, end } = data;
+  //   setResize((state) => {
+  //     state.events[0].start = start;
+  //     state.events[0].end = end;
+  //     return { events: [...state.events] };
+  //   });
+  // }, [resize])
+  // const onEventResize = (data) => {
+  //   const { start, end } = data;
 
-    const nextEvents = events.map(existingEvent => {
-      return existingEvent.id === event.id
-        ? { ...existingEvent, start, end }
-        : existingEvent
-    })
+  //   setResize((state) => {
+  //     state.events[0].start = start;
+  //     state.events[0].end = end;
+  //     return { events: [...state.events] };
+  //   });
+  // };
 
-    UpdateEvents(event.id).update({ start, end }).then(
-      this.setState({
-        events: nextEvents,
-      })
-    ).catch(error => {
-      console.error('Update error', error);
-    });
-  }
-  onEventResize = (data) => {
-    const { start, end } = data;
+  // const onEventDrop = (data) => {
+  //   console.log(data);
+  // };
 
-    this.setState((state) => {
-      state.events[0].start = start;
-      state.events[0].end = end;
-      return { events: [...state.events] };
-    });
-  };
-
-  onEventDrop = (data) => {
-    console.log(data);
-  };
-
-  editEvent = ({ id, title, desc }) => {
-    const { events } = this.state
-
-    const nextEvents = events.map(existingEvent => {
-      return existingEvent.id === id
-        ? { ...existingEvent, title, desc }
-        : existingEvent
-    })
-
-    UpdateEvents(id).update({ title, desc }).then(
-      this.setState({
-        events: nextEvents,
-      })
-    ).catch(error => {
-      console.error('Update Event error', error);
-    });
-  }
-
-  deleteEvent = ({ id }) => {
-    const { events } = this.state
-
-    const nextEvents = events.filter(existingEvent => {
-      return existingEvent.id !== id
-    })
-
-    UpdateEvents(id).delete().then(
-      this.setState({
-        events: nextEvents,
-      })
-    ).catch(error => {
-      console.error('Delete Event error', error);
-    });
-  }
-  render() {
-    return (
-      <div>
+  return (
+    <>
+      <DndProvider backend={HTML5Backend}>
         <DnDCalendar
-          // defaultDate={moment().toDate()}
-          // defaultView="month"
-          // events={this.state.events}
-          // localizer={localizer}
-          // onEventDrop={this.onEventDrop}
-          // onEventResize={this.onEventResize}
-          // resizable
-          // style={{ height: "100vh" }}
-          events={this.state.events}
-          localizer={localizer}
-          onEventDrop={this.moveEvent}
-          resizable
-          onEventResize={this.resizeEvent}
-          defaultView="month"
           defaultDate={moment().toDate()}
-          onSelectEvent={this.selectEvent}
-          min={minTime}
-          max={maxTime}
+          defaultView="month"
+          // events={this.state.events}
+          localizer={localizer}
+          // onEventDrop={onEventDrop}
+          onEventResize={setResize}
+          resizable
+          style={{ height: "100vh", width: "150vh" }}
         />
-      </div>
-    );
-  }
+      </DndProvider >
+    </>
+  )
 }
-
-export default MyCalendar;

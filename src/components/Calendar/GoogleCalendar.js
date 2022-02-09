@@ -14,8 +14,8 @@ import Sidebar from "../Dashboard/Sidebar";
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CALENDAR_CLIENT_ID
 const API_KEY = process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
-console.log('CLIENT_ID', CLIENT_ID);
-console.log('API_KEY', API_KEY);
+// console.log('CLIENT_ID', CLIENT_ID);
+// console.log('API_KEY', API_KEY);
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
 const SCOPES =

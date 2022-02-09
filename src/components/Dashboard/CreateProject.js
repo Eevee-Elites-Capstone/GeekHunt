@@ -37,7 +37,6 @@ export default function CreateProject() {
   const [details, setDetails] = useState('')
   const [dueDate, setDueDate] = useState('')
   const [category, setCategory] = useState('')
-  const [status, setStatus] = useState('')
   const [assignedUsers, setAssignedUsers] = useState([])
   const [formError, setFormError] = useState(null)
 
@@ -82,13 +81,12 @@ export default function CreateProject() {
       details,
       assignedUsersList,
       createdBy,
-      status: status.value,
       category: category.value,
       dueDate: timestamp.fromDate(new Date(dueDate)),
       comments: []
     }
-    console.log(name, details, dueDate, category.value, assignedUsers, status)
-    console.log('project object', project);
+    // console.log(name, details, dueDate, category.value, assignedUsers)
+    // console.log('project object', project);
     /**Add document to firestore */
     await addDocument(project)
     if (!response.error) {
@@ -100,7 +98,7 @@ export default function CreateProject() {
   return (
     <div className="flex flex-row h-screen">
     <Sidebar/>
-    <div className="flex-auto flex-col bg-red-100 rounded-md h-screen">
+    <div className="flex-auto flex-col bg-slate-100 rounded-md h-screen">
       <div className="create-form flex flex-col items-center mt-12 mx-6 px-6 border rounded-xl shadow-lg h-4/5 bg-slate-50 overflow overflow-auto resize">
         <h2 className="page-title text-center text-6xl text-slate-600 font-mono font-extrabold uppercase mt-12">Create a new Project</h2>
         <form className="w-3/4 mb-24" onSubmit={handleSubmit}>
@@ -142,7 +140,7 @@ export default function CreateProject() {
                 className="w-1/2 mb-6 font-mono font-light"
               />
             </label>
-            <label>
+            {/* <label>
               <h1 className="font-mono font-semibold">Status</h1>
               <Select
                 onChange={(option) => setStatus(option)}
@@ -150,7 +148,7 @@ export default function CreateProject() {
                 placeholder="Status"
                 className="w-1/2 mb-6 font-mono font-light"
               />
-            </label>
+            </label> */}
             <label>
               <h1 className="font-mono font-semibold">Assign To:</h1>
               <Select
@@ -166,7 +164,6 @@ export default function CreateProject() {
             </button>
           </div>
 
-<div></div>
           {formError && <p className="error">{formError}</p>}
         </form>
       </div>
