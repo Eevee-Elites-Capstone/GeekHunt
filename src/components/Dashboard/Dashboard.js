@@ -20,7 +20,7 @@ export default function Dashboard() {
 
             {error && <p className="error">{error}</p>}
             {documents && <div className="bg-blue-100 border-slate-200 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md resize"><AllProjects projects={documents} /></div>}
-            {!documents && <p>No project to show</p>}
+            {!documents && <p>No projects to show</p>}
           {/* <div className="bg-green-200 border-slate-200 w-1/2 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md">
             Report
           </div> */}

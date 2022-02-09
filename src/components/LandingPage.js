@@ -4,7 +4,7 @@ import Navbar from "./UI/Navbar";
 
 const LandingPage = () => {
   return (
-    <div className="landingPage_container">
+    <div className="h-screen">
       <Navbar />
       {/* <div className="landingPage_header"></div> */}
       <div className="sm:flex flex-wrap justify-center text-center gap-8">
@@ -51,11 +51,11 @@ const LandingPage = () => {
       </div>
 
 
-      <div className="p-8 bg-white rounded-lg shadow">
+      <div className="p-8 mt-16 bg-white rounded-lg shadow">
         <p className="text-center text-5xl font-bold text-[#396EB0] pb-8">
           Professional team
         </p>
-        <div className="flex items-center flex-col md:flex-row justify evenly">
+        <div className="flex items-center justify-center flex-col md:flex-row justify evenly">
           <div className="p-4">
             <div className="text-center mb-4 opacity-90">
               <a href="#" className="block relative">
