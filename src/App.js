@@ -46,72 +46,72 @@ function App() {
                 <Route exact path="/landing">
                   <LandingPage />
                 </Route>
-              <Route exact path="/home">
-                {user ? <Home /> : <Redirect to="/signin" />}
-              </Route>
-              <Route path="/home" component={Home} />
-              <Route path="/signin">
-                <SignIn />
-              </Route>
-              <Route path="/signup">
-                {user ? <Redirect to="/" /> : <SignUp />}
-              </Route>
-              <Route exact path="/publicprofile/:id">
-                <PublicProfile />
-              </Route>
-              <Route exact path="/profile/:id">
-              {!user && <Redirect to="/signin" />}
-                <Profile />
-              </Route>
-              <Route exact path="/editprofile/:id">
-              {!user && <Redirect to="/signin" />}
-                <EditProfile />
-              </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-                {/* {user && <OnlineUsers />} */}
-              </Route>
-              <Route path="/createproject">
-                {!user && <Redirect to="/signin" />}
-                {user && <CreateProject />}
-              </Route>
-              <Route path="/projects/:id">
-                {!user && <Redirect to="/signin" />}
-                {user && <SingleProject />}
-              </Route>
-              <Route path="/fetchProfiles">
-                <FetchProfiles />
-              </Route>
-              <Route path="/calendar">
+                <Route exact path="/home">
+                  {user ? <Home /> : <Redirect to="/signin" />}
+                </Route>
+                <Route path="/home" component={Home} />
+                <Route path="/signin">
+                  <SignIn />
+                </Route>
+                <Route path="/signup">
+                  {user ? <Redirect to="/" /> : <SignUp />}
+                </Route>
+                <Route exact path="/publicprofile/:id">
+                  <PublicProfile />
+                </Route>
+                <Route exact path="/profile/:id">
+                  {!user && <Redirect to="/signin" />}
+                  <Profile />
+                </Route>
+                <Route exact path="/editprofile/:id">
+                  {!user && <Redirect to="/signin" />}
+                  <EditProfile />
+                </Route>
+                <Route path="/dashboard">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <Dashboard />}
+                </Route>
+                <Route path="/createproject">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <CreateProject />}
+                </Route>
+                <Route path="/projects/:id">
+                  {!user && <Redirect to="/signin" />}
+                  {user && <SingleProject />}
+                </Route>
+                <Route path="/fetchProfiles">
+                  <FetchProfiles />
+                </Route>
+                <Route path="/calendar">
                   {!user && <Redirect to="/signin" />}
                   {user && <GoogleCalendar />}
                 </Route>
-              <Route path="/mycalendar">
-                 {/* <MyCalendar/> */}
-                 <StaticCalendar/>
+                <Route path="/mycalendar">
+                  {/* <MyCalendar/> */}
+                  <StaticCalendar />
                 </Route>
-              <Route path="/transaction">
-                 <Transactions/>
+                <Route path="/transaction">
+                  <Transactions />
                 </Route>
-              <Route path="/messages">
-                <MessagingPage />
-              </Route>
-              <Route path="/conversations/:id">
-                {!user && <Redirect to="/login" />}
-                {user && <SingleConversation />}
-              </Route>
-              <Route path="/allconversations">
+                <Route path="/messages">
+                  <MessagingPage />
+                </Route>
+                <Route path="/conversations/:id">
+                  {!user && <Redirect to="/login" />}
+                  {user && <SingleConversation />}
+                </Route>
+                <Route path="/allconversations">
                   {!user && <Redirect to="/login" />}
                   {user && <AllConversations />}
-              </Route>
-              <Route exact path="/admin">
-                <AdminPanel />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        )}
-      </div>
-      <Footer />
+                </Route>
+                <Route exact path="/admin">
+                  <AdminPanel />
+                </Route>
+              </Switch>
+            </BrowserRouter>
+          )}
+        </div>
+        <Footer />
       </div>
     </>
   );

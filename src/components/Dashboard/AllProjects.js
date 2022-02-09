@@ -18,8 +18,8 @@ export default function AllProjects({ projects }) {
             </div>
             <Link to={`/projects/${project.id}`} key={project.id}>
               <div className="p-6" key={project.id}>
-                <h5 className="text-gray-900 text-xl font-medium mb-2">
-                  {project.name}</h5>
+                {/* <h5 className="text-gray-900 text-xl font-medium mb-2">
+                  {project.name}</h5> */}
                 <p className="text-gray-700 text-base mb-4">
                   {project.details}
                 </p>
