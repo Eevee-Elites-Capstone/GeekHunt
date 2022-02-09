@@ -19,49 +19,51 @@ export default function FetchProfiles() {
         {documents &&
           documents.map((user) => (
             <>
-            { user.isAGeek && ( 
-            <div
-              key={user.id}
-              className="bg-white font-semibold text-center ml-16 mb-12
+              {user.isAGeek && (
+                <div
+                  key={user.id}
+                  className="bg-white font-semibold text-center ml-16 mb-12
                 rounded-3xl border shadow-lg p-10 max-w-xs mt-5 bg-[#DADDFC]"
-            >
-              <div className="container mx-auto inline-block object-cover w-36 h-36">
-                {user.photoURL && (
-                  <img
-                    className="object-contain hover:object-scale-down rounded-full"
-                    src={user.photoURL}
-                    alt=""
-                  />
-                )}
-                {!user.photoURL && (
-                  <img
-                    className="object-contain hover:object-scale-down rounded-full"
-                    src="./default.png"
-                    alt="default"
-                  />
-                )}
-              </div>
-              <div className="text-2xl text-gray-700">
-                {user.displayName} {user.lastName}
-              </div>
-              <div className="text-xl text-gray-400 ">{user.jobTitle}</div>
-              <div>
-                <p className="text-[#FC997C] text-lg font-bold">Skills</p>
-                <ul className="container mx-auto grid grid-cols-2 gap-1 mb-6 text-lg">
-                  {user.skills &&
-                    user.skills.map &&
-                    user.skills.map((skill) => <li key={skill}>{skill}</li>)}
-                </ul>
-              </div>
-              <a
-                className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100
+                >
+                  <div className="container mx-auto inline-block object-cover w-36 h-36">
+                    {user.photoURL && (
+                      <img
+                        className="object-contain hover:object-scale-down rounded-full"
+                        src={user.photoURL}
+                        alt=""
+                      />
+                    )}
+                    {!user.photoURL && (
+                      <img
+                        className="object-contain hover:object-scale-down rounded-full"
+                        src="./default.png"
+                        alt="default"
+                      />
+                    )}
+                  </div>
+                  <div className="text-2xl text-gray-700">
+                    {user.displayName} {user.lastName}
+                  </div>
+                  <div className="text-xl text-gray-400 ">{user.jobTitle}</div>
+                  <div>
+                    <p className="text-[#FC997C] text-lg font-bold">Skills</p>
+                    <ul className="container mx-auto grid grid-cols-2 gap-1 mb-6 text-lg">
+                      {user.skills &&
+                        user.skills.map &&
+                        user.skills.map((skill) => (
+                          <li key={skill}>{skill}</li>
+                        ))}
+                    </ul>
+                  </div>
+                  <a
+                    className="bg-[#2E4C6D] px-8 py-2 rounded-3xl text-gray-100
                   font-semibold tracking-wide text-sm"
-                href={`/publicprofile/${user.id}`}
-              >
-                See My Profile
-              </a>
-            </div>
-            )}
+                    href={`/publicprofile/${user.id}`}
+                  >
+                    See My Profile
+                  </a>
+                </div>
+              )}
             </>
           ))}
       </div>
