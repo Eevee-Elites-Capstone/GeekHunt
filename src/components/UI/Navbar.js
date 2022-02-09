@@ -1,23 +1,158 @@
+// import React from "react";
+// import { useHistory } from "react-router-dom";
+// import { useDocument } from "../../hooks/useDocument";
+// import { useAuthContext } from "../../hooks/useAuthContext";
+// import { useSignout } from "../../hooks/useSignout";
+
+// function Navbar() {
+//   const { signout, isPending } = useSignout();
+//   const { user } = useAuthContext();
+//   const id = user ? user.uid : null;
+//   const { document } = useDocument("users", id);
+//   const history = useHistory();
+
+//   function handleLogout() {
+//     signout();
+//     history.push("/signin");
+//   }
+
+//   return (
+//     <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
+//       <div className="mb-2 px-3 sm:mb-0">
+//         <a href="/">
+//           <img
+//             className="sm:object-fill w-52 self-center"
+//             src="./Geek Hunt-logos_white.png"
+//             alt=""
+//           />
+//         </a>
+//       </div>
+//       <div className="absolute inset-y-0 right-0 px-3 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+//         {!user && (
+//           <>
+//             <a
+//               href="/landing"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Home
+//             </a>
+//             <a
+//               href="/fetchProfiles"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Profiles
+//             </a>
+//             <a
+//               href="/signin"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Sign In
+//             </a>
+//             <a
+//               href="/signup"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Sign Up
+//             </a>
+//           </>
+//         )}
+//         {user && (
+//           <div className="px-3">
+//             {user.displayName ? (
+//               <p
+//                 className="text-xl no-underline
+//               text-white"
+//               >
+//                 Hello, {user.displayName}!
+//               </p>
+//             ) : (
+//               <p
+//                 className="text-xl no-underline
+//               text-white"
+//               >
+//                 {" "}
+//                 Hello!
+//               </p>
+//             )}
+//             <a
+//               href="/landing"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Home
+//             </a>
+//             {document && document.isAGeek && (
+//               <a
+//                 href="/dashboard"
+//                 className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//               >
+//                 Dashboard
+//               </a>
+//             )}
+//             <a
+//               href="/fetchProfiles"
+//               className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//             >
+//               Profiles
+//             </a>
+//             {document && document.isAGeek && (
+//               <a
+//                 href={`/profile/${user.uid}`}
+//                 className="text-xl px-2 no-underline
+//             text-white hover:text-blue-dark ml-2"
+//               >
+//                 My Profile
+//               </a>
+//             )}
+//             {!isPending && (
+//               <button
+//                 className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
+//                 onClick={handleLogout}
+//               >
+//                 Sign Out
+//               </button>
+//             )}
+//             {isPending && (
+//               <button className="btn" disabled>
+//                 Logging out...
+//               </button>
+//             )}
+//           </div>
+//         )}
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useSignout } from "../../hooks/useSignout";
+import { useHistory } from "react-router-dom";
+
+//import { MenuItems } from './MenuItem'
 
 function Navbar() {
   const { signout, isPending } = useSignout();
   const { user } = useAuthContext();
-  const id = user ? user.uid : "JPiu2ngrV2fdaLl6zkX7YuvV4413";
-  const { document } = useDocument("users", id);
   const history = useHistory();
-
-  async function handleLogout() {
-    signout();
-    history.push("/signin");
-  }
+  
+  function handleLogout() {
+        signout();
+        history.push("/signin");
+      }
 
   return (
-    <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
+    <nav
+      className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]"
+    >
       <div className="mb-2 px-3 sm:mb-0">
         <a href="/">
           <img
@@ -27,33 +162,33 @@ function Navbar() {
           />
         </a>
       </div>
-      <div className="absolute inset-y-0 right-0 px-3 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <div className="absolute inset-y-0 right-0 flex items-center px-3 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {!user && (
           <>
             <a
               href="/landing"
-              className="text-xl px-2 no-underline
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/fetchProfiles"
-              className="text-xl px-2 no-underline
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             <a
               href="/signin"
-              className="text-xl px-2 no-underline
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Sign In
             </a>
             <a
               href="/signup"
-              className="text-xl px-2 no-underline
+              className="text-lg no-underline px-3
             text-white hover:text-blue-dark ml-2"
             >
               Sign Up
@@ -61,17 +196,17 @@ function Navbar() {
           </>
         )}
         {user && (
-          <div className="px-3">
+          <div className="">
             {user.displayName ? (
               <p
-                className="text-xl no-underline
+                className="text-md no-underline
               text-white"
               >
                 Hello, {user.displayName}!
               </p>
             ) : (
               <p
-                className="text-xl no-underline
+                className="text-md no-underline
               text-white"
               >
                 {" "}
@@ -80,31 +215,29 @@ function Navbar() {
             )}
             <a
               href="/landing"
-              className="text-xl px-2 no-underline
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
-            {document && document.isAGeek && (
-              <a
-                href="/dashboard"
-                className="text-xl px-2 no-underline
+            <a
+              href="/dashboard"
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
-              >
-                Dashboard
-              </a>
-            )}
+            >
+              Dashboard
+            </a>
             <a
               href="/fetchProfiles"
-              className="text-xl px-2 no-underline
+              className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
-            {document && document.isAGeek && (
+            {!user.isAGeek && (
               <a
                 href={`/profile/${user.uid}`}
-                className="text-xl px-2 no-underline
+                className="text-lg px-2 no-underline
             text-white hover:text-blue-dark ml-2"
               >
                 My Profile
@@ -112,7 +245,7 @@ function Navbar() {
             )}
             {!isPending && (
               <button
-                className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
+                className="text-lg pr-6 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}
               >
                 Sign Out
