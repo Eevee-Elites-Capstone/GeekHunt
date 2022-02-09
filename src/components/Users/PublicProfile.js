@@ -48,7 +48,7 @@ const PublicProfile = () => {
       <div className="flex justify-center">
         <div className="flex flex-auto flex-col h-screen w-3/4 bg-slate-100 p-16 ">
           <div className="flex flex-col  justify-center text-[#2E4C6D] tracking-tight rounded-xl shadow-lg bg-white ">
-            <div className="flex flex-row w-full align-content:center px-16 justify-between">
+            <div className="flex flex-row rounded-xl  md:flex-rows w-full h-80  border-[#396EB0] mt-2 p-4 shadow-lg bg-white justify-between">
               <div className="flex flex-col">
                 <h1 className="mb-2 mt-2 text-5xl font-bold tracking-tight">
                   {document.jobTitle}
