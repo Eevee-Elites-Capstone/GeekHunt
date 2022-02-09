@@ -49,26 +49,26 @@ const PublicProfile = () => {
         <div className="flex flex-auto flex-col h-screen w-3/4 bg-slate-100 p-16 ">
           <div className="flex flex-col  justify-center text-[#2E4C6D] tracking-tight rounded-xl shadow-lg bg-white ">
             <div className="flex flex-row w-full align-content:center px-16 justify-between">
-            <div className="flex flex-col">
-              <h1 className="mb-2 mt-2 text-5xl font-bold tracking-tight">
-                {document.jobTitle}
-              </h1>
-              <div className="flex justify-left items-center rounded-lg ">
-                <img
-                  src={document.photoURL}
-                  className="rounded-full w-24 shadow-lg mr-2"
-                  alt="Avatar"
-                />
-                <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
-                  {document.displayName} {document.lastName}
-                </p>
+              <div className="flex flex-col">
+                <h1 className="mb-2 mt-2 text-5xl font-bold tracking-tight">
+                  {document.jobTitle}
+                </h1>
+                <div className="flex justify-left items-center rounded-lg ">
+                  <img
+                    src={document.photoURL}
+                    className="rounded-full w-24 shadow-lg mr-2"
+                    alt="Avatar"
+                  />
+                  <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
+                    {document.displayName} {document.lastName}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex flex-col fw-1/2 mt-4 mb-4 rounded-lg shadow-lg border-5 bg-blue-50  w-1/3">
-                <div className="flex flex-col p-4">
-                  <h2 className="font-medium mb-4">Contact this Geek</h2>
-                  {user && (
+              {user && (
+                <div className="flex flex-col fw-1/2 mt-4 mb-4 rounded-lg shadow-lg border-5 bg-blue-50  w-1/3">
+                  <div className="flex flex-col p-4">
+                    <h2 className="font-medium mb-4">Contact this Geek</h2>
                     <form
                       className="w-1/3 flex flex-col "
                       onSubmit={handleSubmit}
@@ -89,9 +89,9 @@ const PublicProfile = () => {
                       />
                       <button type="submit">️SEND</button>
                     </form>
-                  )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
           </div>
