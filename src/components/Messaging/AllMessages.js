@@ -5,9 +5,10 @@ import { useFirestore } from "../../hooks/useFirestore"
 import Avatar from "../UI/Avatar"
 import Sidebar from "../Dashboard/Sidebar"
 import { Link } from "react-router-dom"
+
 export default function AllMessages({ conversation }) {
     const { user } = useAuthContext()
-    const { updateDocument, response } = useFirestore('conversations') //not sure what this does
+    const { updateDocument, response } = useFirestore('conversations') 
     const [newMessage, setNewMessage] = useState('')
 
     const handleSubmit = async (e) => {
@@ -22,7 +23,8 @@ export default function AllMessages({ conversation }) {
         }
 
         await updateDocument(conversation.id, {
-            messages: [...conversation.messages, messageToAdd]
+            messages: [...conversation.messages, messageToAdd],
+            updatedAt: timestamp.fromDate(new Date())
         })
         if (!response.error) {
             setNewMessage('')
