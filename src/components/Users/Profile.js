@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ const EditProfile = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument('users', user.uid);
 
+   const [showForm, setShowForm ]= useState(false)
 
 if(!document) {
   return (<div>"loader bar here "</div>)
@@ -18,7 +19,7 @@ if(!document) {
   return (
     <div>
       <Navbar/>
-      <div className="flex bg-gray-100 h-full justify-center w-screen pt-20">
+      <div className="flex bg-gray-100 h-full justify-center w-screen pt-10">
       <div className="flex flex-col sm:flex-col w-5/6 h-screen justify-center">
         <div className=" flex flex-col sm:flex-row w-full h-80">
 
@@ -28,9 +29,6 @@ if(!document) {
               className="rounded-full w-32 shadow-lg"
               alt="Avatar"
             />
-            <p>{document.displayName}</p>
-            <p>{document.jobTitle}</p>
-            <p>{document.email}</p>
 
               <Link to={`/editprofile/${user.uid}`}>
               <button className="h-10 w-full rounded-lg px-2 my-2  bg-[#DADDFC]">Edit Profile
@@ -42,12 +40,17 @@ if(!document) {
             </button>
           </Link>
           </div>
-
-          <Link to="/dashboard" className="h-10 w-1/2 sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-[#2E4C6D]">
+          <div className="text-xl font-bold">
+          <p>{document.displayName}</p>
+            <p>{document.jobTitle}</p>
+            <p>{document.email}</p>
+            <Link to="/dashboard" className="h-10 w-1/2 sm:w-1/4 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 bg-[#2E4C6D]">
             <button className="h-10 w-full text-white hover:color-red">
               My Dashboard
             </button>
           </Link>
+          </div>
+
 
         </div>
         <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 bg-[#DADDFC] mt-2 p-4">

@@ -42,13 +42,13 @@ const PublicProfile = () => {
   }
 
   return (
-    <div className="bg-white items-center justify-center">
+    <div className="flex flex-col bg-white justify-center">
       <Navbar />
-      <div className="mx-96">
+      <div className="flex flex-col px-40 w-full xl:px-70">
         <div className="flex flex-col justify-center">
-          <div className="flex flex-row justify-between rounded-xl  md:flex-rows w-full h-80  border-[#396EB0] mt-2 p-4 shadow-lg bg-white">
+          <div className="flex flex-row justify-between shadow-lg rounded-lg border-4 border-[#DADDFC]  md:flex-rows w-full h-80  mt-2 p-4 bg-white">
             <div className="flex flex-col bg-white">
-              <h1 className="mb-2 mt-2 text-5xl font-bold tracking-tight">
+              <h1 className="mb-2 mt-2 text-3xl font-bold tracking-tight">
                 {document.jobTitle}
               </h1>
               <div className="flex justify-left items-center rounded-lg ">
@@ -72,7 +72,7 @@ const PublicProfile = () => {
                     onSubmit={handleSubmit}
                   >
                     <input
-                      className="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 font-mono font-light text-gray-600 dark:text-gray-400 mb-1"
+                      className="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 font-mono font-light  text-gray-600 dark:text-gray-400 mb-1"
                       onChange={(e) => setNewTitle(e.target.value)}
                       value={newTitle}
                       placeholder="Title"
@@ -85,7 +85,7 @@ const PublicProfile = () => {
                       value={newMessage}
                       placeholder="First Message"
                     />
-                    <button type="submit" className="h-10 w-36 sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 text-white bg-[#396EB0]">️SEND</button>
+                    <button type="submit" className="h-10 w-36 sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 text-white bg-[#2E4C6D]">️SEND</button>
                   </form>
 
                 </div>
@@ -98,21 +98,15 @@ const PublicProfile = () => {
           </div>
 
         </div>
-        <div className="flex flex-col rounded-xl  md:flex-rows w-full h-80  border-[#396EB0] mt-2 p-4 shadow-lg bg-white">
+        <div className="flex flex-col md:flex-rows w-full h-90  shadow-lg rounded-lg border-4 border-[#DADDFC] mt-2 p-4  bg-white">
           <h2 className="text-xl font-bold">Past Projects</h2>
           <div className="flex flex-col rounded-md  md:flex-rows w-full h-80 bg-[#DADDFC] mt-2 p-4">
             <p>images or list of past projects / portfolio here</p>
           </div>
         </div>
 
-        <div className="flex flex-col rounded-xl  md:flex-rows w-full h-60 shadow-lg  mt-2 p-4 bg-white">
-          <h2 className="text-xl font-bold">About this Geek</h2>
-          <div className="flex flex-col rounded-lg  md:flex-rows w-full h-80  mt-2 p-4">
-            {document.description}
-          </div>
-        </div>
 
-        <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-60  mt-2 p-4 bg-white">
+        <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-40  mt-2 p-2 bg-white border-4 border-[#DADDFC]">
           <h2 className="text-xl font-bold">Skills</h2>
           <p
             className="rounded-lg m-2
@@ -121,12 +115,19 @@ const PublicProfile = () => {
               py-1.5
               text-base
               font-normal
-
               "
           >
             {document.skills}
           </p>
         </div>
+
+        <div className="flex flex-col rounded-xl border-4 border-[#DADDFC]  md:flex-rows w-full h-70 shadow-lg  mt-2 p-4 bg-white mb-4">
+          <h2 className="text-xl font-bold">About this Geek</h2>
+          <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60  mt-2 p-4">
+            {document.description}
+          </div>
+        </div>
+
       </div>
     </div >
   );

@@ -44,16 +44,11 @@ if(!document) {
 
 
   return (
-    <div className="bg-[#DADDFC] min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
-      <div className="py-32">
-      <div className="bg-gray-200 rounded-lg p-10 md:w-3/4 lg:w-1/2 mx-auto">
+      <div className="py-10">
+      <div className="rounded-xl border-4 border-[#DADDFC] p-10 md:w-3/4 lg:w-1/2 mx-auto">
         <div className="w-full  sm:text-right">
-          <Link to={`/publicprofile/${user.uid}`}>
-            <button className="h-10 w-full sm:w-1/3 rounded-lg px-2 my-2  bg-green-300">
-              see public Profile
-            </button>
-          </Link>
           <Link to={`/dashboard/${user.uid}`}>
             <button className="h-10 w-full sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 text-white bg-[#396EB0]">
               Dashboard
