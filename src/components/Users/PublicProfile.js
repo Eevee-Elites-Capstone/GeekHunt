@@ -18,8 +18,9 @@ const PublicProfile = () => {
 
   const handleClick = (e) => {
     if (!user) {
-      alert("You must create an account to contact this Geek");
-      history.push("/signin")
+      alert("YOU MUST SIGN IN");
+    } else {
+      setForm();
     }
   };
 
@@ -121,7 +122,6 @@ const PublicProfile = () => {
               py-1.5
               text-base
               font-normal
-
               "
           >
             {document.skills}
@@ -133,3 +133,5 @@ const PublicProfile = () => {
 };
 
 export default PublicProfile;
+
+
