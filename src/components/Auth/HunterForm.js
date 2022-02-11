@@ -5,17 +5,19 @@ import { signInWithGoogle } from "../../firebase/fbConfig";
 function HunterForm({ email, password, displayName, lastName }) {
   const { signup, isPending, error } = useHunterSignup();
   const [PersonalOrCompany, setFormType] = useState("");
+  const [location, setLocation] = useState("")
 
   const onFormTypeSelect = (type) => {
     return (e) => {
       e.preventDefault();
       setFormType(type);
+      console.log("seleted");
     };
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password, displayName, lastName, PersonalOrCompany);
+    signup(email, password, displayName, lastName, PersonalOrCompany, location);
   };
 
   return (
@@ -29,6 +31,15 @@ function HunterForm({ email, password, displayName, lastName }) {
           >
             Personal
           </button>
+          <input
+            className="shadow appearance-none border rounded w-full
+           py-2 px-3 text-gray-700 leading-tight focus:outline-none
+           focus:shadow-outline"
+            type="name"
+            onChange={e => setLocation(e.target.value)}
+            placeholder="Location"
+            value={location}
+          />
           <h1>Or</h1>
           <button
             className="px-4 py-2 rounded text-white inline-block
@@ -39,17 +50,12 @@ function HunterForm({ email, password, displayName, lastName }) {
           </button>
           <input
             className="shadow appearance-none border rounded w-full
-          py-2 px-3 text-gray-700 leading-tight focus:outline-none
-          focus:shadow-outline"
-            type="name"
-            placeholder="Company Name"
-          />
-          <input
-            className="shadow appearance-none border rounded w-full
            py-2 px-3 text-gray-700 leading-tight focus:outline-none
            focus:shadow-outline"
             type="name"
+            onChange={e => setLocation(e.target.value)}
             placeholder="Location"
+            value={location}
           />
           <div className="flex items-center justify-between">
             {!isPending && (

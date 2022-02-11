@@ -70,7 +70,7 @@ function GeekForm({ email, password, displayName, lastName }) {
                 Choose your profile picture
               </label>
               <label>
-                <input required type="file" onChange={handleFileChange} />
+                <input type="file" onChange={handleFileChange} />
                 {pictureError && <div className="error">{pictureError}</div>}
               </label>
             </div>
