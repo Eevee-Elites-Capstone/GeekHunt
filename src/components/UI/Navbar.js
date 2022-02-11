@@ -143,7 +143,7 @@ function Navbar() {
   const { signout, isPending } = useSignout();
   const { user } = useAuthContext();
   const history = useHistory();
-  
+
   function handleLogout() {
         signout();
         history.push("/signin");
@@ -151,8 +151,11 @@ function Navbar() {
 
   return (
     <nav
-      className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]"
+      className="flex items-center justify-between flex-wrap h-20 lg:h-20 bg-[#2E4C6D] z-40"
     >
+      {/* hellokdjsfjjklfsdnfgkjfdngkdfgfd
+      sdfgfdgdfsgfd
+      gdfgfdfgsdfgdfs */}
       <div className="mb-2 px-3 sm:mb-0">
         <a href="/">
           <img

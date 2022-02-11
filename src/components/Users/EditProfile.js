@@ -13,6 +13,7 @@ const EditProfile = () => {
   const [userInfo, setUserInfo ] = useState(document)
   const { deleteDocument, updateDocument } = useFirestore('users')
 
+
    const [updateMessage, setUpdateMessage] = useState("")
 
     useEffect(() => {
