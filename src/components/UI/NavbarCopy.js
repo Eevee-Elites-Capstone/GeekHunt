@@ -84,6 +84,15 @@ function Navbar() {
             >
               Home
             </a>
+            {document && document.isAGeek && (
+              <a
+                href="/dashboard"
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
+              >
+                Dashboard
+              </a>
+            )}
             <a
               href="/fetchProfiles"
               className="text-xl px-2 no-underline
@@ -92,22 +101,13 @@ function Navbar() {
               Profiles
             </a>
             {document && document.isAGeek && (
-              <>
-                <a
-                  href={`/profile/${user.uid}`}
-                  className="text-xl px-2 no-underline
-                text-white hover:text-blue-dark ml-2"
-                >
-                  My Profile
-                </a>
-                <a
-                  href="/dashboard"
-                  className="text-xl px-2 no-underline
-              text-white hover:text-blue-dark ml-2"
-                >
-                  Dashboard
-                </a>
-              </>
+              <a
+                href={`/profile/${user.uid}`}
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
+              >
+                My Profile
+              </a>
             )}
             {!isPending && (
               <button
