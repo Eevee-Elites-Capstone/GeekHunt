@@ -9,7 +9,8 @@ export const useAllConversations = (id) => {
   // realtime document data
   useEffect(() => {
     const conversationsRef = projectFirestore.collection('conversations')
-    let userConversations = conversationsRef.where('users', 'array-contains', id)
+    let userConversations = conversationsRef.where('users', 'array-contains', id).orderBy('updatedAt', 'desc')
+    //let orderedUserConversations = userConversations.orderBy('updatedAt')
     
     const unsubscribe = userConversations.onSnapshot(snapshot => {
       // need to make sure the doc exists & has data

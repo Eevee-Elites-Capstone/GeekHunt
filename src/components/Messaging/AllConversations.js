@@ -37,6 +37,7 @@ export default function AllConversations() {
       const conversationToCreate = {
         users: [newUser, user.uid],
         messages: [newMessage],
+        //createdAt: timestamp.fromDate(new Date()),
         createdAt: timestamp.fromDate(new Date()),
         updatedAt: timestamp.fromDate(new Date()),
         title: newTitle,

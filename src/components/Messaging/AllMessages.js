@@ -2,7 +2,7 @@ import { useState } from "react"
 import { timestamp } from "../../firebase/fbConfig"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
-import Avatar from "../UI/Avatar"
+// import Avatar from "../UI/Avatar"
 import Sidebar from "../Dashboard/Sidebar"
 import { Link } from "react-router-dom"
 
@@ -24,7 +24,7 @@ export default function AllMessages({ conversation }) {
 
         await updateDocument(conversation.id, {
             messages: [...conversation.messages, messageToAdd],
-            updatedAt: timestamp.fromDate(new Date())
+            updatedAt: timestamp.now()
         })
         if (!response.error) {
             setNewMessage('')
