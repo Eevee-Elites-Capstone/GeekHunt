@@ -18,7 +18,7 @@ if(!document) {
   return (
     <div>
       <Navbar />
-      <div className="flex bg-gray-100 justify-center w-screen h-screen">
+      <div className="flex bg-gray-100 justify-center w-screen">
         <div className="flex flex-col sm:flex-col w-5/6  justify-center text-center md:text-left text-gray-700">
           <div className=" flex flex-col sm:flex-row w-full sm:h-96 md:h-60 border-4 border-[#DADDFC] rounded-xl shadow-lg mt-4 p-6">
             <div className="flex flex-col justify-center items-center w-full sm:w-1/3 border-1  h-full rounded-lg">

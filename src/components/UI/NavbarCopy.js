@@ -17,107 +17,113 @@ function Navbar() {
   }
 
   return (
-    <nav className="bg-[#2E4C6D] text-white">
-      <div className=" flex flex-row justify-between max-w-6xl mx-auto px-4">
-      <div class="flex justify-center w-1/4 md:w-1/6 ">
-        <div class="flex items-center py-4 px-2">
-        <a href="/" className="flex">
+    <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
+      <div className="mb-2 px-3 sm:mb-0">
+        <a href="/">
           <img
-            alt="Logo" className="mr-2"
+            className="sm:object-fill w-52 self-center"
             src="./Geek Hunt-logos_white.png"
+            alt=""
           />
         </a>
-        </div>
       </div>
-      <div class="hidden md:flex items-center space-x-1">
+      <div className="absolute inset-y-0 right-0 px-3 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {!user && (
-          <div class="hidden md:flex items-center space-x-1">
+          <>
             <a
               href="/landing"
-              className="py-4 px-2 hover:text-[#FC997C] font-semibold"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             <a
               href="/fetchProfiles"
-              className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             <a
               href="/signin"
-              className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Sign In
             </a>
             <a
               href="/signup"
-              className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Sign Up
             </a>
-          </div>
+          </>
         )}
         {user && (
-          <div className="px-3 w-full">
+          <div className="px-3">
             {user.displayName ? (
               <p
-                className="py-4 px-2 font-semibold no-underline
-              text-white text-right"
+                className="text-xl no-underline
+              text-white"
               >
                 Hello!, {user.displayName}!
               </p>
             ) : (
               <p
-                className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+                className="text-xl no-underline
+              text-white"
               >
                 Hello!,
               </p>
             )}
             <a
               href="/landing"
-              className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Home
             </a>
             {document && document.isAGeek && (
               <a
                 href="/dashboard"
-                className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
               >
                 Dashboard
               </a>
             )}
             <a
               href="/fetchProfiles"
-              className="py-4 px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+              className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
             >
               Profiles
             </a>
             {document && document.isAGeek && (
               <a
                 href={`/profile/${user.uid}`}
-                className="px-2 font-semibold hover:text-[#FC997C] transition duration-300"
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
               >
                 My Profile
               </a>
             )}
             {!isPending && (
               <button
-                className=" px-2 font-semibold no-underline text-white hover:text-blue-dark ml-2"
+                className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}
               >
                 Sign Out
               </button>
             )}
             {isPending && (
-              <button className=" py-4 px-2 font-semibold hover:text-purple-500 transition duration-300" disabled>
+              <button className="btn" disabled>
                 Logging out...
               </button>
             )}
           </div>
         )}
-        </div>
       </div>
     </nav>
   );
