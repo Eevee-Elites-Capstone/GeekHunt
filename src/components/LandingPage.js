@@ -1,5 +1,6 @@
 import React from "react";
 import "./landingPage.css";
+import Table from "./UI/Table";
 import Navbar from "./UI/Navbar";
 
 const LandingPage = () => {
@@ -7,32 +8,36 @@ const LandingPage = () => {
     <>
       <Navbar />
       {/* <div className="landingPage_header"></div> */}
-      <div className="sm:flex flex-wrap justify-center text-center gap-8">
-        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
+      <div className="sm:flex flex-wrap justify-center text-center gap-12 px-4">
+        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-6 bg-white mt-8 mb-2 h-84 shadow-lg rounded-lg">
           <div className="flex-shrink-0">
-            <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
+            <div className="flex items-center mx-auto justify-center h-16 w-16 rounded-md text-white">
               <img src="./geek.png" alt="" />
             </div>
           </div>
           <h3 className="text-3xl sm:text-2xl text-[#FC997C] font-bold py-4">
             For Geeks
           </h3>
-          <p className="text-md  text-gray-500 py-4">
-          Hey, Geeks! This is a great place for you to land your dream jobs. We can help you connect to the best recruiter in the industry. You can also keep track on your projects with our specialize dashboard 🤟
+          <p className="text-lg text-gray-500 py-4">
+            Hey, Geeks! This is a great place for you to land your dream jobs.
+            We can help you connect to the best recruiter in the industry. You
+            can also keep track on your projects with our specialize dashboard
+            🤟
           </p>
         </div>
         {/* <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 sm:mt-16 md:mt-20 lg:mt-24 bg-white shadow-lg rounded-lg"> */}
-        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
+        <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-6 bg-white mt-8 mb-2 h-84 shadow-lg rounded-lg">
           <div className="flex-shrink-0">
-            <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md text-white">
+            <div className="flex items-center mx-auto justify-center h-16 w-16 rounded-md text-white">
               <img src="./hunter.png" alt="" />
             </div>
           </div>
           <h3 className="text-3xl sm:text-2xl text-[#FC997C] font-bold py-4">
             For Hunters
           </h3>
-          <p className="text-md  text-gray-500 py-4">
-          Hey, Hunters! Are you looking for a smart geek in your team? Let's sign up and explore!
+          <p className="text-lg  text-gray-500 py-4">
+            Hey, Hunters! Are you looking for a smart geek in your team? Let's
+            sign up and explore!
           </p>
         </div>
         {/* <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 h-84 shadow-lg rounded-lg">
@@ -49,9 +54,11 @@ const LandingPage = () => {
           </p>
         </div> */}
       </div>
+      <div>
+        <Table />
+      </div>
 
-
-      <div className="p-8 mt-16 bg-white rounded-lg shadow">
+      <div className="p-8 bg-white rounded-lg shadow">
         <p className="text-center text-5xl font-bold text-[#396EB0] pb-8">
           Professional team
         </p>
@@ -68,10 +75,12 @@ const LandingPage = () => {
             </div>
             <div className="text-center">
               <p className="text-2xl text-[#2E4C6D]">Trang Nguyen</p>
-              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
+              <p className="text-xl text-[#FC997C] font-light">
+                Fullstack Developer
+              </p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-              Trang Nguyen, born November 14, 1990 in Brive-la-Gaillarde,
-                is an imitator.
+                Trang Nguyen, born November 14, 1990 in Brive-la-Gaillarde, is
+                an imitator.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">
@@ -149,10 +158,12 @@ const LandingPage = () => {
             </div>
             <div className="text-center">
               <p className="text-2xl text-[#2E4C6D]">Melissa Molina</p>
-              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
+              <p className="text-xl text-[#FC997C] font-light">
+                Fullstack Developer
+              </p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-              Melissa Molina is an imitator, humorist, actor, born November 14,
-                1990 in Pontivy.
+                Melissa Molina is an imitator, humorist, actor, born November
+                14, 1990 in Pontivy.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">
@@ -230,10 +241,12 @@ const LandingPage = () => {
             </div>
             <div className="text-center">
               <p className="text-2xl text-[#2E4C6D]">Jack Wasilewski</p>
-              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
+              <p className="text-xl text-[#FC997C] font-light">
+                Fullstack Developer
+              </p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-              Jack Wasilewski, born November 4, 1993 in Saint hilaire de
-                riez, is css specialist.
+                Jack Wasilewski, born November 4, 1993 in Saint hilaire de riez,
+                is css specialist.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">
@@ -311,10 +324,12 @@ const LandingPage = () => {
             </div>
             <div className="text-center">
               <p className="text-2xl text-[#2E4C6D]">Anderson Bautista</p>
-              <p className="text-xl text-[#FC997C] font-light">Fullstack Developer</p>
+              <p className="text-xl text-[#FC997C] font-light">
+                Fullstack Developer
+              </p>
               <p className="text-md text-gray-500 max-w-xs py-4 font-light">
-              Anderson Bautista is an imitator, humorist, actor, born November 14,
-                1990 in Pontivy.
+                Anderson Bautista is an imitator, humorist, actor, born November
+                14, 1990 in Pontivy.
               </p>
             </div>
             <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">

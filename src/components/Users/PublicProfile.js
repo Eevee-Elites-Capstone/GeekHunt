@@ -18,8 +18,9 @@ const PublicProfile = () => {
 
   const handleClick = (e) => {
     if (!user) {
-      alert("You must create an account to contact this Geek");
-      history.push("/signin")
+      alert("YOU MUST SIGN IN");
+    } else {
+      setForm();
     }
   };
 
@@ -64,15 +65,12 @@ const PublicProfile = () => {
                 </div>
               </div>
 
-{user ? (
-                  
-
+              {user && (
                 <div className="flex flex-col fw-1/2 mt-4 mb-4 rounded-lg shadow-lg border-5 bg-blue-50  w-1/3">
                   <div className="flex flex-col p-4">
                     <h2 className="font-medium mb-4">Contact this Geek</h2>
-
                     <form
-                      className="w-fullflex flex-col "
+                      className="w-1/3 flex flex-col "
                       onSubmit={handleSubmit}
                     >
                       <input
@@ -83,19 +81,15 @@ const PublicProfile = () => {
                       />
 
                       <textarea
-                        className="border  border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 font-mono font-light text-gray-600 dark:text-gray-400 mb-6"
+                        className="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 font-mono font-light text-gray-600 dark:text-gray-400 mb-6"
                         required
                         onChange={(e) => setNewMessage(e.target.value)}
                         value={newMessage}
                         placeholder="First Message"
                       />
-                      <button type="submit" className="h-10 w-full sm:w-1/3 rounded-lg px-3 my-2 md:ml-5 sm:ml-5 text-white bg-[#396EB0]">️SEND</button>
+                      <button type="submit">️SEND</button>
                     </form>
-
-                  ) : <button className="h-10 w-full  rounded-lg px-3 text-white bg-[#396EB0]" onClick={handleClick}>Contact this geek</button>}
-
                   </div>
-
                 </div>
               )}
             </div>
@@ -124,7 +118,6 @@ const PublicProfile = () => {
               py-1.5
               text-base
               font-normal
-
               "
             >
               {document.skills}
@@ -137,3 +130,5 @@ const PublicProfile = () => {
 };
 
 export default PublicProfile;
+
+
