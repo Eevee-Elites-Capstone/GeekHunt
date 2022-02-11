@@ -41,14 +41,7 @@ export const useGeekSignup = () => {
       //upload user profile picture
       const userPic = picture ? picture : null
       const imgUrl = await getImageUrl(res.user.uid, userPic) 
-      // const uploadPath = `pictures/${res.user.uid}/${picture.displayName}`
-      // const img = await projectStorage.ref(uploadPath).put(picture)
-      
-      // const imgUrl = await img.ref.getDownloadURL()
-      debugger
-
-      // add display AND PHOTO_URL name to user
-      // const imgUrl = await getImageUrl(res.user.uid, userPic)
+     
 
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
 

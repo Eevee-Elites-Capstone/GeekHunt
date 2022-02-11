@@ -84,15 +84,6 @@ function Navbar() {
             >
               Home
             </a>
-            {document && document.isAGeek && (
-              <a
-                href="/dashboard"
-                className="text-xl px-2 no-underline
-            text-white hover:text-blue-dark ml-2"
-              >
-                Dashboard
-              </a>
-            )}
             <a
               href="/fetchProfiles"
               className="text-xl px-2 no-underline
@@ -101,13 +92,22 @@ function Navbar() {
               Profiles
             </a>
             {document && document.isAGeek && (
-              <a
-                href={`/profile/${user.uid}`}
-                className="text-xl px-2 no-underline
-            text-white hover:text-blue-dark ml-2"
-              >
-                My Profile
-              </a>
+              <>
+                <a
+                  href={`/profile/${user.uid}`}
+                  className="text-xl px-2 no-underline
+                text-white hover:text-blue-dark ml-2"
+                >
+                  My Profile
+                </a>
+                <a
+                  href="/dashboard"
+                  className="text-xl px-2 no-underline
+              text-white hover:text-blue-dark ml-2"
+                >
+                  Dashboard
+                </a>
+              </>
             )}
             {!isPending && (
               <button
@@ -136,12 +136,11 @@ export default Navbar;
 // import { useSignout } from "../../hooks/useSignout";
 // import { useHistory } from "react-router-dom";
 
-
 // function Navbar() {
 //   const { signout, isPending } = useSignout();
 //   const { user } = useAuthContext();
 //   const history = useHistory();
-  
+
 //   function handleLogout() {
 //         signout();
 //         history.push("/signin");

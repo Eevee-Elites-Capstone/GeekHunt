@@ -41,7 +41,6 @@ const Table = () => {
                relative
                z-10
                overflow-hidden
-               border border-primary border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -63,44 +62,16 @@ const Table = () => {
                 Step 1
               </p>
               <div className="mb-7">
-                <p className="text-base text-body-color leading-loose mb-1">
-                  1 User
+                <p className="text-base text-[#2E4C6D] leading-loose mb-1 font-bold">
+                Do you just want to see?
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  All UI components
+                Go to Profiles and see all of our geeks, if you are interested in contacting them just 
                 </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Lifetime access
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Free updates
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Use on 1 (one) project
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  3 Months support
+                <p className="text-body-color leading-loose font-bold text-lg">
+                Sign up.
                 </p>
               </div>
-              {/* <a
-                  href="javascript:void(0)"
-                  className="
-                  w-full
-                  block
-                  text-base
-                  font-semibold
-                  text-primary
-                  bg-transparent
-                  border border-[#D4DEFF]
-                  rounded-md
-                  text-center
-                  p-4
-                  hover:text-white hover:bg-primary hover:border-primary
-                  transition
-                  "
-                  >
-               Choose Personal
-               </a> */}
               <div>
                 <span className="absolute right-0 top-7 z-[-1]">
                   <svg
@@ -371,7 +342,6 @@ const Table = () => {
                relative
                z-10
                overflow-hidden
-               border border-primary border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -381,15 +351,6 @@ const Table = () => {
                mb-10
                "
             >
-              {/* <span className="text-primary font-semibold text-lg block mb-4">
-               Business
-               </span>
-               <h2 className="font-bold text-dark mb-5 text-[42px]">
-                  $199
-                  <span className="text-base text-body-color font-medium">
-                  / year
-                  </span>
-               </h2> */}
               <p
                 className="
                 text-3xl text-body-color text-[#FC997C]
@@ -402,23 +363,18 @@ const Table = () => {
                 Step 2
               </p>
               <div className="mb-7">
-                <p className="text-base text-body-color leading-loose mb-1">
-                  5 Users
+              <p className="text-base text-[#2E4C6D] leading-loose mb-1 font-bold">
+                  Are you a Hunter??
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  All UI components
+                Go to the profiles and see the work our geeks have done. If someone 
+                catches your attention you can contact them right here.
+                </p>
+                <p className="text-base text-[#2E4C6D] leading-loose mb-1 font-bold">
+                  Are you a Geek??
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  Lifetime access
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Free updates
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Use on 3 (Three) project
-                </p>
-                <p className="text-base text-body-color leading-loose mb-1">
-                  4 Months support
+                  Sign up, complete the profile and share, everyone can see your work.
                 </p>
               </div>
               <div>
@@ -691,7 +647,6 @@ const Table = () => {
                relative
                z-10
                overflow-hidden
-               border border-primary border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -701,15 +656,6 @@ const Table = () => {
                mb-10
                "
             >
-              {/* <span className="text-primary font-semibold text-lg block mb-4">
-               Professional
-               </span>
-               <h2 className="font-bold text-dark mb-5 text-[42px]">
-                  $256
-                  <span className="text-base text-body-color font-medium">
-                  / year
-                  </span>
-               </h2> */}
               <p
                 className="
                 text-3xl text-body-color text-[#FC997C]
@@ -722,23 +668,23 @@ const Table = () => {
                 Step 3
               </p>
               <div className="mb-7">
-                <p className="text-base text-body-color leading-loose mb-1">
-                  Unlimited Users
+                <p className="text-base text-[#2E4C6D] leading-loose mb-1 font-bold">
+                  In our Dashboard you can:
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  All UI components
+                  - Chat with others.
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  Lifetime access
+                  - Create new projects.
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  Free updates
+                  - Manage and show your projects
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  Use on Unlimited project
+                  - Save your transantion.
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  12 Months support
+                  - Found new Oportunities.
                 </p>
               </div>
               <div>

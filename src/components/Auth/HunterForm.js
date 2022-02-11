@@ -5,7 +5,7 @@ import { signInWithGoogle } from "../../firebase/fbConfig";
 function HunterForm({ email, password, displayName, lastName }) {
   const { signup, isPending, error } = useHunterSignup();
   const [PersonalOrCompany, setFormType] = useState("");
-  const [location, setLocation] = useState("")
+  const [location, setLocation] = useState("");
 
   const onFormTypeSelect = (type) => {
     return (e) => {
@@ -22,41 +22,58 @@ function HunterForm({ email, password, displayName, lastName }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="bg-white flex flex-col space-y-10 justify-center items-center">
+      <div className="bg-white flex flex-col space-y-10 justify-between">
         <div className="bg-white rounded pt-6 pb-8 mb-4">
-          <button
-            className="px-4 py-2 rounded text-white inline-block
+          <div className="flex items-center justify-between mb-4">
+            <button
+              className="px-4 py-2 rounded text-white inline-block
+            shadow-lg bg-[#396EB0] hover:bg-blue-500 focus:bg-blue-700"
+              onClick={onFormTypeSelect("Personal")}
+            >
+              Personal
+            </button>
+            <h1 className="text-[#FC997C] font-bold">Or</h1>
+            <button
+              className="px-4 py-2 rounded text-white inline-block
             shadow-lg bg-[#396EB0] hover:bg-blue-600 focus:bg-blue-700"
-            onClick={onFormTypeSelect("Personal")}
-          >
-            Personal
-          </button>
-          <input
-            className="shadow appearance-none border rounded w-full
-           py-2 px-3 text-gray-700 leading-tight focus:outline-none
-           focus:shadow-outline"
-            type="name"
-            onChange={e => setLocation(e.target.value)}
-            placeholder="Location"
-            value={location}
-          />
-          <h1>Or</h1>
-          <button
-            className="px-4 py-2 rounded text-white inline-block
-            shadow-lg bg-[#FC997C] hover:bg-blue-600 focus:bg-blue-700"
-            onClick={onFormTypeSelect("Company")}
-          >
-            Company
-          </button>
-          <input
-            className="shadow appearance-none border rounded w-full
-           py-2 px-3 text-gray-700 leading-tight focus:outline-none
-           focus:shadow-outline"
-            type="name"
-            onChange={e => setLocation(e.target.value)}
-            placeholder="Location"
-            value={location}
-          />
+              onClick={onFormTypeSelect("Company")}
+            >
+              Company
+            </button>
+          </div>
+          <div>
+            {PersonalOrCompany === "Company" && (
+              <>
+                <input
+                  className="shadow appearance-none border rounded w-full
+                py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                focus:shadow-outline"
+                  type="name"
+                  placeholder="Company Name"
+                />
+                <input
+                  className="shadow appearance-none border rounded w-full
+                 py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                 focus:shadow-outline mb-4"
+                  type="name"
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Location"
+                  value={location}
+                />
+              </>
+            )}
+            {PersonalOrCompany === "Personal" && (
+              <input
+                className="shadow appearance-none border rounded w-full
+                py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                focus:shadow-outline mb-4"
+                type="name"
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="Location"
+                value={location}
+              />
+            )}
+          </div>
           <div className="flex items-center justify-between">
             {!isPending && (
               <input
