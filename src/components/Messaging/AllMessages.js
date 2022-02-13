@@ -15,6 +15,7 @@ export default function AllMessages({ conversation }) {
         e.preventDefault();
 
         const messageToAdd = {
+            senderPhoto: user.photoURL,
             senderId: user.uid,
             senderName: user.displayName,
             message: newMessage,

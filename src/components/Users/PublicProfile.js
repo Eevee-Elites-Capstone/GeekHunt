@@ -26,9 +26,17 @@ const PublicProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const firstMessage = {
+      createdAt: timestamp.fromDate(new Date()),
+      id: Math.random(),
+      message: newMessage,
+      senderId: user.uid,
+      senderName: user.displayName
+    }
+
     const conversationToCreate = {
       users: [id, user.uid],
-      messages: [newMessage],
+      messages: [firstMessage],
       createdAt: timestamp.fromDate(new Date()),
       updatedAt: timestamp.fromDate(new Date()),
       title: newTitle,
