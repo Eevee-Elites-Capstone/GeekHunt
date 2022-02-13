@@ -35,6 +35,7 @@ const PublicProfile = () => {
     }
 
     const conversationToCreate = {
+      userNames: [user.displayName, document.displayName],
       users: [id, user.uid],
       messages: [firstMessage],
       createdAt: timestamp.fromDate(new Date()),
