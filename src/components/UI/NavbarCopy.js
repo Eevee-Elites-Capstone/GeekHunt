@@ -4,7 +4,7 @@ import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useSignout } from "../../hooks/useSignout";
 
-function Navbar() {
+function NavbarCopy() {
   const { signout, isPending } = useSignout();
   const { user } = useAuthContext();
   const id = user ? user.uid : undefined;
@@ -19,10 +19,10 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
       <div className="mb-2 px-3 sm:mb-0">
-        <a href="/" className="self-center">
+        <a href="/">
           <img
-            className="sm:object-fill w-56"
-            src="./Geek_Hunt-logos_white.png"
+            className="sm:object-fill w-52 self-center"
+            src="./Geek Hunt-logos_white.png"
             alt=""
           />
         </a>
@@ -67,7 +67,7 @@ function Navbar() {
                 className="text-xl no-underline
               text-white"
               >
-                Hello!, {user.displayName}
+                Hello!, {user.displayName}!
               </p>
             ) : (
               <p
@@ -84,6 +84,15 @@ function Navbar() {
             >
               Home
             </a>
+            {document && document.isAGeek && (
+              <a
+                href="/dashboard"
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
+              >
+                Dashboard
+              </a>
+            )}
             <a
               href="/fetchProfiles"
               className="text-xl px-2 no-underline
@@ -92,26 +101,15 @@ function Navbar() {
               Profiles
             </a>
             {document && document.isAGeek && (
-              <>
-                <a
-                  href={`/profile/${user.uid}`}
-                  className="text-xl px-2 no-underline
-                text-white hover:text-blue-dark ml-2"
-                >
-                  My Profile
-                </a>
-                
-              </>
+              <a
+                href={`/profile/${user.uid}`}
+                className="text-xl px-2 no-underline
+            text-white hover:text-blue-dark ml-2"
+              >
+                My Profile
+              </a>
             )}
-            <a
-                  href="/dashboard"
-                  className="text-xl px-2 no-underline
-              text-white hover:text-blue-dark ml-2"
-                >
-                  Dashboard
-                </a>
             {!isPending && (
-              
               <button
                 className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}
@@ -131,4 +129,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavbarCopy;

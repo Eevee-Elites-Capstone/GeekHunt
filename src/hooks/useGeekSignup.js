@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useDebugValue } from 'react'
 import { projectAuth, projectFirestore, projectStorage } from '../firebase/fbConfig'
 import { useAuthContext } from './useAuthContext'
 
@@ -14,15 +14,18 @@ export const useGeekSignup = () => {
     setError(null)
     setIsPending(true)
 
-    // const getImageUrl = async (uid, picture) => {
-    //   if (!picture) {
-    //     return Promise.resolve('/default.png')
-    //   }
+    const getImageUrl = async (uid, picture) => {
+      if (!picture) {
+        return Promise.resolve('/default.png')
+      }
 
-    //   const uploadPath = `pictures/${uid}/${picture}`
-    //   const img = await projectStorage.ref(uploadPath).put(picture)
-    //   return await img.ref.getDownloadURL()
-    // };
+      const uploadPath = decodeURIComponent(`pictures/${uid}/${picture.name.replaceAll(' ', '')}`)
+
+      const img = await projectStorage.ref(uploadPath).put(picture)
+      const downloadURL =  await img.ref.getDownloadURL()
+
+      return Promise.resolve(downloadURL)
+    };
 
     try {
       // signup
@@ -36,12 +39,10 @@ export const useGeekSignup = () => {
       }
       
       //upload user profile picture
-      // const userPic = picture ? picture.name : null
-      // const imgUrl = await getImageUrl(res.user.uid, userPic) 
-      const uploadPath = `pictures/${res.user.uid}/${picture.displayName}`
-      const img = await projectStorage.ref(uploadPath).put(picture)
-      const imgUrl = await img.ref.getDownloadURL()
-      // add display AND PHOTO_URL name to user
+      const userPic = picture ? picture : null
+      const imgUrl = await getImageUrl(res.user.uid, userPic) 
+     
+
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
 
        // create a user document

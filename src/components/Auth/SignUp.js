@@ -31,21 +31,21 @@ function SignUp() {
               Sign Up
             </div>
             <FormInput
-                label="First Name"
+                label="First Name *"
                 required
                 placeholder="First Name"
                 onChange={e => setDisplayName(e.target.value)}
                 value={displayName}
             />
             <FormInput
-                label="Last Name"
+                label="Last Name *"
                 required
                 placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
             />
             <FormInput 
-                label="Email"
+                label="Email *"
                 required
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -56,7 +56,7 @@ function SignUp() {
                 className="block text-[#FC997C] font-bold text-base mb-2"
                 htmlFor="password"
               >
-                Password
+                Password *
               </label>
               <input
                 className="shadow appearance-none border rounded 

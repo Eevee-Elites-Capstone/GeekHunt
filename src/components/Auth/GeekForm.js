@@ -70,12 +70,12 @@ function GeekForm({ email, password, displayName, lastName }) {
                 Choose your profile picture
               </label>
               <label>
-                <input required type="file" onChange={handleFileChange} />
+                <input type="file" onChange={handleFileChange} />
                 {pictureError && <div className="error">{pictureError}</div>}
               </label>
             </div>
               <FormInput
-                label="Job Title"
+                label="Job Title *"
                 required
                 placeholder="JobTitle"
                 onChange={e => setJobTitle(e.target.value)}
@@ -93,7 +93,6 @@ function GeekForm({ email, password, displayName, lastName }) {
                 name="description"
                 v-model="form.description"
                 type="description"
-                required
                 autoFocus
                 placeholder="Description"
                 onChange={(e) => setDescription(e.target.value)}
@@ -103,14 +102,12 @@ function GeekForm({ email, password, displayName, lastName }) {
               <SkillList onChange={(skills) => setSkills(skills)}/>
               <FormInput
                 label="LinkedIn Url"
-                required
                 placeholder="LinkedInUrl"
                 onChange={(e) => setLinkedInUrl(e.target.value)}
                 value={linkedInUrl}
               />
               <FormInput
                 label="GitHub Url"
-                required
                 placeholder="GitHubUrl"
                 onChange={(e) => setGitHubUrl(e.target.value)}
                 value={gitHubUrl}
@@ -134,6 +131,7 @@ function GeekForm({ email, password, displayName, lastName }) {
                 </button>
               )}
               {error && <p>{error}</p>}
+              <p className="text-[#FC997C] font-bold"> required *</p>
               <p
                 className="inline-block align-baseline font-normal
                 text-sm text-blue-500 hover:text-blue-800"
