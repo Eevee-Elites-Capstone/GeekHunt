@@ -2,18 +2,20 @@ import { useState } from "react"
 import { timestamp } from "../../firebase/fbConfig"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
-import Avatar from "../UI/Avatar"
+// import Avatar from "../UI/Avatar"
 import Sidebar from "../Dashboard/Sidebar"
 import { Link } from "react-router-dom"
+
 export default function AllMessages({ conversation }) {
     const { user } = useAuthContext()
-    const { updateDocument, response } = useFirestore('conversations') //not sure what this does
+    const { updateDocument, response } = useFirestore('conversations') 
     const [newMessage, setNewMessage] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const messageToAdd = {
+            senderPhoto: user.photoURL,
             senderId: user.uid,
             senderName: user.displayName,
             message: newMessage,
@@ -22,7 +24,8 @@ export default function AllMessages({ conversation }) {
         }
 
         await updateDocument(conversation.id, {
-            messages: [...conversation.messages, messageToAdd]
+            messages: [...conversation.messages, messageToAdd],
+            updatedAt: timestamp.now()
         })
         if (!response.error) {
             setNewMessage('')
@@ -35,8 +38,8 @@ export default function AllMessages({ conversation }) {
             <div className="flex flex-auto items-center justify-center">
                 <div className="bg-blue-100 h-5/6 w-3/4 shadow-xl rounded-xl flex-col overflow overflow-auto">
                 <div className="flex flex-row justify-between p-6">
-                    <h4 className="text-3xl font-bold ml-12 mt-4 "> Conversation Messages </h4>
-                    <Link to="/allconversations">
+                    <h4 className="text-3xl font-bold ml-12 mt-4 "> {conversation.title} with: {conversation.userNames.find(elem => elem !== user.displayName)}</h4>
+                    <Link to="/conversations">
                         <button type="submit" className=" border border-blue-600 rounded-full font-bold text-blue-600 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-3">
                             All Conversations
                             <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-6 stroke-current text-white stroke-2" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -44,9 +47,19 @@ export default function AllMessages({ conversation }) {
                     </Link></div>
                     <div className="flex flex-col px-12 justify-between">
                         <div className="flex flex-col m-6 overflow overflow-auto">
-                            {conversation.messages.length > 0 && conversation.messages.map(msg => (
-                                <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-transparent bg-yellow-50 shadow-md'>
+                            {conversation.messages.length > 0 && conversation.messages.map(msg => {
+                                if(msg.senderId === user.uid) return (
+                                <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-blue-500 shadow-md'>
+                                    <div className='ml-6'>
+                                        <p className="text-lg font-extrabold font-mono text-white">{msg.senderName} </p>
+                                    </div>
+                                    <div className='message-content text-white'>
+                                        <p> {msg.message} </p>
+                                    </div>
 
+                                </div>)
+                                else return (
+                                <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-transparent bg-yellow-50 shadow-md justify-center'>
                                     <div className='ml-6'>
                                         <p className="text-lg font-extrabold font-mono">{msg.senderName} </p>
                                     </div>
@@ -54,8 +67,8 @@ export default function AllMessages({ conversation }) {
                                         <p> {msg.message} </p>
                                     </div>
 
-                                </div>
-                            ))}
+                                </div>)
+                                })}
 
                             <form className="flex flex-col pt-6" onSubmit={handleSubmit}>
                                 <textarea

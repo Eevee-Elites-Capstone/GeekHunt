@@ -1,9 +1,10 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Navbar from "../UI/Navbar";
 import { projectFirestore, timestamp } from "../../firebase/fbConfig";
+import { useAllConversations } from '../../hooks/useAllConversations'
 import Swiper from 'swiper/bundle';
 import "./publicProfile.css"
 import 'swiper/css/bundle';
@@ -41,11 +42,23 @@ const PublicProfile = () => {
   const [newMessage, setNewMessage] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const conversationsRef = projectFirestore.collection("conversations");
+  const { selectedConvo, convoError } = useAllConversations(user.uid)
+  let finalCheck = false;
+
+  if(selectedConvo){
+    let checkConvos = selectedConvo.map(elem => {
+      return elem.users.includes(id)
+    })
+    finalCheck = checkConvos.includes(true)
+  } 
 
   const handleClick = (e) => {
     if (!user) {
       alert("You must create an account to contact this Geek");
       history.push("/signin")
+    }else if (finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/conversations")
     } else {
       formView = !formView;
       setShowForm(formView)
@@ -55,16 +68,31 @@ const PublicProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/conversations")
+    }
+    else{
+      const firstMessage = {
+        createdAt: timestamp.fromDate(new Date()),
+        id: Math.random(),
+        message: newMessage,
+        senderId: user.uid,
+        senderName: user.displayName
+      }
 
-    const conversationToCreate = {
-      users: [id, user.uid],
-      messages: [newMessage],
-      createdAt: timestamp.fromDate(new Date()),
-      updatedAt: timestamp.fromDate(new Date()),
-      title: newTitle,
-    };
-    await conversationsRef.add(conversationToCreate);
-    history.push("/allconversations")
+      const conversationToCreate = {
+        userNames: [user.displayName, document.displayName],
+        users: [id, user.uid],
+        messages: [firstMessage],
+        createdAt: timestamp.fromDate(new Date()),
+        updatedAt: timestamp.fromDate(new Date()),
+        title: newTitle,
+      };
+      await conversationsRef.add(conversationToCreate);
+      history.push("/conversations")
+    }
+    
   };
 
   if (!document) {
@@ -76,7 +104,7 @@ const PublicProfile = () => {
       <Navbar />
       <div className="flex flex-col justify-center px-5 md:px-16 w-full xl:px-80 z-10 text-gray-700">
         <div className="flex flex-col justify-center">
-          <div className="flex flex-row justify-center   md:flex-rows mdw-3/4 lg:h-70  mt-2 p-4 border-8 border-[#DADDFC] rounded-xl shadow-lg">
+          <div className="flex flex-row justify-center md:flex-rows mdw-3/4 lg:h-70  mt-2 p-4 border-8 border-[#DADDFC] rounded-xl shadow-lg">
             <div className="flex flex-col lg:flex-row items-center">
               <div className="flex md:justify-left items-center rounded-lg">
                 <img
@@ -118,7 +146,7 @@ const PublicProfile = () => {
                   alt="Avatar"
                 />
                 </div>
-                <div class="swiper-slide object-cover ">
+                <div className="swiper-slide object-cover ">
                 <img
                   src={photos[1]}
                   className="object-cover w-full h-96 z-0"
@@ -141,7 +169,6 @@ const PublicProfile = () => {
             </div>
           </div>
         </div>
-
         <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-40  mt-2 p-2 bg-white border-4 border-[#DADDFC]">
           <h2 className="text-xl font-bold">Skills</h2>
           <p className="rounded-lg m-2 w-full h-fullpy-1.5 text-base font-normal">
@@ -191,20 +218,7 @@ const PublicProfile = () => {
             </div>
           </div>
         ) : null}
-        <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-60  mt-2 p-4 bg-white">
-          <h2 className="text-xl font-bold">Skills</h2>
-          <p
-            className="rounded-lg m-2
-              w-full
-              h-full
-              py-1.5
-              text-base
-              font-normal
-              "
-          >
-            {document.skills}
-          </p>
-        </div>
+
       </div>
     </>
   );

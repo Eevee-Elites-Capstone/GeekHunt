@@ -19,10 +19,10 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between flex-wrap h-32 bg-[#2E4C6D]">
       <div className="mb-2 px-3 sm:mb-0">
-        <a href="/">
+        <a href="/" className="self-center">
           <img
-            className="sm:object-fill w-52 self-center"
-            src="./Geek Hunt-logos_white.png"
+            className="sm:object-fill w-56"
+            src="./Geek_Hunt-logos_white.png"
             alt=""
           />
         </a>
@@ -67,7 +67,7 @@ function Navbar() {
                 className="text-xl no-underline
               text-white"
               >
-                Hello!, {user.displayName}!
+                Hello!, {user.displayName}
               </p>
             ) : (
               <p
@@ -100,16 +100,18 @@ function Navbar() {
                 >
                   My Profile
                 </a>
-                <a
+                
+              </>
+            )}
+            <a
                   href="/dashboard"
                   className="text-xl px-2 no-underline
               text-white hover:text-blue-dark ml-2"
                 >
                   Dashboard
                 </a>
-              </>
-            )}
             {!isPending && (
+              
               <button
                 className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}
