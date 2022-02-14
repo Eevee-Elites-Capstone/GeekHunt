@@ -4,46 +4,65 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link, useParams, useHistory } from "react-router-dom";
 import Navbar from "../UI/Navbar";
 import { projectFirestore, timestamp } from "../../firebase/fbConfig";
+import { useAllConversations } from '../../hooks/useAllConversations'
 
 const PublicProfile = () => {
   const { id } = useParams();
   let history = useHistory();
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", id);
-  const [form, setForm] = useState("");
 
   const [newMessage, setNewMessage] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const conversationsRef = projectFirestore.collection("conversations");
+  const { selectedConvo, convoError } = useAllConversations(user.uid)
+  console.log('Convos recieved: ', selectedConvo)
+  let finalCheck = false;
+
+  if(selectedConvo){
+    let checkConvos = selectedConvo.map(elem => {
+      return elem.users.includes(id)
+    })
+    finalCheck = checkConvos.includes(true)
+  } 
 
   const handleClick = (e) => {
     if (!user) {
       alert("You must create an account to contact this Geek");
       history.push("/signin")
+    }else if (finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/allconversations")
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const firstMessage = {
-      createdAt: timestamp.fromDate(new Date()),
-      id: Math.random(),
-      message: newMessage,
-      senderId: user.uid,
-      senderName: user.displayName
+    if(finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/allconversations")
     }
+    else{
+      const firstMessage = {
+        createdAt: timestamp.fromDate(new Date()),
+        id: Math.random(),
+        message: newMessage,
+        senderId: user.uid,
+        senderName: user.displayName
+      }
 
-    const conversationToCreate = {
-      userNames: [user.displayName, document.displayName],
-      users: [id, user.uid],
-      messages: [firstMessage],
-      createdAt: timestamp.fromDate(new Date()),
-      updatedAt: timestamp.fromDate(new Date()),
-      title: newTitle,
-    };
-    await conversationsRef.add(conversationToCreate);
-    history.push("/allconversations")
+      const conversationToCreate = {
+        userNames: [user.displayName, document.displayName],
+        users: [id, user.uid],
+        messages: [firstMessage],
+        createdAt: timestamp.fromDate(new Date()),
+        updatedAt: timestamp.fromDate(new Date()),
+        title: newTitle,
+      };
+      await conversationsRef.add(conversationToCreate);
+      history.push("/allconversations")
+    }
+    
   };
 
   if (!document) {

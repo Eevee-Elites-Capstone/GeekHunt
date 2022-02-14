@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { projectFirestore } from "../firebase/fbConfig"
 
 export const useAllConversations = (id) => {
-  const [document, setDocument] = useState(null)
-  const [error, setError] = useState(null)
+  const [selectedConvo, setSelectedConvo] = useState(null)
+  const [convoError, setConvoError] = useState(null)
   
   console.log(id)
   // realtime document data
@@ -18,20 +18,20 @@ export const useAllConversations = (id) => {
         snapshot.docs.forEach(doc => {
           results.push({...doc.data(), id: doc.id})
         })
-        setDocument(results)
-        setError(null)
+        setSelectedConvo(results)
+        setConvoError(null)
       }
       else {
-        setError('No such document exists')
+        setConvoError('No such document exists')
       }
     }, err => {
       console.log(err.message)
-      setError('failed to get document')
+      setConvoError('failed to get document')
     })
     
     return () => unsubscribe()
     
   }, [id])
 
-  return { document, error }
+  return { selectedConvo, convoError }
 }

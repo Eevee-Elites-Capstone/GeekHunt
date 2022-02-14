@@ -9,12 +9,12 @@ import Sidebar from "../Dashboard/Sidebar"
 
 export default function AllConversations() {
   const { user } = useAuthContext()
-  const { document, error } = useAllConversations(user.uid)
+  const { selectedConvo, convoError } = useAllConversations(user.uid)
 
-  if (error) {
-    return <div className="error">{error}</div>
+  if (convoError) {
+    return <div className="error">{convoError}</div>
   }
-  else if (!document) {
+  else if (!selectedConvo) {
     return <div className="loading">Loading...</div>
   }
   else {
@@ -26,7 +26,7 @@ export default function AllConversations() {
           <div className="bg-blue-100 h-4/5 w-3/4 shadow-xl rounded-xl flex-col m-6 overflow overflow-auto resize">
             <div className="flex flex-col ml-8 p-6 justify-between">
               <h3 className="text-3xl font-bold "> All Conversations </h3>
-              {document.map(conv => (
+              {selectedConvo.map(conv => (
                 <Link to={`/conversations/${conv.id}`} key={conv.id}>
                   <div class="p-2" key={conv.id}>
                     <div class="inline-flex items-center bg-white leading-none text-purple-600 rounded-full p-2 shadow text-teal text-sm w-5/6">
