@@ -66,7 +66,7 @@ const Table = () => {
                 Do you just want to see?
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                Go to Profiles and see all of our geeks, if you are interested in contacting them just 
+                Go to Profiles and see all of our geeks, if you are interested in contacting them just
                 </p>
                 <p className="text-body-color leading-loose font-bold text-lg">
                 Sign up.
@@ -367,7 +367,7 @@ const Table = () => {
                   Are you a Hunter??
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                Go to the profiles and see the work our geeks have done. If someone 
+                Go to the profiles and see the work our geeks have done. If someone
                 catches your attention you can contact them right here.
                 </p>
                 <p className="text-base text-[#2E4C6D] leading-loose mb-1 font-bold">
@@ -681,10 +681,10 @@ const Table = () => {
                   - Manage and show your projects
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  - Save your transantion.
+                  - Save your transactions.
                 </p>
                 <p className="text-base text-body-color leading-loose mb-1">
-                  - Found new Oportunities.
+                  - Find new Opportunities.
                 </p>
               </div>
               <div>

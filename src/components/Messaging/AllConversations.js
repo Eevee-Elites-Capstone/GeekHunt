@@ -22,8 +22,8 @@ export default function AllConversations() {
     return (
       <div className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-auto bg-white-200 items-center justify-center">
-          <div className="bg-blue-100 h-4/5 w-3/4 shadow-xl rounded-xl flex-col m-6 overflow overflow-auto resize">
+        <div className="flex flex-auto bg-white-200 justify-center">
+          <div className="bg-blue-100 h-screen w-3/4 shadow-xl rounded-xl flex-col m-6 overflow overflow-auto resize">
             <div className="flex flex-col ml-8 p-6 justify-between">
               <h3 className="text-3xl font-bold "> All Conversations </h3>
               {selectedConvo.map(conv => (
