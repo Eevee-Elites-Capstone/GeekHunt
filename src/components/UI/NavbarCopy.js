@@ -4,7 +4,7 @@ import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useSignout } from "../../hooks/useSignout";
 
-function Navbar() {
+function NavbarCopy() {
   const { signout, isPending } = useSignout();
   const { user } = useAuthContext();
   const id = user ? user.uid : undefined;
@@ -129,4 +129,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavbarCopy;

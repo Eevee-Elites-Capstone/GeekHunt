@@ -76,7 +76,7 @@ const PublicProfile = () => {
       <Navbar />
       <div className="flex flex-col justify-center px-5 md:px-16 w-full xl:px-80 z-10 text-gray-700">
         <div className="flex flex-col justify-center">
-          <div className="flex flex-row justify-center   md:flex-rows mdw-3/4 lg:h-70  mt-2 p-4 border-8 border-[#DADDFC] rounded-xl shadow-lg">
+          <div className="flex flex-row justify-center md:flex-rows mdw-3/4 lg:h-70  mt-2 p-4 border-8 border-[#DADDFC] rounded-xl shadow-lg">
             <div className="flex flex-col lg:flex-row items-center">
               <div className="flex md:justify-left items-center rounded-lg">
                 <img
@@ -118,7 +118,7 @@ const PublicProfile = () => {
                   alt="Avatar"
                 />
                 </div>
-                <div class="swiper-slide object-cover ">
+                <div className="swiper-slide object-cover ">
                 <img
                   src={photos[1]}
                   className="object-cover w-full h-96 z-0"
@@ -141,7 +141,6 @@ const PublicProfile = () => {
             </div>
           </div>
         </div>
-
         <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-40  mt-2 p-2 bg-white border-4 border-[#DADDFC]">
           <h2 className="text-xl font-bold">Skills</h2>
           <p className="rounded-lg m-2 w-full h-fullpy-1.5 text-base font-normal">
