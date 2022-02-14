@@ -39,7 +39,7 @@ export default function AllMessages({ conversation }) {
                 <div className="bg-blue-100 h-5/6 w-3/4 shadow-xl rounded-xl flex-col overflow overflow-auto">
                 <div className="flex flex-row justify-between p-6">
                     <h4 className="text-3xl font-bold ml-12 mt-4 "> {conversation.title} with: {conversation.userNames.find(elem => elem !== user.displayName)}</h4>
-                    <Link to="/allconversations">
+                    <Link to="/conversations">
                         <button type="submit" className=" border border-blue-600 rounded-full font-bold text-blue-600 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-3">
                             All Conversations
                             <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-6 stroke-current text-white stroke-2" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>

@@ -31,7 +31,7 @@ const PublicProfile = () => {
       history.push("/signin")
     }else if (finalCheck === true){
       alert("You already have a conversation with this user")
-      history.push("/allconversations")
+      history.push("/conversations")
     }
   };
 
@@ -39,7 +39,7 @@ const PublicProfile = () => {
     e.preventDefault();
     if(finalCheck === true){
       alert("You already have a conversation with this user")
-      history.push("/allconversations")
+      history.push("/conversations")
     }
     else{
       const firstMessage = {
@@ -59,7 +59,7 @@ const PublicProfile = () => {
         title: newTitle,
       };
       await conversationsRef.add(conversationToCreate);
-      history.push("/allconversations")
+      history.push("/conversations")
     }
     
   };
