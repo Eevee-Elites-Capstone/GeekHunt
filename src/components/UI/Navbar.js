@@ -67,7 +67,7 @@ function Navbar() {
                 className="text-xl no-underline
               text-white"
               >
-                Hello!, {user.displayName}
+                Hello, {user.displayName}!
               </p>
             ) : (
               <p
@@ -100,7 +100,7 @@ function Navbar() {
                 >
                   My Profile
                 </a>
-                
+
               </>
             )}
             <a
@@ -111,7 +111,7 @@ function Navbar() {
                   Dashboard
                 </a>
             {!isPending && (
-              
+
               <button
                 className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}

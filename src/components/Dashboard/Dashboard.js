@@ -19,7 +19,7 @@ export default function Dashboard() {
         <div className="flex flex-row p-4 space-x-6 h-4/5 justify-center items-center ">
 
             {error && <p className="error">{error}</p>}
-            {documents && <div className="bg-blue-100 border-slate-200 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md max-w-screen-xl max-h-full resize"><AllProjects projects={documents} /></div>}
+            {documents && <div className="bg-blue-100 border-slate-200 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md md:w-3/4 md:max-w-screen-xl md:h-3/4 md:max-h-screen-lg resize"><AllProjects projects={documents} /></div>}
             {!documents && <p>No project to show</p>}
           {/* <div className="bg-green-200 border-slate-200 w-1/2 p-8 flex-wrap overflow overflow-auto rounded-3xl shadow-md">
             Report
