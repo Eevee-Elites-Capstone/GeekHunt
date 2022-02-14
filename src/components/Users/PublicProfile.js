@@ -191,20 +191,7 @@ const PublicProfile = () => {
             </div>
           </div>
         ) : null}
-        <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-60  mt-2 p-4 bg-white">
-          <h2 className="text-xl font-bold">Skills</h2>
-          <p
-            className="rounded-lg m-2
-              w-full
-              h-full
-              py-1.5
-              text-base
-              font-normal
-              "
-          >
-            {document.skills}
-          </p>
-        </div>
+
       </div>
     </>
   );
