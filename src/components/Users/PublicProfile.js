@@ -1,7 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Navbar from "../UI/Navbar";
 import { projectFirestore, timestamp } from "../../firebase/fbConfig";
 import { useAllConversations } from '../../hooks/useAllConversations'
@@ -16,7 +16,6 @@ const PublicProfile = () => {
   const [newTitle, setNewTitle] = useState("");
   const conversationsRef = projectFirestore.collection("conversations");
   const { selectedConvo, convoError } = useAllConversations(user.uid)
-  console.log('Convos recieved: ', selectedConvo)
   let finalCheck = false;
 
   if(selectedConvo){

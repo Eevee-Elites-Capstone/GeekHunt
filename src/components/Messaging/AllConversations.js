@@ -30,8 +30,7 @@ export default function AllConversations() {
                 <Link to={`/conversations/${conv.id}`} key={conv.id}>
                   <div class="p-2" key={conv.id}>
                     <div class="inline-flex items-center bg-white leading-none text-purple-600 rounded-full p-2 shadow text-teal text-sm w-5/6">
-                      <span class="inline-flex bg-blue-600 text-white rounded-full h-6 px-3 justify-center items-center">{conv.title}</span>
-                      <span class="inline-flex px-2">{conv.userNames.find(elem => elem !== user.displayName)}</span>
+                      <span class="inline-flex bg-blue-600 text-white rounded-full h-6 px-3 justify-center items-center">{conv.title} with {conv.userNames.find(elem => elem !== user.displayName)}</span>
                       <span class="inline-flex px-2">{conv.messages.at(-1).message}</span>
                     </div>
                   </div>

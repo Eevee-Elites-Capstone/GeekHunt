@@ -51,9 +51,9 @@ export default function AllMessages({ conversation }) {
                                 if(msg.senderId === user.uid) return (
                                 <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-blue-500 shadow-md'>
                                     <div className='ml-6'>
-                                        <p className="text-lg font-extrabold font-mono">{msg.senderName} </p>
+                                        <p className="text-lg font-extrabold font-mono text-white">{msg.senderName} </p>
                                     </div>
-                                    <div className='message-content'>
+                                    <div className='message-content text-white'>
                                         <p> {msg.message} </p>
                                     </div>
 

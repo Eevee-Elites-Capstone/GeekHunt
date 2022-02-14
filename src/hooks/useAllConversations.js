@@ -5,7 +5,6 @@ export const useAllConversations = (id) => {
   const [selectedConvo, setSelectedConvo] = useState(null)
   const [convoError, setConvoError] = useState(null)
   
-  console.log(id)
   // realtime document data
   useEffect(() => {
     const conversationsRef = projectFirestore.collection('conversations')

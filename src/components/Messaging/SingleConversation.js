@@ -8,7 +8,6 @@ import { firebase, projectFirestore, timestamp } from '../../firebase/fbConfig';
 import { useAuthContext } from "../../hooks/useAuthContext"
 
 export default function SingleConversation() {
-  const { user } = useAuthContext()
   const { id } = useParams()
   const { document, error } = useDocument('conversations', id)
   if (error) {
