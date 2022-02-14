@@ -1,6 +1,4 @@
 import  {firebase, projectFirestore, projectAuth} from '../firebase/fbConfig';
-import { useState, useEffect } from 'react'
-import { useAuthContext } from './useAuthContext'
 
 // const auth = firebase.auth();
 // const firestore = firebase.firestore();

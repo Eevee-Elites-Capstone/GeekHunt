@@ -15,7 +15,6 @@ import AllProjects from './components/Dashboard/AllProjects';
 import SingleProject from './components/Dashboard/SingleProject';
 import EditProfile from './components/Users/EditProfile';
 import FetchProfiles from './components/Home/FetchProfiles';
-import MessagingPage from './components/Messaging/MessagingPage'
 import SingleConversation from './components/Messaging/SingleConversation'
 import AdminPanel from './components/admin/adminPanel';
 import GoogleCalendar from './components/Calendar/GoogleCalendar';
@@ -93,14 +92,11 @@ function App() {
                 <Route path="/transaction">
                   <Transactions />
                 </Route>
-                <Route path="/messages">
-                  <MessagingPage />
-                </Route>
                 <Route path="/conversations/:id">
                   {!user && <Redirect to="/login" />}
                   {user && <SingleConversation />}
                 </Route>
-                <Route path="/allconversations">
+                <Route exact path="/conversations">
                   {!user && <Redirect to="/login" />}
                   {user && <AllConversations />}
                 </Route>

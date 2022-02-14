@@ -100,16 +100,18 @@ function Navbar() {
                 >
                   My Profile
                 </a>
-                <a
+                
+              </>
+            )}
+            <a
                   href="/dashboard"
                   className="text-xl px-2 no-underline
               text-white hover:text-blue-dark ml-2"
                 >
                   Dashboard
                 </a>
-              </>
-            )}
             {!isPending && (
+              
               <button
                 className="text-xl px-2 no-underline text-white hover:text-blue-dark ml-2"
                 onClick={handleLogout}

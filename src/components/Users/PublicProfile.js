@@ -1,9 +1,10 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Navbar from "../UI/Navbar";
 import { projectFirestore, timestamp } from "../../firebase/fbConfig";
+import { useAllConversations } from '../../hooks/useAllConversations'
 import Swiper from 'swiper/bundle';
 import "./publicProfile.css"
 import 'swiper/css/bundle';
@@ -41,11 +42,23 @@ const PublicProfile = () => {
   const [newMessage, setNewMessage] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const conversationsRef = projectFirestore.collection("conversations");
+  const { selectedConvo, convoError } = useAllConversations(user.uid)
+  let finalCheck = false;
+
+  if(selectedConvo){
+    let checkConvos = selectedConvo.map(elem => {
+      return elem.users.includes(id)
+    })
+    finalCheck = checkConvos.includes(true)
+  } 
 
   const handleClick = (e) => {
     if (!user) {
       alert("You must create an account to contact this Geek");
       history.push("/signin")
+    }else if (finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/conversations")
     } else {
       formView = !formView;
       setShowForm(formView)
@@ -55,16 +68,31 @@ const PublicProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(finalCheck === true){
+      alert("You already have a conversation with this user")
+      history.push("/conversations")
+    }
+    else{
+      const firstMessage = {
+        createdAt: timestamp.fromDate(new Date()),
+        id: Math.random(),
+        message: newMessage,
+        senderId: user.uid,
+        senderName: user.displayName
+      }
 
-    const conversationToCreate = {
-      users: [id, user.uid],
-      messages: [newMessage],
-      createdAt: timestamp.fromDate(new Date()),
-      updatedAt: timestamp.fromDate(new Date()),
-      title: newTitle,
-    };
-    await conversationsRef.add(conversationToCreate);
-    history.push("/allconversations")
+      const conversationToCreate = {
+        userNames: [user.displayName, document.displayName],
+        users: [id, user.uid],
+        messages: [firstMessage],
+        createdAt: timestamp.fromDate(new Date()),
+        updatedAt: timestamp.fromDate(new Date()),
+        title: newTitle,
+      };
+      await conversationsRef.add(conversationToCreate);
+      history.push("/conversations")
+    }
+    
   };
 
   if (!document) {
