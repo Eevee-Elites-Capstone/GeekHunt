@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 import Navbar from "../UI/Navbar";
 
 const EditProfile = () => {
-
   const { user } = useAuthContext();
-  const { document, error } = useDocument('users', user.uid);
+  const { document, error } = useDocument("users", user.uid);
 
-
-if(!document) {
-  return (<div>"loader bar here "</div>)
-}
-
+  if (!document) {
+    return <div>"loader bar here "</div>;
+  }
 
   return (
     <div>
@@ -56,8 +53,7 @@ if(!document) {
 
           <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 border-4 border-[#DADDFC] shadow-lg mt-2 p-4">
             <h2>Projects</h2>
-              photos
-
+            photos
           </div>
 
           <div className="flex flex-col rounded-lg  md:flex-rows w-full h-60 border-4 border-[#DADDFC] shadow-lg mt-2 p-4">
@@ -87,14 +83,17 @@ if(!document) {
               text-base
               font-normal"
             >
-              {document.skills}
+              <ul className="grid grid-cols-4 gap-2 uppercase">
+                {document.skills.map((skill) => {
+                  return <li key={skill}>{skill}</li>;
+                })}
+              </ul>
             </p>
           </div>
         </div>
       </div>
     </div>
   );
-}
-
+};
 
 export default EditProfile;
