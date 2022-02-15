@@ -50,7 +50,7 @@ const PublicProfile = () => {
       return elem.users.includes(id)
     })
     finalCheck = checkConvos.includes(true)
-  } 
+  }
 
   const handleClick = (e) => {
     if (!user) {
@@ -92,7 +92,7 @@ const PublicProfile = () => {
       await conversationsRef.add(conversationToCreate);
       history.push("/conversations")
     }
-    
+
   };
 
   if (!document) {
