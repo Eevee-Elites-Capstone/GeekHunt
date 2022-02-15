@@ -153,7 +153,7 @@ const PublicProfile = () => {
                   alt="Avatar"
                 />
                 </div>
-                <div class="swiper-slide object-cover ">
+                <div className="swiper-slide object-cover ">
                 <img
                   src={photos[2]}
                   className="object-cover w-full h-96 z-0"
@@ -172,7 +172,11 @@ const PublicProfile = () => {
         <div className="flex flex-col rounded-xl shadow-lg  md:flex-rows w-full h-40  mt-2 p-2 bg-white border-4 border-[#DADDFC]">
           <h2 className="text-xl font-bold">Skills</h2>
           <p className="rounded-lg m-2 w-full h-fullpy-1.5 text-base font-normal">
-            {document.skills}
+            <ul className="grid grid-cols-4 gap-2 uppercase">
+            {document.skills.map( skill => {
+               return <li key={skill}>{skill}</li>
+            })}
+              </ul>
           </p>
         </div>
 
