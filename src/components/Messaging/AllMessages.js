@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 export default function AllMessages({ conversation }) {
     const { user } = useAuthContext()
-    const { updateDocument, response } = useFirestore('conversations') 
+    const { updateDocument, response } = useFirestore('conversations')
     const [newMessage, setNewMessage] = useState('')
 
     const handleSubmit = async (e) => {
@@ -35,7 +35,7 @@ export default function AllMessages({ conversation }) {
     return (
         <div className="flex flex-row h-screen w-screen">
             <Sidebar />
-            <div className="flex flex-auto items-center justify-center">
+            <div className="flex flex-auto items-center ">
                 <div className="bg-blue-100 h-5/6 w-3/4 shadow-xl rounded-xl flex-col overflow overflow-auto">
                 <div className="flex flex-row justify-between p-6">
                     <h4 className="text-3xl font-bold ml-12 mt-4 "> {conversation.title} with: {conversation.userNames.find(elem => elem !== user.displayName)}</h4>
@@ -59,7 +59,7 @@ export default function AllMessages({ conversation }) {
 
                                 </div>)
                                 else return (
-                                <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-transparent bg-yellow-50 shadow-md justify-center'>
+                                <div key={msg.id} className='flex flex-row m-1 space-x-6 border rounded-full bg-transparent bg-yellow-50 shadow-md'>
                                     <div className='ml-6'>
                                         <p className="text-lg font-extrabold font-mono">{msg.senderName} </p>
                                     </div>

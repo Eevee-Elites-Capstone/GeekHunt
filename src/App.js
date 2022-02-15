@@ -56,7 +56,7 @@ function App() {
                   {user ? <Redirect to="/" /> : <SignUp />}
                 </Route>
                 <Route exact path="/publicprofile/:id">
-                  <PublicProfile />
+                  {user ? <PublicProfile /> : <Redirect to="/signin" /> }
                 </Route>
                 <Route exact path="/profile/:id">
                   {!user && <Redirect to="/signin" />}
@@ -93,11 +93,11 @@ function App() {
                   <Transactions />
                 </Route>
                 <Route path="/conversations/:id">
-                  {!user && <Redirect to="/login" />}
+                  {!user && <Redirect to="/signin" />}
                   {user && <SingleConversation />}
                 </Route>
                 <Route exact path="/conversations">
-                  {!user && <Redirect to="/login" />}
+                  {!user && <Redirect to="/signin" />}
                   {user && <AllConversations />}
                 </Route>
                 <Route exact path="/admin">

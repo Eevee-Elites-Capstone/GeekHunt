@@ -74,7 +74,7 @@ function Navbar() {
                 className="text-xl no-underline
               text-white"
               >
-                Hello!,
+                Hello!
               </p>
             )}
             <a
